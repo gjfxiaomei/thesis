@@ -1,0 +1,87 @@
+% 本文件是示例论文的一部分
+% 论文的主文件位于上级目录的 `bachelor.tex` 或 `master.tex`
+
+\chapter{背景}
+随着车辆的迅速增加，交通拥塞情况变得越来越严重，极大地影响了人们的日常生活。
+随着车联网的普及，实时获取车辆的信息变得越来越容易，另外由于人工智能技术的高速发展，使得利用深度强化学习（Deep Reinforcement Learning）来实时地调节交通信号灯的
+研究变得越来越火热。与传统的方法不同的是，这种方法不依赖于一些人为预定的不切实际假设（例如，均匀的车辆到达率以及无限的车道容量），强化学习可以根据实时的反馈来调节
+自身的策略，从而学习到一个优秀的交通信号灯控制模型。
+
+\chapter{国内外研究现状}
+交通信号控制的研究主要可以分为两类，传统的优化方法以及基于学习的方法。
+传统的优化方法可以分为两类：第一类是基于预先设定的信号来控制交通灯。根据历史交通流量来预先确定信号周期，这种方法的弊端是没有考虑实时的交通状况；
+第二类是基于优化的实时控制。这种方法将信号控制建模为一个优化问题，在特定的交通流量下，可以找到一个最优的信号周期。然而，为了让这个优化问题可解，
+通常需要认为设定一些假设，例如，车辆的到达模型服从均匀分布， 但是这些假设在实际情况下是很难满足的。
+
+基于学习的方法：
+\section{欢迎}
+
+欢迎使用 \nuaathesis，本文档将介绍如何利用 \nuaathesis 模板进行学位论文写作，
+我们假设读者有 \LaTeX 英文写作经验，并会使用搜索引擎解决常见问题。
+
+本模板的源代码托管在 \url{https://github.com/nuaatug/nuaathesis}，
+欢迎来提 issue/PR。
+
+\section{\LaTeX 环境准备}
+
+由于本模板使用了大量宏包，因此对 \LaTeX 环境有不少要求。
+推荐使用以下打 \ding{51} 的 \LaTeX 发行版：
+\begin{itemize}
+\item[\ding{51}]\TeX~Live 请安装以下 collection：langchinese, latexextra, science, pictures, fontsextra；\\
+如果觉得安装体积太大的话，可以看 \texttt{.ci/texlive.pkgs} 列出的所需宏包；
+\item[\ding{51}]MiK\TeX 请祈祷国内的镜像服务器不抽风；如果它抽风了，建议隔天再试； \\
+因为 MiK\TeX{} 能自动下载安装宏包，非常推荐 Windows 用户使用。
+\item[\ding{53}]CTeX (\url{http://www.ctex.org/}) 不推荐，可能宏包缺失、版本过旧导致无法编译。
+\end{itemize}
+
+\section{编译模板和文档}
+
+只有在找不到 \verb|nuaathesis.cls| 文件的时候，才需要执行本步骤。
+
+进入模板的根目录，运行 \verb|build.bat|（Windows） 或 \verb|build.sh|（其他系统），
+它会生成模板 \verb|nuaathesis.cls| 以及对应的文档 \verb|nuaathesis.pdf|。
+
+\section{使用模板}
+
+论文写作时，请确认\textbf{论文的目录}下有以下文件：
+\begin{itemize}
+  \item \verb|nuaathesis.cls| 文档模板；
+  \item \verb|nuaathesis.bst| 参考文献格式（如果使用 biber 来生成参考文献的话）；
+  \item \verb|logo/| 文件夹，内含一些图标；
+\end{itemize}
+
+如果论文目录下没有这些文件的话，请从本模板根目录复制一份。
+
+\section{开始写作}
+
+最方便的开始方法，莫过于修改现有的文稿。因此推荐直接修改本文档：
+\begin{itemize}
+  \item \verb|bachelor.tex| 或 \verb|master.tex| 主文件，定义了文档包含的内容。建议删除并只保留其中一个主文件；
+  \item \verb|global.tex| 里面定义文档的信息，导入一些宏包，并设置全局使用的宏；
+  \item \verb|content/| 文件夹，按章节拆分的文档内容，这里；
+  \item \verb|ref/| 文件夹，内含参考文献数据库；
+\end{itemize}
+
+修改完成后，使用 \verb|latexmk -xelatex bachelor| 进行编译。
+如果需要使用图形界面的编辑器的话，请继续阅读本节内容。
+
+\subsection{使用 TeXstudio}
+\begin{enumerate}
+\item 打开主文件 \verb|bachelor.tex| 或 \verb|master.tex|；
+\item 菜单 Options > Configure TeXstudio 对话框；
+\item 左侧选择 Build，右侧将 Default Compiler 修改为 Latexmk；
+\item 确认即可。
+\end{enumerate}
+
+\subsection{使用 vscode}
+\begin{enumerate}
+\item 打开论文目录；
+\item 安装 LaTeX Workshop 插件；
+\item 打开论文的主文件 \verb|bachelor.tex| 或 \verb|master.tex|，删除没有用到的主文件；
+\item 使用 LaTeX Workshop 插件提供的编译命令编译文档。
+\end{enumerate}
+
+\section{打印论文}
+
+如果论文需要双面打印的话，请务必修改文档类选项，编译双面打印用的 PDF 文件。
+具体地说，在主文件的头部，去除 \texttt{openany, oneside}，改成 \texttt{openright, blankleft, twoside}。
