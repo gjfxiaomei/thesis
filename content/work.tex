@@ -40,20 +40,57 @@
 \section{通信问题研究}
 对于多路口的交通信号调度问题，协作（Coordination）可以有效地提升整体通行效率，以下列出几种常见的协作策略：
 \begin{table}[htb]
-    \caption[协作策略]{常见的协作策略 (source: Wikipedia)\label{tab:coordination}}
-    \begin{tabular}{lr}
+    \caption[协作策略]{常见的协作策略\label{tab:coordination}}
+    \begin{tabular}{clp{0.4\columnwidth}}
       \toprule
-      协作策略 & 目标\\
+      协作策略 & 目标 & 说明 \\
       \midrule
-      Global single agent & 20,116,842\\
-      Joint action modeling & 19,210,000\\
-      Independent RL without Communication & 15,796,450\\
-      Independent RL with Communication & 14,160,467\\
+      Global single agent & $max_{\mathbf{a}}Q(s, \mathbf{a})$ & $s$是全局的环境状态，$\mathbf{a}$是所有路口的联合动作。\\
+      Independent RL without Communication & $max_{a_{i}}\sum{i}Q_{i}(o_i, a_i)$ & $o_i$是路口$i$的局部观测，$a_i$是路口$i$的动作。\\
+      Independent RL with Communication & $max_{a_i}\sum{i}Q_i(\Omega(o_i, \mathcal{N}_i), a_i)$ &$\mathcal{N}_i$是路口$i$的邻近路口的状态表示，$\Omega(o_i, \mathcal{N}_i)$是整合路口$i$及其邻近路口状态表示的函数。\\
       \bottomrule
     \end{tabular}
-  \end{table}
+\end{table}
+
+
+使用GAT来学习communication，这样做有一下两个好处：
+1. 动态学习周边的路口的重要性：已有的工作直接将目标路口及其邻近路口的状态直接整合起来，这种做法实际上是默认每一个邻近路口对目标路口的影响力是相同的。实际上由于交通在时间和空间上的变化，
+同一个路口对于其目标路口的影响力也会发生变化。
+2. 免索性模型学习（Index-free modeling learning）：在多智能体场景下，通常需要使用参数共享（Parameter Sharing）来降低学习难度，从而加速学习。但是这一点在多路口信号控制场景下是不适用的，
+因为不同路口对其邻近路口的敏感性是不同的。例如，如下图所示，有A，B两个路口，A对其N-S方向的交通更加敏感，B对其W-E方向的交通更加敏感，如果直接将A的参数分享给B，会导致B学习到的策略并不适用于
+自身的场景。
+\begin{figure}[htb]
+  \includegraphics[width=10cm]{ppt/index-free.pdf}
+  \caption{路口敏感性说明}
+  \label{fig:index-free}
+\end{figure}
+
 使用IRL with communication的方法确实可以有效的解决维度灾难的问题。
-已有的工作使用图神经网络来学习“交流”这一个过程。他们将每一个路口视作图中的一个节点，每条道路作为连接两个节点的边，很自然地可以将一张交通道路网建模成一个图。如下所示：
-在这种建模方式下，每条车道的车辆以及当前的相位将作为该节点的特征。
-\subsection{实验}
+已有的工作使用图神经网络来学习“交流”这一个过程。他们将每一个路口视作图中的一个节点，每条道路作为连接两个节点的边，很自然地可以将一张交通道路网建模成一个图。这种按路口建模的方式如下所示：
+\begin{figure}[htb]
+  \includegraphics[width=10cm]{ppt/network-graph.pdf}
+  \caption{多路口建模成图（路口）}
+  \label{fig:network-graph-old}
+\end{figure}
+
+在这种建模方式下，每条车道的车辆以及当前的相位将作为该节点的特征。这种建模方式虽然可以很清晰的将多路口场景变成一张图。但是，因为是以一个路口为一个节点，所有车道的状态信息都整合到了一起，有些车道的的信息对目标节点是无用的，
+如下图所示：
+\begin{figure}[htb]
+  \includegraphics[width=12cm]{ppt/information-redundancy.pdf}
+  \caption{按路口建图模式下信息传递}
+  \label{fig:information-redundancy}
+\end{figure}
+
+路口B中只有2车道的交通流向与A车道有关，1、3车道的车辆不会行驶到A路口。在信息传递的时候，如果将所有的信息都笼统地传递过去，将会增加A提取有效信息的难度，从而降低学习的效率。
+
+此外
+
+
+在本文中，我们采用GAT来学习communication，不同的时，我们采用不同的图建模方式。我们不是按照路口来建图，而是按照道路来进行建模，即一条道路就是一个节点，如下图所示：
+\begin{figure}[htb]
+  \includegraphics[width=12cm]{ppt/graph-modeling.pdf}
+  \caption{按道路建模成图}
+  \label{fig:network-graph-new}
+\end{figure}
+两个好处：1，减少无关信息的传递；2，将相位由数字化特征变成结构化特征。
 
