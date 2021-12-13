@@ -1,3 +1,15 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{gori2005new}
+Gori M, Monfardini G, Scarselli F.
+\newblock A new model for learning in graph domains[C].
+\newblock Proceedings of Proceedings. 2005 IEEE International Joint Conference
+  on Neural Networks, 2005., volume~2. IEEE, 2005.
+\newblock  729--734.
+
+\bibitem{scarselli2008graph}
+Scarselli F, Gori M, Tsoi A~C, et~al.
+\newblock The graph neural network model[J].
+\newblock IEEE transactions on neural networks, 2008, 20(1):61--80.
 
 \end{thebibliography}
