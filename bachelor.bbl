@@ -12,4 +12,20 @@ Scarselli F, Gori M, Tsoi A~C, et~al.
 \newblock The graph neural network model[J].
 \newblock IEEE transactions on neural networks, 2008, 20(1):61--80.
 
+\bibitem{miller1963settings}
+Miller A~J.
+\newblock Settings for fixed-cycle traffic signals[J].
+\newblock Journal of the Operational Research Society, 1963, 14(4):373--386.
+
+\bibitem{cools2013self}
+Cools S~B, Gershenson C, D’Hooghe B.
+\newblock Self-organizing traffic lights: A realistic simulation[M]. .
+\newblock Proceedings of Advances in applied self-organizing systems. Springer,
+  2013: 45--55.
+
+\bibitem{zheng2019diagnosing}
+Zheng G, Zang X, Xu N, et~al.
+\newblock Diagnosing reinforcement learning for traffic signal control[J].
+\newblock arXiv preprint arXiv:1905.04716, 2019..
+
 \end{thebibliography}

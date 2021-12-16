@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.12.9)  15 DEC 2021 15:14
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.12.9)  14 DEC 2021 15:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**bachelor.tex
-(./bachelor.tex
+**master.tex
+(./master.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-18> (./nuaathesis.cls
 Document Class: nuaathesis 2018/11/01 v2.1 NUAA Thesis Template
@@ -89,8 +89,8 @@ File: ctexopts.cfg 2021/03/14 v2.5.6 Option configuration file (CTEX)
 )
 (d:/Software/texlive/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
-(d:/Software/texlive/texmf-dist/tex/latex/base/bk12.clo
-File: bk12.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+(d:/Software/texlive/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
 \c@part=\count186
 \c@chapter=\count187
@@ -226,8 +226,8 @@ TEX)
  (d:/Software/texlive/texmf-dist/tex/latex/ctex/config/ctex-name-utf8.cfg
 File: ctex-name-utf8.cfg 2021/03/14 v2.5.6 Caption with encoding UTF-8 (CTEX)
 ))
-(d:/Software/texlive/texmf-dist/tex/latex/ctex/ctex-cs4size.clo
-File: ctex-cs4size.clo 2021/03/14 v2.5.6 cs4size option (CTEX)
+(d:/Software/texlive/texmf-dist/tex/latex/ctex/ctex-c5size.clo
+File: ctex-c5size.clo 2021/03/14 v2.5.6 c5size option (CTEX)
 )
 (d:/Software/texlive/texmf-dist/tex/latex/ctex/fontset/ctex-fontset-fandol.def
 File: ctex-fontset-fandol.def 2021/03/14 v2.5.6 Fandol fonts definition (CTEX)
@@ -992,7 +992,7 @@ LaTeX Font Info:    Trying to load font information for T1+ntxtlf on input line
 File: t1ntxtlf.fd 2015/01/17 v1.0 font definition file for T1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.045pt on input line 112.
+(Font)              scaled to size 10.53937pt on input line 112.
 )
 (d:/Software/texlive/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
@@ -1687,19 +1687,14 @@ File: upsy.fd 2001/06/04 font definitions for U/psy.
 \c@exercise=\count426
 \c@nonsense=\count427
 \c@lines=\count428
-) (./bachelor.aux
-(./content/background.aux) (./content/status.aux) (./content/work.aux
-
-LaTeX Warning: Label `tab:coordination' multiply defined.
-
-) (./content/experiment.aux) (./content/manref.aux) (./content/acknowledge.aux)
-)
-\openout1 = `bachelor.aux'.
+) (./master.aux)
+\openout1 = `master.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 14.
 LaTeX Font Info:    Trying to load font information for OML+ntxmi on input line
  14.
- (d:/Software/texlive/texmf-dist/tex/latex/newtx/omlntxmi.fd
+
+(d:/Software/texlive/texmf-dist/tex/latex/newtx/omlntxmi.fd
 File: omlntxmi.fd 2015/08/25 Fontinst v1.933 font definitions for OML/ntxmi.
 )
 LaTeX Font Info:    ... okay on input line 14.
@@ -1754,24 +1749,24 @@ LaTeX Info: Redefining \selectfont on input line 14.
 * paper: <default>
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: includehead includefoot 
+* modes: 
 * h-part:(L,W,R)=(85.35826pt, 432.48181pt, 79.6678pt)
 * v-part:(T,H,B)=(93.89418pt, 657.25848pt, 93.89418pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
 * \textwidth=432.48181pt
-* \textheight=621.67377pt
+* \textheight=657.25848pt
 * \oddsidemargin=13.08827pt
 * \evensidemargin=13.08827pt
-* \topmargin=21.62419pt
+* \topmargin=1.69797pt
 * \headheight=15.6585pt
 * \headsep=4.26773pt
-* \topskip=12.0pt
+* \topskip=10.0pt
 * \footskip=15.6585pt
-* \marginparwidth=38.0pt
+* \marginparwidth=61.0pt
 * \marginparsep=7.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -1810,10 +1805,11 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 14.
 LaTeX Info: Redefining \pageref on input line 14.
 LaTeX Info: Redefining \nameref on input line 14.
-(./bachelor.out) (./bachelor.out)
 \@outlinefile=\write4
-\openout4 = `bachelor.out'.
+\openout4 = `master.out'.
 
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
 
 (d:/Software/texlive/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
 File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
@@ -1847,11 +1843,11 @@ e 14.
 File: ot1ntxtlf.fd 2015/01/17 v1.0 font definition file for OT1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.045pt on input line 14.
+(Font)              scaled to size 10.53937pt on input line 14.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 14.
+(Font)              scaled to size 7.0pt on input line 14.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.0pt on input line 14.
+(Font)              scaled to size 5.0pt on input line 14.
 LaTeX Font Info:    Trying to load font information for U+msa on input line 14.
 
 
@@ -1889,11 +1885,11 @@ LaTeX Font Info:    Trying to load font information for T1+qhv on input line 14
 File: t1qhv.fd 2009/09/25 v1.2 font definition file for T1/qhv
 )
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 10.84042pt on input line 14.
+(Font)              scaled to size 9.48535pt on input line 14.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 7.19995pt on input line 14.
+(Font)              scaled to size 6.29996pt on input line 14.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 5.39996pt on input line 14.
+(Font)              scaled to size 4.49997pt on input line 14.
 LaTeX Font Info:    Trying to load font information for T1+ntxtt on input line 
 14.
 
@@ -1901,11 +1897,11 @@ LaTeX Font Info:    Trying to load font information for T1+ntxtt on input line
 File: t1ntxtt.fd 2012/04/20 v3.1
 )
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 12.045pt on input line 14.
+(Font)              scaled to size 10.53937pt on input line 14.
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 8.0pt on input line 14.
+(Font)              scaled to size 7.0pt on input line 14.
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 6.0pt on input line 14.
+(Font)              scaled to size 5.0pt on input line 14.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
@@ -1926,105 +1922,6 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `superscript' on input line 16.
-
-*geometry* verbose mode - [ newgeometry ] result:
-* driver: xetex
-* paper: <default>
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
-* h-part:(L,W,R)=(90.3375pt, 416.83289pt, 90.3375pt)
-* v-part:(T,H,B)=(72.26999pt, 700.50687pt, 72.26999pt)
-* \paperwidth=597.50787pt
-* \paperheight=845.04684pt
-* \textwidth=416.83289pt
-* \textheight=700.50687pt
-* \oddsidemargin=18.0675pt
-* \evensidemargin=18.0675pt
-* \topmargin=-19.92622pt
-* \headheight=15.6585pt
-* \headsep=4.26773pt
-* \topskip=12.0pt
-* \footskip=15.6585pt
-* \marginparwidth=38.0pt
-* \marginparsep=7.0pt
-* \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumnfalse
-* \@twosidefalse
-* \@mparswitchfalse
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
-
-
-Package fontspec Warning: Font "FandolHei-Regular" does not contain requested
-(fontspec)                Script "CJK".
-
-
-Package fontspec Info: Font family 'FandolHei-Regular(0)' created for font
-(fontspec)             'FandolHei-Regular' with options
-(fontspec)             [Script={CJK},Extension={.otf},BoldFont={FandolHei-Bold}
-].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"[FandolHei-Regular.otf]/OT:language=dflt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-(fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->"[FandolHei-Bold.otf]/OT:language=dflt;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
-
-
-Package fontspec Warning: Font "FandolHei-Regular" does not contain requested
-(fontspec)                Script "CJK".
-
-LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 12.64714pt on input line 16.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 14.05249pt on input line 16.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.53937pt on input line 16.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.52812pt on input line 16.
-LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 9.48535pt on input line 16.
-LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 6.77525pt on input line 16.
-LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 14.05249pt on input line 16.
-LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 10.53937pt on input line 16.
-LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 7.52812pt on input line 16.
-
-Package fontspec Warning: Font "FandolKai-Regular" does not contain requested
-(fontspec)                Script "CJK".
-
-
-Package fontspec Info: Font family 'FandolKai-Regular(0)' created for font
-(fontspec)             'FandolKai-Regular' with options
-(fontspec)             [Script={CJK},Extension={.otf}].
-(fontspec)              
-(fontspec)              This font family consists of the following NFSS
-(fontspec)             series/shapes:
-(fontspec)              
-(fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->"[FandolKai-Regular.otf]/OT:language=dflt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
-
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 22.08249pt on input line 16.
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 22.08249pt on input line 16.
-
-LaTeX Font Warning: Font shape `TU/FandolKai-Regular(0)/b/n' undefined
-(Font)              using `TU/FandolKai-Regular(0)/m/n' instead on input line 1
-6.
 
 
 Package fontspec Warning: Font "FandolSong-Regular" does not contain requested
@@ -2047,604 +1944,223 @@ Package fontspec Info: Font family 'FandolSong-Regular(1)' created for font
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 55.20624pt on input line 16.
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 55.20624pt on input line 16.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 22.08249pt on input line 16.
+(Font)              scaled to size 42.15749pt on input line 16.
+
+Package fontspec Warning: Font "FandolHei-Regular" does not contain requested
+(fontspec)                Script "CJK".
+
+
+Package fontspec Info: Font family 'FandolHei-Regular(0)' created for font
+(fontspec)             'FandolHei-Regular' with options
+(fontspec)             [Script={CJK},Extension={.otf},BoldFont={FandolHei-Bold}
+].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[FandolHei-Regular.otf]/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"[FandolHei-Bold.otf]/OT:language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+
+LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
+(Font)              scaled to size 37.94147pt on input line 16.
+
+Package fontspec Warning: Font "FandolHei-Regular" does not contain requested
+(fontspec)                Script "CJK".
+
+LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
+(Font)              scaled to size 23.48758pt on input line 16.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 16.06pt on input line 16.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 (Font)              scaled to size 16.06pt on input line 16.
-LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 19.8741pt on input line 16.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 14.05249pt on input line 16.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
 (Font)              scaled to size 14.45389pt on input line 16.
-LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 22.08249pt on input line 16.
+LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
+(Font)              scaled to size 12.64714pt on input line 16.
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
 (Font)              scaled to size 16.06pt on input line 16.
+LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
+(Font)              scaled to size 14.05249pt on input line 16.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 14.05249pt on input line 16.
+
+Overfull \hbox (6.1631pt too wide) in paragraph at lines 16--16
+ [] 
+ []
+
+File: ./logo//nuaa-jianqi.pdf Graphic file (type pdf)
+<use ./logo//nuaa-jianqi.pdf>
+
+Package fontspec Warning: Font "FandolKai-Regular" does not contain requested
+(fontspec)                Script "CJK".
+
+
+Package fontspec Info: Font family 'FandolKai-Regular(0)' created for font
+(fontspec)             'FandolKai-Regular' with options
+(fontspec)             [Script={CJK},Extension={.otf}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[FandolKai-Regular.otf]/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 18.06749pt on input line 16.
 [1
 
 
 
-
 ]
-*geometry* verbose mode - [ newgeometry ] result:
-* driver: xetex
-* paper: <default>
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
-* h-part:(L,W,R)=(90.3375pt, 416.83289pt, 90.3375pt)
-* v-part:(T,H,B)=(72.26999pt, 700.50687pt, 72.26999pt)
-* \paperwidth=597.50787pt
-* \paperheight=845.04684pt
-* \textwidth=416.83289pt
-* \textheight=700.50687pt
-* \oddsidemargin=18.0675pt
-* \evensidemargin=18.0675pt
-* \topmargin=-19.92622pt
-* \headheight=15.6585pt
-* \headsep=4.26773pt
-* \topskip=12.0pt
-* \footskip=15.6585pt
-* \marginparwidth=38.0pt
-* \marginparsep=7.0pt
-* \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumnfalse
-* \@twosidefalse
-* \@mparswitchfalse
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
-
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 18.06749pt on input line 17.
+(Font)              scaled to size 22.08249pt on input line 16.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 18.06749pt on input line 17.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 14.05249pt on input line 17.
+(Font)              scaled to size 22.08249pt on input line 16.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 22.08249pt on input line 16.
+LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
+(Font)              scaled to size 19.8741pt on input line 16.
+LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
+(Font)              scaled to size 22.08249pt on input line 16.
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 16.06pt on input line 16.
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/sc' will be
+(Font)              scaled to size 22.08249pt on input line 16.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 7.52812pt on input line 16.
+LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
+(Font)              scaled to size 6.77525pt on input line 16.
+LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
+(Font)              scaled to size 7.52812pt on input line 16.
+ [2
 
-Overfull \hbox (87.1737pt too wide) in paragraph at lines 17--17
-[]\TU/FandolSong-Regular(1)/m/n/14.05249 本 人 郑 重 声 明：|  所 呈 交 的 毕 业 论 文  |（题 目：
-| |   []）|
- []
-
-[2
-
-
+] [3
 
 ]
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
 (Font)              scaled to size 13.55052pt on input line 19.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 19.
+(Font)              scaled to size 7.0pt on input line 19.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 12.045pt on input line 19.
+(Font)              scaled to size 10.53937pt on input line 19.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.045pt on input line 19.
+(Font)              scaled to size 10.53937pt on input line 19.
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 7.52812pt on input line 19.
+ [1
+
+
+
+
+]
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 15.05624pt on input line 19.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 15.05624pt on input line 19.
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.03374pt on input line 19.
-[1
-
-
+ [2
 
 
 ]
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 16.06pt on input line 19.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 22.08249pt on input line 19.
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[2
-
-] (./bachelor.toc
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[3
-
-
-])
 \tf@toc=\write5
-\openout5 = `bachelor.toc'.
+\openout5 = `master.toc'.
 
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
+ [3
 
 
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
+]
+\tf@lof=\write6
+\openout6 = `master.lof'.
 
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+\tf@lot=\write7
+\openout7 = `master.lot'.
 
-[4]
-\openout2 = `content/background.aux'.
+ [4
 
- (./content/background.tex
+
+]
+\openout2 = `content/abbr.aux'.
+
+ (./content/abbr.tex [5
+
+
+]) [6
+
+]
+\openout2 = `content/start.aux'.
+
+ (./content/start.tex
 第一章
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[1
-
-
-
-]
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[2])
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[3]
-\openout2 = `content/status.aux'.
-
- (./content/status.tex
-第二章
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[4
-
-
-
-
-]
-File: fig/GreenWave.jpg Graphic file (type bmp)
-<fig/GreenWave.jpg>
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[5]
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[6]
-File: fig/max-pressure.jpg Graphic file (type bmp)
-<fig/max-pressure.jpg>
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.53937pt on input line 51.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.0pt on input line 53.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.0pt on input line 53.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 6.29996pt on input line 53.
+(Font)              scaled to size 12.59991pt on input line 6.
+
+Package fontspec Warning: Font "FandolFang-Regular" does not contain requested
+(fontspec)                Script "CJK".
+
+
+Package fontspec Info: Font family 'FandolFang-Regular(0)' created for font
+(fontspec)             'FandolFang-Regular' with options
+(fontspec)             [Script={CJK},Extension={.otf}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"[FandolFang-Regular.otf]/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+LaTeX Font Info:    Calculating math sizes for size <14> on input line 14.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 14.0pt on input line 14.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 10.21994pt on input line 14.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 7.70004pt on input line 14.
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 4.49997pt on input line 53.
+(Font)              scaled to size 9.19788pt on input line 14.
+LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
+(Font)              scaled to size 6.92998pt on input line 14.
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 7.0pt on input line 53.
+(Font)              scaled to size 14.0pt on input line 14.
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 5.0pt on input line 53.
-
-Overfull \hbox (41.75124pt too wide) in paragraph at lines 53--63
- [][] 
- []
-
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[7]
+(Font)              scaled to size 10.21994pt on input line 14.
+LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
+(Font)              scaled to size 7.70004pt on input line 14.
 LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input lin
-e 70.
- (d:/Software/texlive/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
+e 19.
+(d:/Software/texlive/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.045pt on input line 70.
+(Font)              scaled to size 10.53937pt on input line 19.
+ [1
 
-Overfull \hbox (20.8512pt too wide) in paragraph at lines 68--70
- []\TU/FandolSong-Regular(0)/m/n/12.045 通 常 单 智 能 体 强 化 学 习 问 题 被 建 模 成 \T1/ntx
-tlf/m/n/12.045 MDP $\OML/ntxmi/m/it/12.045 < \LMS/ntxsy/m/n/12.045 S\OML/ntxmi/
-m/it/12.045 ; \LMS/ntxsy/m/n/12.045 A\OML/ntxmi/m/it/12.045 ; P; R; ^^M >$\TU/F
-andolSong-Regular(0)/m/n/12.045 ，|  其 中 $\LMS/ntxsy/m/n/12.045 S\OML/ntxmi/m/it
-/12.045 ; \LMS/ntxsy/m/n/12.045 A\OML/ntxmi/m/it/12.045 ; P; R; ^^M$
- []
-
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[8]
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[9]
-Missing character: There is no ϵ ("3F5) in font ntx-Regular-tlf-t1!
-Missing character: There is no ϵ ("3F5) in font ntx-Regular-tlf-t1!
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[10])
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[11]
-\openout2 = `content/work.aux'.
-
- (./content/work.tex
-第三章
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.045pt on input line 19.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 19.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.0pt on input line 19.
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[12
 
 
 
 
 ]
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.53937pt on input line 48.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 7.0pt on input line 48.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 5.0pt on input line 48.
-
-Overfull \hbox (65.16995pt too wide) in paragraph at lines 44--53
- [][] 
- []
-
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[13]
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[14]
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[15]
-File: ppt/index-free.pdf Graphic file (type pdf)
-<use ppt/index-free.pdf>
-File: ppt/network-graph.pdf Graphic file (type pdf)
-<use ppt/network-graph.pdf>
-File: ppt/information-redundancy.pdf Graphic file (type pdf)
-<use ppt/information-redundancy.pdf>
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[16]
-File: ppt/graph-modeling.pdf Graphic file (type pdf)
-<use ppt/graph-modeling.pdf>
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[17]
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[18])
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[19]
-\openout2 = `content/experiment.aux'.
-
- (./content/experiment.tex
-第四章
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.03374pt on input line 5.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 9.03374pt on input line 5.
-LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 8.1303pt on input line 5.
-LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 9.03374pt on input line 5.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.0pt on input line 5.
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[20
-
-
-
-
-]
-
-LaTeX Warning: Reference `' on page 21 undefined on input line 41.
-
-File: fig/efficiency.pdf Graphic file (type pdf)
-<use fig/efficiency.pdf>
-)
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[21]
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[22] (./bachelor.bbl)
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[23
-
-
-
-
-
-]
-\openout2 = `content/manref.aux'.
-
- (./content/manref.tex)
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[24
-
-
-]
-\openout2 = `content/acknowledge.aux'.
-
- (./content/acknowledge.tex)
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[25
-
-
-
-
-] (./bachelor.aux (./content/background.aux) (./content/status.aux)
-(./content/work.aux) (./content/experiment.aux) (./content/manref.aux)
-(./content/acknowledge.aux))
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
-Package rerunfilecheck Info: File `bachelor.out' has not changed.
-(rerunfilecheck)             Checksum: 8735EBC631E8A90D83D3C856CD9E544B;4105.
- ) 
+Runaway argument?
+{itemize 
+! Paragraph ended before \end  was complete.
+<to be read again> 
+                   \par 
+l.53 
+     
+? x
+ 
 Here is how much of TeX's memory you used:
- 47827 strings out of 476919
- 1112846 string characters out of 5823632
- 1540146 words of memory out of 5000000
- 66902 multiletter control sequences out of 15000+600000
- 557364 words of font info for 257 fonts, out of 8000000 for 9000
+ 47492 strings out of 476919
+ 1098291 string characters out of 5823632
+ 1531050 words of memory out of 5000000
+ 66645 multiletter control sequences out of 15000+600000
+ 534700 words of font info for 209 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 115i,18n,118p,1211b,906s stack positions out of 5000i,500n,10000p,200000b,80000s
-
-Output written on bachelor.xdv (31 pages, 330080 bytes).
+ 115i,16n,118p,1209b,880s stack positions out of 5000i,500n,10000p,200000b,80000s
+Output written on master.xdv (10 pages, 35596 bytes).
