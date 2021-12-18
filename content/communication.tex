@@ -1,6 +1,22 @@
 
-\chapter{通信研究}
-对于多路口交通信号调度的研究。
+\chapter{多路口场景下交通信号调度}
+对于多路口的交通信号调度问题，协作（Coordination）可以有效地提升整体通行效率，以下列出几种常见的协作策略：
+\begin{table}[htb]
+    \caption[协作策略]{常见的协作策略\label{tab:coordination}}
+    \begin{tabular}{clp{0.4\columnwidth}}
+      \toprule
+      协作策略 & 目标 & 说明 \\
+      \midrule
+      Global single agent & $max_{\mathbf{a}}Q(s, \mathbf{a})$ & $s$是全局的环境状态，$\mathbf{a}$是所有路口的联合动作。\\
+      Independent RL without Communication & $max_{a_{i}}\sum{i}Q_{i}(o_i, a_i)$ & $o_i$是路口$i$的局部观测，$a_i$是路口$i$的动作。\\
+      Independent RL with Communication & $max_{a_i}\sum{i}Q_i(\Omega(o_i, \mathcal{N}_i), a_i)$ &$\mathcal{N}_i$是路口$i$的邻近路口的状态表示，$\Omega(o_i, \mathcal{N}_i)$是整合路口$i$及其邻近路口状态表示的函数。\\
+      \bottomrule
+    \end{tabular}
+\end{table}
 
-\section{建模}
+\section{相关工作}
+
+\section{已有工作中的不足}
+
+\section{改进}
 

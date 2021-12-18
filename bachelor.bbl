@@ -1,4 +1,51 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{wei2018intellilight}
+Wei H, Zheng G, Yao H, et~al.
+\newblock Intellilight: A reinforcement learning approach for intelligent
+  traffic light control[C].
+\newblock Proceedings of Proceedings of the 24th ACM SIGKDD International
+  Conference on Knowledge Discovery \& Data Mining, 2018.
+\newblock  2496--2505.
+
+\bibitem{steingrover2005reinforcement}
+Steingrover M, Schouten R, Peelen S, et~al.
+\newblock Reinforcement Learning of Traffic Light Controllers Adapting to
+  Traffic Congestion.[C].
+\newblock Proceedings of BNAIC, 2005.
+\newblock  216--223.
+
+\bibitem{kuyer2008multiagent}
+Kuyer L, Whiteson S, Bakker B, et~al.
+\newblock Multiagent reinforcement learning for urban traffic control using
+  coordination graphs[C].
+\newblock Proceedings of Joint European Conference on Machine Learning and
+  Knowledge Discovery in Databases. Springer, 2008.
+\newblock  656--671.
+
+\bibitem{van2016coordinated}
+Pol E, Oliehoek F~A.
+\newblock Coordinated deep reinforcement learners for traffic light control[J].
+\newblock Proceedings of Learning, Inference and Control of Multi-Agent Systems
+  (at NIPS 2016), 2016..
+
+\bibitem{brys2014distributed}
+Brys T, Pham T~T, Taylor M~E.
+\newblock Distributed learning and multi-objectivity in traffic light
+  control[J].
+\newblock Connection Science, 2014, 26(1):65--83.
+
+\bibitem{pham2013learning}
+Pham T~T, Brys T, Taylor M~E, et~al.
+\newblock Learning coordinated traffic light control[C].
+\newblock Proceedings of Proceedings of the Adaptive and Learning Agents
+  workshop (at AAMAS-13), volume~10. IEEE, 2013.
+\newblock  1196--1201.
+
+\bibitem{zheng2019diagnosing}
+Zheng G, Zang X, Xu N, et~al.
+\newblock Diagnosing reinforcement learning for traffic signal control[J].
+\newblock arXiv preprint arXiv:1905.04716, 2019..
 
 \bibitem{gori2005new}
 Gori M, Monfardini G, Scarselli F.
@@ -22,10 +69,5 @@ Cools S~B, Gershenson C, D’Hooghe B.
 \newblock Self-organizing traffic lights: A realistic simulation[M]. .
 \newblock Proceedings of Advances in applied self-organizing systems. Springer,
   2013: 45--55.
-
-\bibitem{zheng2019diagnosing}
-Zheng G, Zang X, Xu N, et~al.
-\newblock Diagnosing reinforcement learning for traffic signal control[J].
-\newblock arXiv preprint arXiv:1905.04716, 2019..
 
 \end{thebibliography}

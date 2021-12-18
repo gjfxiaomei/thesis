@@ -6,15 +6,25 @@
 1.	通行时间：在交通信号控制中，车辆的行驶时间被定义为一辆汽车进入系统的时间与离开系统的时间的差值。 最常见的优化目标之一是就是减少进过路口的所有车辆的平均通行时间。
 2.	队列长度：队列长度是指路口等待车辆的数量，越大的队列长度意味着越多的等待车辆，路口的通行效率越低，反之通行效率越高。
 3.	路口吞吐量：吞吐量是指在一定期间内进过路口完成通行的车辆数量。越大的吞吐量代表着越高的通行效率，所以很多工作将最大化吞吐量作为优化的目标。
+
+\begin{figure}[htb]
+    \includegraphics[width=.9\textwidth]{fig/tsc.pdf}
+    \caption{tsc}
+    \label{fig:tsc}
+\end{figure}
 \section{基本术语}
-Approach: 指交叉路口的巷道。任何一个交叉路口都有两种approach,进入路口的incoming approach和离开路口的outgoing approach。图3.a描述了一个典型的有8个approach（四个入口，四个出口）的交叉路口。
-Lane: 一个Approach是由一组车道组成。与Approach的定义类似，车道也分为两种：转入车道（incoming lane）和转出车道(outgoing lane)。
-Traffic movement：指的是车流从一个incoming approach 运动到另一个outgoing approach，表示为 ，其中ri和ro分别表示incoming lane和outgoing lane。通常，traffic movement可以分为左转、直行以及右转三种，在少数特殊的路口也支持U-turn的traffic movement。
-Movement signal:根据traffic movement定义的运动信号，绿色代表可以通行，红色代表禁止通行。根据大多数国家的交通规则，右转的traffic movement是可以不受信号约束的。
-Phase: 信号灯的一个phase(相位)是指非冲突运动信号的组合，这意味着这些信号可以同时设置为绿色，而不会引起安全冲突。 图3.c展示了最常用的四相位信号模式。
-Phase sequence: 相序，即一组相位的序列，它定义了一组相位及其变化顺序。
-Signal plan：信号计划，由一组相位序列及其相应的起始时间组成。通常表示为 其中 和 分别代表相位及其开始时间。
-Cycle-based signal plan：周期性信号计划，与普通的信号计划不同的是其中的相位序列是按循环顺序工作的，可以表示为 其中 是重复出现的相位序列， 是j周期中相位pi的起始时间。具体地， 是第j周期的周期长度， 是第j周期中的相位分裂比（phase split ratio），表示每个相位持续时间占总周期长度的比重。现有的交通信号控制方法通常在一天中重复类似的相位序列。
+\begin{itemize}
+    \item Approach: 指交叉路口的巷道。任何一个交叉路口都有两种approach,进入路口的incoming approach和离开路口的outgoing approach。\autoref{fig:tsc}(a)描述了一个典型的有8个approach（四个入口，四个出口）的交叉路口。
+    \item Lane：一个Approach是由一组车道组成。与Approach的定义类似，车道也分为两种：转入车道（incoming lane）和转出车道(outgoing lane)。
+    \item Traffic movement：指的是车流从一个incoming approach 运动到另一个outgoing approach，表示为$\left(r_{i} \longrightarrow r_{o}\right)$，其中ri和ro分别表示incoming lane和outgoing lane。通常，traffic movement可以分为左转、直行以及右转三种，在少数特殊的路口也支持U-turn的traffic movement。
+    \item Movement signal:根据traffic movement定义的运动信号，绿色代表可以通行，红色代表禁止通行。根据大多数国家的交通规则，右转的traffic movement是可以不受信号约束的。
+    \item Phase: 信号灯的一个phase(相位)是指非冲突运动信号的组合，这意味着这些信号可以同时设置为绿色，而不会引起安全冲突。 \autoref{fig:tsc}(c)展示了最常用的四相位信号模式。
+    \item Phase sequence: 相序，即一组相位的序列，它定义了一组相位及其变化顺序。
+    \item Signal plan：信号计划，由一组相位序列及其相应的起始时间组成。通常表示为$\left(p_{1}, t_{1}\right)\left(p_{2}, t_{2}\right) \ldots\left(p_{i}, t_{i}\right) \ldots$其中$p_{i}$ 和 $t_{i}$分别代表相位及其开始时间。
+    \item Cycle-based signal plan：周期性信号计划，与普通的信号计划不同的是其中的相位序列是按循环顺序工作的，可以表示为
+    $\left(p_{1}, t_{1}^{1}\right)\left(p_{2}, t_{2}^{1}\right) \ldots \\ \left(p_{N}, t_{N}^{1}\right)\left(p_{1}, t_{1}^{2}\right)\left(p_{2}, t_{2}^{2}\right) \ldots\left(p_{N}, t_{N}^{2}\right) \ldots$，其中$p_{1}, p_{2}, \ldots, p_{N}$是重复出现的相位序列，$t_i^j$是$j$周期中相位$p_i$的起始时间。具体地，$C^{j}=t_{1}^{j+1}-t_{1}^{j}$是第j周期的周期长度， $\left\{\frac{t_{2}^j-t_{1}^j}{C^j}, \ldots, \frac{t_{N}^j-t_{N-1}^j}{C^j}\right\}$是第$j$周期中的相位分裂比（phase split ratio），表示每个相位持续时间占总周期长度的比重。现有的交通信号控制方法通常在一天中重复类似的相位序列。
+\end{itemize}
+
 
 \section{传统交通控制方法}
 \subsection{Webster}
@@ -25,12 +35,12 @@ Cycle-based signal plan：周期性信号计划，与普通的信号计划不同
 GreenWave就是交通运输领域中最经典的协调相邻路口的信号控制方法，它通过优化相邻路口信号时间的偏移来减少车辆在某一方向行驶时的停留次数。这种方法可以形成沿指定交通方向的绿色信号波，在该方向行驶的车辆可以受益于渐进的绿色信号级联，而不会在任何交叉口停留，如下图所示：
 \begin{figure}[htb]
     \includegraphics[width=10cm]{fig/GreenWave.jpg}
-    \caption{路口敏感性说明}
+    \caption{green-wave}
     \label{fig:green-wave}
 \end{figure}
 
 \subsection{Actuated Control}
-Actuated Control根据当前相位和其他的竞争相位对绿色信号的请求来决定是否保持或者变化当前的相位。请求规则如下：
+Actuated Control根据当前相位和其他的竞争相位对绿色信号的请求来决定是否保持或者变化当前的相位。请求触发规则如下：
 1. 当目前相位的持续时间未达到最小时间周期时，或在当前相位对应入车道上有车辆进入，并且在接近信号的距离内时，就会产生延长绿色信号时间的请求，已让车辆可以直接通过路口。 
 2. 当竞争相位的等待车辆数量大于一个阈值时，就会生成对绿色信号的请求。
 根据规则的差异，Actuated Control主要可以分为Fully-Actuated Control和Semi-Actuated Control两种。
@@ -65,7 +75,12 @@ Max-Pressure Control的目的是通过最小化对应相位的压力（pressure�
 \section{基于强化学习的交通信号控制}
 最近，人们提出了不同的人工智能技术来控制交通信号，例如遗传算法、群体智能以及强化学习。 其中在这些技术中，强化学习在近年来更具趋势。
 \subsection{强化学习概述}
-通常单智能体强化学习问题被建模成MDP $<\mathcal{S}, \mathcal{A}, P, R, \gamma>$，其中$\mathcal{S}, \mathcal{A}, P, R, \gamma$分别表示状态集、动作集、概率状态转移函数、奖励函数和折扣因子。具体定义如下：
+\begin{figure}[htb]
+    \includegraphics[width=10cm]{fig/rl.pdf}
+    \caption{马尔可夫决策过程}
+    \label{fig:mdp}
+\end{figure}
+通常单智能体强化学习问题被建模成马尔可夫决策过程（Markov Decision Process, MDP, \autoref{fig:mdp}） $<\mathcal{S}, \mathcal{A}, P, R, \gamma>$，其中$\mathcal{S}, \mathcal{A}, P, R, \gamma$分别表示状态集、动作集、概率状态转移函数、奖励函数和折扣因子。具体定义如下：
 \begin{itemize}
     \item $\mathcal{S}$：在时间步骤$t$，智能体得到一个观测状态$s^t \in \mathcal{S}$。
     \item $\mathcal{A}, P$：在时间步骤$t$，智能体采取一个动作$a^t \in \mathcal{A}$，然后环境根据状态转移函数转移到一个新的状态。
@@ -104,5 +119,7 @@ Max-Pressure Control的目的是通过最小化对应相位的压力（pressure�
     \item Policy-based Methods：基于策略的方法直接更新策略（例如，在特定状态下采取行动的概率向量)参数，以最大限度地实现预定目标(例如平均预期回报）。 基于策略的方法，尝试学习某一状态下不同动作的概率分布。 基于政策的方法的优点是，它不要求行动是离散的。 此外，它可以学习一个随机策略，并继续探索潜在的更有价值的行动。Actor-Critic基于策略的方法中广泛使用的框架之一。 它包括基于价值的思想来学习行动概率分布的策略，Actor控制我们的智能体的行为（policy-based)，Critic衡量所采取的行动有多好(value-based）。 Aslani、Mousavi、Prashanth以及Bhatnagar在他们的工作中使用Actor-Critic，利用价值函数逼近和策略优化的优势，在交通信号控制问题上表现出优异的性能。
 \end{itemize}
 
-\textbf{协作策略}：
+\section{基于图神经网络的交通流量预测}
+\section{图神经网络概述}
+
 
