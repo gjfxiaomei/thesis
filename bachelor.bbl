@@ -47,17 +47,10 @@ Zheng G, Zang X, Xu N, et~al.
 \newblock Diagnosing reinforcement learning for traffic signal control[J].
 \newblock arXiv preprint arXiv:1905.04716, 2019..
 
-\bibitem{gori2005new}
-Gori M, Monfardini G, Scarselli F.
-\newblock A new model for learning in graph domains[C].
-\newblock Proceedings of Proceedings. 2005 IEEE International Joint Conference
-  on Neural Networks, 2005., volume~2. IEEE, 2005.
-\newblock  729--734.
-
-\bibitem{scarselli2008graph}
-Scarselli F, Gori M, Tsoi A~C, et~al.
-\newblock The graph neural network model[J].
-\newblock IEEE transactions on neural networks, 2008, 20(1):61--80.
+\bibitem{mnih2015human}
+Mnih V, Kavukcuoglu K, Silver D, et~al.
+\newblock Human-level control through deep reinforcement learning[J].
+\newblock nature, 2015, 518(7540):529--533.
 
 \bibitem{miller1963settings}
 Miller A~J.
@@ -69,5 +62,117 @@ Cools S~B, Gershenson C, D’Hooghe B.
 \newblock Self-organizing traffic lights: A realistic simulation[M]. .
 \newblock Proceedings of Advances in applied self-organizing systems. Springer,
   2013: 45--55.
+
+\bibitem{claus1998dynamics}
+Claus C, Boutilier C.
+\newblock The dynamics of reinforcement learning in cooperative multiagent
+  systems[J].
+\newblock AAAI/IAAI, 1998, 1998(746-752):2.
+
+\bibitem{zhang2019integrating}
+Zhang Z, Yang J, Zha H.
+\newblock Integrating independent and centralized multi-agent reinforcement
+  learning for traffic signal network optimization[J].
+\newblock arXiv preprint arXiv:1909.10651, 2019..
+
+\bibitem{chu2019multi}
+Chu T, Wang J, Codec{\`a} L, et~al.
+\newblock Multi-agent deep reinforcement learning for large-scale traffic
+  signal control[J].
+\newblock IEEE Transactions on Intelligent Transportation Systems, 2019,
+  21(3):1086--1095.
+
+\bibitem{tan2019cooperative}
+Tan T, Bao F, Deng Y, et~al.
+\newblock Cooperative deep reinforcement learning for large-scale traffic grid
+  signal control[J].
+\newblock IEEE transactions on cybernetics, 2019, 50(6):2687--2700.
+
+\bibitem{mannion2016experimental}
+Mannion P, Duggan J, Howley E.
+\newblock An experimental review of reinforcement learning algorithms for
+  adaptive traffic signal control[J].
+\newblock Autonomic road transport support systems, 2016. 47--66.
+
+\bibitem{casas2017deep}
+Casas N.
+\newblock Deep deterministic policy gradient for urban traffic light
+  control[J].
+\newblock arXiv preprint arXiv:1703.09035, 2017..
+
+\bibitem{zheng2020learning}
+Zheng G, Liu H, Xu K, et~al.
+\newblock Learning to simulate vehicle trajectories from demonstrations[C].
+\newblock Proceedings of 2020 IEEE 36th International Conference on Data
+  Engineering (ICDE). IEEE, 2020.
+\newblock  1822--1825.
+
+\bibitem{liu2018deep}
+Liu X~Y, Ding Z, Borst S, et~al.
+\newblock Deep reinforcement learning for intelligent transportation
+  systems[J].
+\newblock arXiv preprint arXiv:1812.00979, 2018..
+
+\bibitem{calvo2018heterogeneous}
+Calvo J~A, Dusparic I.
+\newblock Heterogeneous Multi-Agent Deep Reinforcement Learning for Traffic
+  Lights Control.[C].
+\newblock Proceedings of AICS, 2018.
+\newblock  2--13.
+
+\bibitem{gong2019decentralized}
+Gong Y, Abdel-Aty M, Cai Q, et~al.
+\newblock Decentralized network level adaptive signal control by multi-agent
+  deep reinforcement learning[J].
+\newblock Transportation Research Interdisciplinary Perspectives, 2019,
+  1:100020.
+
+\bibitem{wei2019presslight}
+Wei H, Chen C, Zheng G, et~al.
+\newblock Presslight: Learning max pressure control to coordinate traffic
+  signals in arterial network[C].
+\newblock Proceedings of Proceedings of the 25th ACM SIGKDD International
+  Conference on Knowledge Discovery \& Data Mining, 2019.
+\newblock  1290--1298.
+
+\bibitem{sukhbaatar2016learning}
+Sukhbaatar S, Fergus R, et~al.
+\newblock Learning multiagent communication with backpropagation[J].
+\newblock Advances in neural information processing systems, 2016,
+  29:2244--2252.
+
+\bibitem{xu2020network}
+Xu M, Wu J, Huang L, et~al.
+\newblock Network-wide traffic signal control based on the discovery of
+  critical nodes and deep reinforcement learning[J].
+\newblock Journal of Intelligent Transportation Systems, 2020, 24(1):1--10.
+
+\bibitem{ge2019cooperative}
+Ge H, Song Y, Wu C, et~al.
+\newblock Cooperative deep Q-learning with Q-value transfer for
+  multi-intersection signal control[J].
+\newblock IEEE Access, 2019, 7:40797--40809.
+
+\bibitem{nishi2018traffic}
+Nishi T, Otaki K, Hayakawa K, et~al.
+\newblock Traffic signal control based on reinforcement learning with graph
+  convolutional neural nets[C].
+\newblock Proceedings of 2018 21st International conference on intelligent
+  transportation systems (ITSC). IEEE, 2018.
+\newblock  877--883.
+
+\bibitem{wei2019colight}
+Wei H, Xu N, Zhang H, et~al.
+\newblock Colight: Learning network-level cooperation for traffic signal
+  control[C].
+\newblock Proceedings of Proceedings of the 28th ACM International Conference
+  on Information and Knowledge Management, 2019.
+\newblock  1913--1922.
+
+\bibitem{wang2020stmarl}
+Wang Y, Xu T, Niu X, et~al.
+\newblock STMARL: A spatio-temporal multi-agent reinforcement learning approach
+  for cooperative traffic light control[J].
+\newblock IEEE Transactions on Mobile Computing, 2020..
 
 \end{thebibliography}

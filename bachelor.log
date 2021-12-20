@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.12.9)  17 DEC 2021 20:42
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.12.9)  18 DEC 2021 19:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1688,12 +1688,8 @@ File: upsy.fd 2001/06/04 font definitions for U/psy.
 \c@nonsense=\count427
 \c@lines=\count428
 ) (./bachelor.aux
-(./content/background.aux) (./content/status.aux) (./content/fairness.aux
-
-LaTeX Warning: Label `tab:coordination' multiply defined.
-
-) (./content/communication.aux) (./content/experiment.aux)
-(./content/manref.aux) (./content/acknowledge.aux))
+(./content/background.aux) (./content/status.aux) (./content/fairness.aux)
+(./content/communication.aux) (./content/acknowledge.aux))
 \openout1 = `bachelor.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 14.
@@ -2446,30 +2442,244 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 [15]
 File: fig/sysmodel.pdf Graphic file (type pdf)
 <use fig/sysmodel.pdf>
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 72.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 9.03374pt on input line 75.
+LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
+(Font)              scaled to size 8.1303pt on input line 75.
+LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
+(Font)              scaled to size 9.03374pt on input line 75.
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
 
 
-Package natbib Warning: Citation `mnih2015human' on page 16 undefined on input 
-line 72.
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[16]
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
 
 
-! LaTeX Error: Environment algorithm undefined.
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.74 \begin{algorithm}
-                      
-? x
- 
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[17]
+File: fig/efficiency.pdf Graphic file (type pdf)
+<use fig/efficiency.pdf>
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[18]
+File: fig/fairness.pdf Graphic file (type pdf)
+<use fig/fairness.pdf>
+File: fig/major_delay.pdf Graphic file (type pdf)
+<use fig/major_delay.pdf>
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[19]
+File: fig/minor_delay.pdf Graphic file (type pdf)
+<use fig/minor_delay.pdf>
+File: fig/des.pdf Graphic file (type pdf)
+<use fig/des.pdf>
+)
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[20]
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[21]
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[22]
+\openout2 = `content/communication.aux'.
+
+ (./content/communication.tex
+第四章
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[23
+
+
+
+
+]
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[24]
+File: ppt/network-graph.pdf Graphic file (type pdf)
+<use ppt/network-graph.pdf>
+File: ppt/information-redundancy.pdf Graphic file (type pdf)
+<use ppt/information-redundancy.pdf>
+File: ppt/graph-modeling.pdf Graphic file (type pdf)
+<use ppt/graph-modeling.pdf>
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[25])
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[26]
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[27] (./bachelor.bbl
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[28
+
+
+
+
+
+])
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[29]
+\openout2 = `content/acknowledge.aux'.
+
+ (./content/acknowledge.tex)
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[30
+
+
+] (./bachelor.aux (./content/background.aux) (./content/status.aux)
+(./content/fairness.aux) (./content/communication.aux)
+(./content/acknowledge.aux))
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+Package rerunfilecheck Info: File `bachelor.out' has not changed.
+(rerunfilecheck)             Checksum: 5540A625F41E34B88DC3D9286CFBC1B3;4743.
+ ) 
 Here is how much of TeX's memory you used:
- 47710 strings out of 476919
- 1106034 string characters out of 5823632
+ 47913 strings out of 476919
+ 1114335 string characters out of 5823632
  1540146 words of memory out of 5000000
- 66808 multiletter control sequences out of 15000+600000
- 549419 words of font info for 243 fonts, out of 8000000 for 9000
+ 66986 multiletter control sequences out of 15000+600000
+ 554500 words of font info for 255 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 115i,18n,118p,1211b,910s stack positions out of 5000i,500n,10000p,200000b,80000s
-Output written on bachelor.xdv (21 pages, 285088 bytes).
+ 115i,18n,118p,1211b,1045s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on bachelor.xdv (36 pages, 374368 bytes).

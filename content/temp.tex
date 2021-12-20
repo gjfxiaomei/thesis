@@ -50,7 +50,7 @@
 因为不同路口对其邻近路口的敏感性是不同的。例如，如下图所示，有A，B两个路口，A对其N-S方向的交通更加敏感，B对其W-E方向的交通更加敏感，如果直接将A的参数分享给B，会导致B学习到的策略并不适用于
 自身的场景。
 \begin{figure}[htb]
-  \includegraphics[width=10cm]{ppt/index-free.pdf}
+  \includegraphics[width=0.9\textwidth]{ppt/index-free.pdf}
   \caption{路口敏感性说明}
   \label{fig:index-free}
 \end{figure}
@@ -66,8 +66,8 @@
 在这种建模方式下，每条车道的车辆以及当前的相位将作为该节点的特征。这种建模方式虽然可以很清晰的将多路口场景变成一张图。但是，因为是以一个路口为一个节点，所有车道的状态信息都整合到了一起，有些车道的的信息对目标节点是无用的，
 如下图所示：
 \begin{figure}[htb]
-  \includegraphics[width=12cm]{ppt/information-redundancy.pdf}
-  \caption{按路口建图模式下信息传递}
+  \includegraphics[width=0.9\textwidth]{ppt/information-redundancy.pdf}
+  \caption{信息冗余}
   \label{fig:information-redundancy}
 \end{figure}
 
@@ -78,7 +78,7 @@
 
 在本文中，我们采用GAT来学习communication，不同的时，我们采用不同的图建模方式。我们不是按照路口来建图，而是按照道路来进行建模，即一条道路就是一个节点，如下图所示：
 \begin{figure}[htb]
-  \includegraphics[width=12cm]{ppt/graph-modeling.pdf}
+  \includegraphics[width=0.9\textwidth]{ppt/graph-modeling.pdf}
   \caption{按道路建模成图}
   \label{fig:network-graph-new}
 \end{figure}
