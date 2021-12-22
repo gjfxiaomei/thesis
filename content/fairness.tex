@@ -26,7 +26,7 @@
 虽然目前已经有不少基于强化学习的智能交通信号控制的研究，但是已有的方法更多的只注重提高通行效率，例如最小化队列长度或者最大化吞吐量，而忽略了公平性问题。事实上，这样的目标会导致学习到一个有偏见的策略。例如可能会出现如\autoref{fig:last-vehicle}所示的"last-vehicle"情况：N-S方向的道路上有源源不断的车辆到达，而E-W方向上是该车流的最后一辆车（Last-Vehicle）。显然，为了最大化通行效率，会优先放行N-S方向上的车流，而E-W车道上的车要等所有的所有的车流通过才能够得到响应，这对Last-Vehicle来说是极其不公平的。
 
 \begin{figure}[t]
-  \includegraphics[width=10cm]{fig/lastvehicle.pdf}
+  \includegraphics[width=0.9\textwidth]{fig/lastvehicle.pdf}
   \caption{last vehicle}
   \label{fig:last-vehicle}
 \end{figure}
@@ -69,7 +69,44 @@
 \end{figure}
 
 \subsection*{训练过程}
-如\autoref{fig:system-model}所示，这里我们用DQN作为学习算法，并且采用经验回放\cite{mnih2015human}（experience replay）方法定期提取样本来更新模型。
+如\autoref{fig:system-model}所示，这里我们用DQN作为学习算法，并且采用经验回放\cite{mnih2015human}（experience replay）方法定期提取样本来更新模型，具体算法过程如\autoref{alg:dqn-single}所示。
+\begin{breakablealgorithm}
+    \caption{基于DQN的交通信号控制训练流程}
+    \label{alg:dqn-single}
+    \begin{algorithmic}[1] %每行显示行号  
+        \Require 
+        $E$ : 学习片段数 \newline
+        $T$ : 每个学习片段的步数 \newline
+        $b$ : 学习经验数 \newline
+        $\epsilon$ : 随机选择动作概率 \newline
+        $\gamma$ : 折扣因子 \newline
+        $\Delta t$ : 信号维持时间
+        \For{$episode=1,E$}  
+            \State 初始化环境。
+            \State 生成车辆。
+            \For{$t=1,T$}
+                \State 从环境中获取状态观测$s_t$。
+                \State 生成一个0到1之间的随机数$rand$。
+                \If{ $rand < \epsilon$}
+                    \State 从动作空间中随机采样一个动作$a_t$。
+                \Else
+                    \State 使用DQN模型选择动作：$a_t = \mathop{\arg\max}_a \mathcal{Q}(s_t,a;\theta)$。
+                \EndIf
+                \State 将当前信号更改为$a_t$并维持$\delta t$秒时间。
+                \State 更新每条车道的平均吞吐量。
+                \State 环境转移到新的状态$s_{t+1}$并返回一个奖励$r_{t+1}$。
+                \State 将经验$(s_t,a_t,r_{t+1},s_{t+1})$ 存储到经验回放池M中。
+                \If{$|M|>b$}{
+                    \State 从经验回放池M中随机采样b条经验数据。
+                    \State 计算损失函数 $\mathcal{L}_j$:
+                    $\mathcal{L}_Q=[ r_{t+1}+\gamma \mathop{\arg\max}_{a^{'}} \mathcal{Q}(s_{t+1},a^{'};\theta)-\mathcal{Q}(s_t,a_t;\theta)]^2$;
+                    \State 更新DQN参数。
+                }
+                \EndIf
+            \EndFor
+        \EndFor  
+    \end{algorithmic}  
+\end{breakablealgorithm}  
 
 \section{实验}
 实验在SUMO（simulation of Urban MObility）\footnote{http://sumo.dlr.de/index.html}仿真平台上进行，利用该模拟器可以方便地实时获取车辆状态，并通过改变交通信号来控制交通运行。我们实现了一个四路交叉口作为我们的实验场景，
@@ -143,16 +180,7 @@
     \label{fig:minor_delay}
 \end{figure}
 
-最后我们研究了不同方法的驾驶体验得分情况，\autoref{fig:des}展示了在$\rho=0.75$的情况下不同方法的驾驶体验得分分布情况。从中我们可以看出，FT方法超过半数的驾驶体验的分都是1分，由此可以看出该方法的不灵活。对于SOTL方法而言，虽然他的5分的比例最高，但是其得分分布的方差也是最高的。FIT的得分分布与LIT相似，但FIT的方差低于LIT，在以牺牲少量效率为代价的前提下。
-% \begin{figure}[t]
-%     \subfloat[FT]{\includegraphics[width=.4\textwidth]{fig/score_FT.pdf}}\quad
-%     \subfloat[SOTL]{\includegraphics[width=.4\textwidth]{fig/score_SOTL.pdf}}\\
-%     \subfloat[LIT]{\includegraphics[width=.4\textwidth]{fig/score_LIT.pdf}}\quad
-%     \subfloat[FIT]{\includegraphics[width=.4\textwidth]{fig/score_FIT.pdf}}
-%     \caption{驾驶体验得分统计}
-%     \label{fig:des}
-%   \end{figure}
-
+我们研究了不同方法的驾驶体验得分情况，\autoref{fig:des}展示了在$\rho=0.75$的情况下不同方法的驾驶体验得分分布情况。从中我们可以看出，FT方法超过半数的驾驶体验的分都是1分，由此可以看出该方法的不灵活。对于SOTL方法而言，虽然他的5分的比例最高，但是其得分分布的方差也是最高的。FIT的得分分布与LIT相似，但FIT的方差低于LIT，在以牺牲少量效率为代价的前提下。
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.9\textwidth]{fig/des.pdf}
@@ -160,5 +188,13 @@
     \label{fig:des}
 \end{figure}
 
+最后，我们研究了$W$参数的影响，因为$W$是用来平衡效率和公平性的，不同的值会导致学习到不同的策略，从\autoref{fig:window-size}中我们可以看出W值越高，越有利于系统的公平性。相反，W值越小，系统效率就越高。具体来说，当$W=1$时，我们方法FIT的整体性能接近于LIT
+\begin{figure}[htb]
+    
+    \subfloat[效率\label{fig:window-size-efficiency}]{\includegraphics[width=0.4\textwidth]{fig/window_efficiency.pdf}}
+    \subfloat[公平性\label{fig:window-size-fairness}]{\includegraphics[width=0.4\textwidth]{fig/window_fairness.pdf}}
+    \caption{$W$对效率和公平性的影响}
+    \label{fig:window-size}
+  \end{figure}
 
 

@@ -1,5 +1,117 @@
 \begin{thebibliography}{10}
 
+\bibitem{watkins1992q}
+Watkins C~J, Dayan P.
+\newblock Q-learning[J].
+\newblock Machine learning, 1992, 8(3-4):279--292.
+
+\bibitem{mnih2015human}
+Mnih V, Kavukcuoglu K, Silver D, et~al.
+\newblock Human-level control through deep reinforcement learning[J].
+\newblock nature, 2015, 518(7540):529--533.
+
+\bibitem{sutton2000policy}
+Sutton R~S, McAllester D~A, Singh S~P, et~al.
+\newblock Policy gradient methods for reinforcement learning with function
+  approximation[C].
+\newblock Proceedings of Advances in neural information processing systems,
+  2000.
+\newblock  1057--1063.
+
+\bibitem{barto1983neuronlike}
+Barto A~G, Sutton R~S, Anderson C~W.
+\newblock Neuronlike adaptive elements that can solve difficult learning
+  control problems[J].
+\newblock IEEE transactions on systems, man, and cybernetics, 1983,
+  (5):834--846.
+
+\bibitem{gori2005new}
+Gori M, Monfardini G, Scarselli F.
+\newblock A new model for learning in graph domains[C].
+\newblock Proceedings of Proceedings. 2005 IEEE International Joint Conference
+  on Neural Networks, 2005., volume~2. IEEE, 2005.
+\newblock  729--734.
+
+\bibitem{scarselli2008graph}
+Scarselli F, Gori M, Tsoi A~C, et~al.
+\newblock The graph neural network model[J].
+\newblock IEEE transactions on neural networks, 2008, 20(1):61--80.
+
+\bibitem{velivckovic2017graph}
+Veli{\v{c}}kovi{\'c} P, Cucurull G, Casanova A, et~al.
+\newblock Graph attention networks[J].
+\newblock arXiv preprint arXiv:1710.10903, 2017..
+
+\bibitem{lee2017deep}
+Lee J~B, Rossi R, Kong X.
+\newblock Deep graph attention model[J].
+\newblock arXiv preprint arXiv:1709.06075, 2017..
+
+\bibitem{zhang2018gaan}
+Zhang J, Shi X, Xie J, et~al.
+\newblock Gaan: Gated attention networks for learning on large and
+  spatiotemporal graphs[J].
+\newblock arXiv preprint arXiv:1803.07294, 2018..
+
+\bibitem{kipf2016variational}
+Kipf T~N, Welling M.
+\newblock Variational graph auto-encoders[J].
+\newblock arXiv preprint arXiv:1611.07308, 2016..
+
+\bibitem{pan2018adversarially}
+Pan S, Hu R, Long G, et~al.
+\newblock Adversarially regularized graph autoencoder for graph embedding[J].
+\newblock arXiv preprint arXiv:1802.04407, 2018..
+
+\bibitem{yu2018learning}
+Yu W, Zheng C, Cheng W, et~al.
+\newblock Learning deep network representations with adversarially regularized
+  autoencoders[C].
+\newblock Proceedings of Proceedings of the 24th ACM SIGKDD International
+  Conference on Knowledge Discovery \& Data Mining, 2018.
+\newblock  2663--2671.
+
+\bibitem{cao2016deep}
+Cao S, Lu W, Xu Q.
+\newblock Deep neural networks for learning graph representations[C].
+\newblock Proceedings of Proceedings of the AAAI Conference on Artificial
+  Intelligence, volume~30, 2016.
+
+\bibitem{wang2016structural}
+Wang D, Cui P, Zhu W.
+\newblock Structural deep network embedding[C].
+\newblock Proceedings of Proceedings of the 22nd ACM SIGKDD international
+  conference on Knowledge discovery and data mining, 2016.
+\newblock  1225--1234.
+
+\bibitem{tu2018deep}
+Tu K, Cui P, Wang X, et~al.
+\newblock Deep recursive network embedding with regular equivalence[C].
+\newblock Proceedings of Proceedings of the 24th ACM SIGKDD international
+  conference on knowledge discovery \& data mining, 2018.
+\newblock  2357--2366.
+
+\bibitem{de2018molgan}
+De~Cao N, Kipf T.
+\newblock MolGAN: An implicit generative model for small molecular graphs[J].
+\newblock arXiv preprint arXiv:1805.11973, 2018..
+
+\bibitem{li2018learning}
+Li Y, Vinyals O, Dyer C, et~al.
+\newblock Learning deep generative models of graphs[J].
+\newblock arXiv preprint arXiv:1803.03324, 2018..
+
+\bibitem{2018GraphRNN}
+You J, Ying R, Ren X, et~al.
+\newblock GraphRNN: Generating Realistic Graphs with Deep Auto-regressive
+  Models[J].
+\newblock 2018..
+
+\bibitem{2018NetGAN}
+Bojchevski A, Shchur O, Zügner D, et~al.
+\newblock NetGAN: Generating Graphs via Random Walks[J].
+\newblock 2018..
+
 \bibitem{wei2018intellilight}
 Wei H, Zheng G, Yao H, et~al.
 \newblock Intellilight: A reinforcement learning approach for intelligent
@@ -46,11 +158,6 @@ Pham T~T, Brys T, Taylor M~E, et~al.
 Zheng G, Zang X, Xu N, et~al.
 \newblock Diagnosing reinforcement learning for traffic signal control[J].
 \newblock arXiv preprint arXiv:1905.04716, 2019..
-
-\bibitem{mnih2015human}
-Mnih V, Kavukcuoglu K, Silver D, et~al.
-\newblock Human-level control through deep reinforcement learning[J].
-\newblock nature, 2015, 518(7540):529--533.
 
 \bibitem{miller1963settings}
 Miller A~J.
@@ -174,5 +281,18 @@ Wang Y, Xu T, Niu X, et~al.
 \newblock STMARL: A spatio-temporal multi-agent reinforcement learning approach
   for cooperative traffic light control[J].
 \newblock IEEE Transactions on Mobile Computing, 2020..
+
+\bibitem{koonce2008traffic}
+Koonce P, Rodegerdts L.
+\newblock Traffic signal timing manual.[R].
+\newblock Technical report, United States. Federal Highway Administration,
+  2008.
+
+\bibitem{varaiya2013max}
+Varaiya P.
+\newblock The max-pressure controller for arbitrary networks of signalized
+  intersections[M]. .
+\newblock Proceedings of Advances in Dynamic Network Modeling in Complex
+  Transportation Systems. Springer, 2013: 27--66.
 
 \end{thebibliography}
