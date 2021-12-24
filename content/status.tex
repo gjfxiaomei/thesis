@@ -50,24 +50,26 @@ GreenWave就是交通运输领域中最经典的协调相邻路口的信号控�
 \end{figure}
 
 \subsection{Actuated Control}
-Actuated Control根据当前相位和其他的竞争相位对绿色信号的请求来决定是否保持或者变化当前的相位。请求触发规则如下：
-1. 当目前相位的持续时间未达到最小时间周期时，或在当前相位对应入车道上有车辆进入，并且在接近信号的距离内时，就会产生延长绿色信号时间的请求，已让车辆可以直接通过路口。 
-2. 当竞争相位的等待车辆数量大于一个阈值时，就会生成对绿色信号的请求。
+Actuated Control根据当前信号相位和其他的竞争信号相位对绿色信号的请求来决定是否保持或者变化当前的相位。请求触发规则如下：
+\begin{itemize}
+    \item 1. 当目前信号相位的持续时间未达到最小时间周期时，或在当前相位对应入车道上有车辆进入，并且在接近信号的距离内时，就会产生延长绿色信号时间的请求，以让车辆可以直接通过路口。 
+    \item 2. 当竞争信号相位的等待车辆数量大于一个阈值时，就会生成对绿色信号的请求。
+\end{itemize}
 根据规则的差异，Actuated Control主要可以分为Fully-Actuated Control和Semi-Actuated Control两种。
 
 \subsection{SOTL}
-Self-Organizing Traffic Light Control(SOTL)是一种具有附加需求响应规则的Fully-Actuated Control方法。它与Fully-Actuated Control的主要区别在于当前相位的绿色信号请求定义（虽然它们都需要最小的绿色相位持续时间）：在Fully-Actuated Control中，当车辆接近信号灯时，就会产生延长绿色信号的请求，而在SOTL中，除非接近信号灯的车辆数量大于不一定是一个阈值，否则就不会产生请求。
+Self-Organizing Traffic Light Control(SOTL)是一种具有附加需求响应规则的Fully-Actuated Control方法。它与Fully-Actuated Control的主要区别在于当前信号相位的绿色信号请求定义（虽然它们都需要最小的绿色相位持续时间），在Fully-Actuated Control中，当车辆接近信号灯时，就会产生延长绿色信号的请求，而在SOTL中，除非接近信号灯的车辆数量大于预先定义的一个阈值，否则就不会产生绿色信号请求。
 
 \subsection{Max-Pressure Control}
-Max-Pressure Control的目的是通过最小化对应相位的压力（pressure）来平衡相邻路口之间的队列长度，从而降低过饱和的风险，其中压力的概念如图\autoref{fig:max-pressure}所示：
+Max-Pressure Control的目的是通过最小化对应信号相位的压力（pressure）来平衡相邻路口之间的队列长度，从而降低过饱和的风险，其中压力的概念如图\autoref{fig:max-pressure}所示：
 \begin{figure}[htb]
     \includegraphics[width=0.9\textwidth]{fig/max-pressure.jpg}
     \caption{Max-Pressure的压力图示}
     \label{fig:max-pressure}
 \end{figure}
-从形式来看，运动信号的压力可以定义为（交通运动的）传入车道上的车辆数减去相应的传出车道上的车辆数；相位的压力定义为传入通道和传出通道上的总队列长度之间的差异。Varaiya等人证明了当将优化目标设为最小化单个路口的相位压力时，Max-Pressure Control可以最大限度地提高真个路网的吞吐量。
+其中运动信号的压力是指转入车道上的车辆数减去相应的转出车道上的车辆数，而信号相位的压力定义为转入巷道和转出巷道上的总队列长度之间的差异。Varaiya\cite{varaiya2013max}等人证明了当将优化目标设为最小化单个路口的相位压力时，Max-Pressure Control可以最大限度地提高真个路网的吞吐量。
 
-\autoref{tab:traditional-methods}列出了每种方法的限制和要求：
+\autoref{tab:traditional-methods}列出了每种方法的要求和输出结果：
 \begin{table}[htb]
     \caption{传统交通信号控制方法总结\label{tab:traditional-methods}}
     \begin{tabular}{llll}
@@ -106,6 +108,26 @@ Max-Pressure Control的目的是通过最小化对应相位的压力（pressure�
         G^{t}:=\sum_{i=0}^{\infty} \gamma^{i} r^{t+i}
     \end{align}
   \end{itemize}
+通常解决一个强化学习任务意味着要找到一个能够使预期收益最大化的最优策略$\pi^*$，一般来说，我们难以直接找到这个最优策略，更多的是比较若干个不同的策略然后从中选出较好的那个作为局部最优解。而策略的筛选是通过比较其对应的价值函数来实现的，即通过寻找较优的价值函数来筛选出较优的策略。价值函数是对未来奖励的期望，根据输入的不同可以分为状态价值函数和动作价值函数。
+状态价值函数的定义如下：
+\begin{align}
+    V_{\pi}(s)=\mathbb{E}_{\pi}\left[G_{t} \mid S_{t}=s\right]
+\end{align}
+其描述的是当在$t$时刻处于状态$s$的预期收益。动作价值函数的定义如下：
+\begin{align}
+    Q_{\pi}(s, a)=\mathbb{E}_{\pi}\left[G_{t} \mid S_{t}=s, A_{t}=a\right]
+\end{align}
+其描述的是当在状态$s$下采取动作$a$的预期收益。
+
+最优策略$\pi^{*}$对应的是最优状态价值函数和最优动作价值函数。最优状态价值函数定义为$V_{\pi}^*(s)=\mathcal{max}_{\pi}V^{\pi}(s)$，它满足以下贝尔曼最优方程：
+\begin{align}
+    V^{*}\left(\mathrm{~s}^{t}\right)=\max _{\mathrm{a}^{t} \in \mathcal{A}} \sum_{\mathrm{s}^{t+1} \in \mathcal{S}} P\left(\mathrm{~s}^{t+1} \mid \mathrm{s}^{t}, \mathrm{a}^{t}\right)\left[\mathrm{r}+\gamma v_{*}\left(\mathrm{~s}^{t+1}\right)\right], \forall \mathrm{s}^{t} \in \mathcal{S}
+\end{align}
+最优动作价值函数定义为$Q^*(s,a)=\mathcal{max}_{\pi}Q^{\pi}(s,a)$，其满足以下贝尔曼最优方程：
+\begin{align}
+    Q^{*}\left(s^{t}, a^{t}\right)=\sum_{s^{t+1} \in \mathcal{S}} P\left(s^{t+1} \mid s^{t}, a^{t}\right)\left[r^{t}+\gamma \max _{a^{t+1}} Q^{*}\left(s^{t+1}, a^{t+1}\right)\right], \forall s^{t} \in \mathcal{S}, a^{t} \in \mathcal{A}
+\end{align}
+
 \subsubsection{分类}
 \begin{figure}[htb]
     \includegraphics[width=0.9\textwidth]{fig/rl-classfication.pdf}

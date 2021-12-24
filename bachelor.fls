@@ -1970,6 +1970,7 @@ INPUT ./fig/max-pressure.jpg
 INPUT ./fig/max-pressure.jpg
 INPUT fig/max-pressure.jpg
 INPUT d:/Software/texlive/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-t1.tfm
+INPUT d:/Software/texlive/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-t1.tfm
 INPUT d:/Software/texlive/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-ot1.tfm
 INPUT d:/Software/texlive/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-ot1.tfm
 INPUT d:/Software/texlive/texmf-dist/fonts/tfm/public/newtx/ntxmi7.tfm
@@ -2005,10 +2006,12 @@ INPUT ./logo//nuaa.pdf
 INPUT ./logo//nuaa.pdf
 INPUT ./logo//nuaa.pdf
 INPUT ./logo//nuaa.pdf
+INPUT ./logo//nuaa.pdf
+INPUT ./logo//nuaa.pdf
+INPUT ./logo//nuaa.pdf
 INPUT ./fig/rl-classfication.pdf
 INPUT ./fig/rl-classfication.pdf
 INPUT fig/rl-classfication.pdf
-INPUT d:/Software/texlive/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-t1.tfm
 INPUT ./logo//nuaa.pdf
 INPUT ./logo//nuaa.pdf
 INPUT ./logo//nuaa.pdf
@@ -2036,12 +2039,12 @@ INPUT ./logo//nuaa.pdf
 INPUT ./fig/GCN.pdf
 INPUT ./fig/GCN.pdf
 INPUT fig/GCN.pdf
+INPUT ./logo//nuaa.pdf
+INPUT ./logo//nuaa.pdf
+INPUT ./logo//nuaa.pdf
 INPUT ./fig/gcn-gat.png
 INPUT ./fig/gcn-gat.png
 INPUT fig/gcn-gat.png
-INPUT ./logo//nuaa.pdf
-INPUT ./logo//nuaa.pdf
-INPUT ./logo//nuaa.pdf
 INPUT ./logo//nuaa.pdf
 INPUT ./logo//nuaa.pdf
 INPUT ./logo//nuaa.pdf
@@ -2257,6 +2260,9 @@ INPUT ./fig/conv-Hangzhou.pdf
 INPUT ./fig/conv-Jinan.pdf
 INPUT ./fig/conv-Jinan.pdf
 INPUT ./fig/conv-Jinan.pdf
+INPUT ./logo//nuaa.pdf
+INPUT ./logo//nuaa.pdf
+INPUT ./logo//nuaa.pdf
 INPUT ./logo//nuaa.pdf
 INPUT ./logo//nuaa.pdf
 INPUT ./logo//nuaa.pdf

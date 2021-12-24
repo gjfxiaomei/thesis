@@ -9,11 +9,11 @@ A level-1 auxiliary file: content/conclusion.aux
 The style file: nuaabib.bst
 A level-1 auxiliary file: content/acknowledge.aux
 Database file #1: bib/ref.bib
+Warning--there's a publisher but no address in varaiya2013max
 Warning--can't use both volume and number fields in cao2016deep
 Warning--empty journal in 2018GraphRNN
 Warning--empty journal in 2018NetGAN
 Warning--there's a publisher but no address in cools2013self
-Warning--there's a publisher but no address in varaiya2013max
 You've used 47 entries,
             2306 wiz_defined-function locations,
             802 strings with 14118 characters,

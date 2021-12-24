@@ -1,5 +1,12 @@
 \begin{thebibliography}{10}
 
+\bibitem{varaiya2013max}
+Varaiya P.
+\newblock The max-pressure controller for arbitrary networks of signalized
+  intersections[M]. .
+\newblock Proceedings of Advances in Dynamic Network Modeling in Complex
+  Transportation Systems. Springer, 2013: 27--66.
+
 \bibitem{lillicrap2015continuous}
 Lillicrap T~P, Hunt J~J, Pritzel A, et~al.
 \newblock Continuous control with deep reinforcement learning[J].
@@ -287,12 +294,5 @@ Koonce P, Rodegerdts L.
 \newblock Traffic signal timing manual.[R].
 \newblock Technical report, United States. Federal Highway Administration,
   2008.
-
-\bibitem{varaiya2013max}
-Varaiya P.
-\newblock The max-pressure controller for arbitrary networks of signalized
-  intersections[M]. .
-\newblock Proceedings of Advances in Dynamic Network Modeling in Complex
-  Transportation Systems. Springer, 2013: 27--66.
 
 \end{thebibliography}

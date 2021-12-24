@@ -63,7 +63,7 @@
   \label{fig:system-model}
 \end{figure}
 
-\subsection*{训练过程}
+\subsection*{模型框架}
 如\autoref{fig:system-model}所示，这里我们用DQN作为学习算法，并且采用经验回放\cite{mnih2015human}（experience replay）方法定期提取样本来更新模型，具体算法过程如\autoref{alg:dqn-single}所示。
 \begin{breakablealgorithm}
     \caption{基于DQN的交通信号控制训练流程}
