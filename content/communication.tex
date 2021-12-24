@@ -1,5 +1,5 @@
 
-\chapter{多路口场景下交通信号控制}
+\chapter{多路口场景智能交通信号调度}
 
 \section{相关工作}
 由于强化学习在单路口交通信号控制上取得了优异的成绩，人们开始致力于使用多智能体强化学习（Multi-Agent Reinforcement Learning, MARL）来解决多路口场景下的交通信号调度。Claus在\inlinecite{claus1998dynamics}中将MARL分为了两类：联合动作学习（Joint Action Learning）和独立学习（Independent Learning）。
@@ -46,6 +46,10 @@
 路口B中只有2车道的交通流向与A车道有关，1、3车道的车辆不会行驶到A路口。在信息传递的时候，如果将所有的信息都笼统地传递过去，将会增加A提取有效信息的难度，从而降低学习的效率。
 
 \section{改进}
+\subsection{目标}
+我们的目标是在进行信息交互的时候能够剔除与目标节点无关的信息，从而降低目标节点聚合邻居节点信息的难度，提高学习效率。
+
+\subsection{基于道路的图建模方式}
 本文同样采用IRL with Communication的框架，与已有工作不同的是，我们采用不同的建模方式：以道路为节点进行图建模，即一条道路就是一个节点，如\autoref{fig:network-graph-new}所示：
 \begin{figure}[htb]
   \includegraphics[width=1.2\textwidth]{ppt/graph-modeling.pdf}
@@ -53,7 +57,7 @@
   \label{fig:network-graph-new}
 \end{figure}
 
-此外，我们根据当前的相位对图的边设一个权重。这里我们规定，如果在当前相位下，道路$i$到道路$j$之间的交通是允许通行的，则表示$(i,j)$的状态是'connected'。权重的定义方法如下：
+此外，我们根据当前的信号相位对图的边设一个权重。这里我们规定，如果在当前相位下，道路$i$到道路$j$之间的交通是允许通行的，则表示$(i,j)$的状态是'connected'。权重的定义方法如下：
 \begin{align}
   w_{i,j} = \begin{cases}
     1 & (i, j) \text{ is connected} \\
@@ -62,45 +66,43 @@
 \end{align}
 这个权重将被用于剔除对目标节点无用的信息。
 
-这里我们沿用\inlinecite{wei2019colight,wang2020stmarl}工作使用图注意网络，但是与之不同的是，我们不是学习相邻智能体和目标智能体的隐藏状态之间的动态相互作用，而是用来做节点回归（Node Regression），即估计目标节点在下一个时间点的特征。
-\section{方法}
-\subsection{重要性计算}
-为了了解节点$j$（源节点）的信息在确定节点$i$（目标节点）下一时刻的特征的重要性，我们首先嵌入两个节点的特征，然后计算他们之间的相关系数$e_{i j}$（节点$j$在确定节点$i$的特征时的重要性），具体操作如下：
-\begin{align}
-  e_{i j}=a\left(\left[W h_{i} \| W h_{j}\right]\right)
-\end{align}
-其中$W$是一个共享参数，用来进行特征增强，然后用$[\cdot \| \cdot]$对节点$i$和节点$j$增强后的特征进行拼接，最后使用$a(\cdot)$将拼接后的高维特征映射到一个实数上。
-\subsection{特征筛选}
-由于当前交通信号的影响，道路$j$的车辆不会进入到道路$i$，即节点$j$的信息在确定节点$i$的下一时刻的特征时是无用的，因此我们要筛选掉对目标节点无用的信息。这里我们通过之前介绍的边的权重来实现：
-\begin{align}
-  \label{eq:mul_phase}
-  e_{i j} = e_{i j} * WE_{i j},
-\end{align}
-如果$WE_{i j} = 1$（即道路$j$到道路$i$的交通在当前相位下是可以通行的），$e_{ij}$将维持之前的计算结果。反之，如果$WE_{i j}=0$，将清除节点$j$对节点$i$的影响。
-\subsection{注意力分布计算}
-为了重新确定源节点和目标节点之间的注意力值，我们进一步将目标节点$i$和其邻近节点之间的交互等分进行归一化：
-\begin{align}
-  \alpha_{i j}=\operatorname{softmax}\left(e_{i j}\right)=\frac{\exp \left(e_{i j} / \tau\right)}{\sum_{j \in \mathcal{N}_{i}} \exp \left(e_{i j} / \tau\right)},
-\end{align}
-其中$\tau$是一个温度系数，$\mathcal{N}_{i}$是目标节点$i$邻近范围的节点集合。
-\subsection{特征回归}
-为了确定目标节点在下一个时刻的特征，这里我们将其所有邻近节点的信息按照各自的重要性进行组合：
-\begin{align}
-  h_{i}^{\prime}=\sigma\left(\sum_{j \in \mathcal{N}_{i}} \alpha_{i j} W h_{j}\right)
-\end{align}
-其中$\sigma(\cdot)$是激活函数。$h_{i}$是$i$节点融合了邻域信息后的新特征。
-
-\subsection{Multi-Head Attention}
-进一步，我们使用多头注意力机制（Multi-Head Attention）来关注不同相关性下的信息，如下所示：
-\begin{align}
-  h_{i}^{\prime}(K)=\sigma\left( \frac{1}{K} \sum_{k=1}^{k=K} \sum_{j \in \mathcal{N}_{i}} \alpha_{i j}^{k} W^{k} h_{j}\right)
-\end{align}
-其中$K$是注意力头的数量，例如当$k = 3$时，结构如图\autoref{fig:multi-head}所示：
-\begin{figure}[htb]
-  \includegraphics[width=0.9\textwidth]{fig/multi-head.pdf}
-  \caption{多头注意力计算示意图（$k=3$）}
-  \label{fig:multi-head}
-\end{figure}
+\subsection{Learn to Communicate}
+这里我们沿用\inlinecite{wei2019colight,wang2020stmarl}工作使用图注意网络，但是与之不同的是，我们不是学习相邻智能体和目标智能体的隐藏状态之间的动态相互作用，而是用来做节点回归（Node Regression），即估计目标节点在下一个时间点的特征。具体包括以下几个过程：
+\begin{itemize}
+  \item 重要性计算：为了了解节点$j$（源节点）的信息在确定节点$i$（目标节点）下一时刻的特征的重要性，我们首先嵌入两个节点的特征，然后计算他们之间的相关系数$e_{i j}$（节点$j$在确定节点$i$的特征时的重要性），具体操作如下：
+  \begin{align}
+    e_{i j}=a\left(\left[W h_{i} \| W h_{j}\right]\right)
+  \end{align}
+  其中$W$是一个共享参数，用来进行特征增强，然后用$[\cdot \| \cdot]$对节点$i$和节点$j$增强后的特征进行拼接，最后使用$a(\cdot)$将拼接后的高维特征映射到一个实数上。
+  
+  \item 特征筛选：由于当前交通信号的影响，道路$j$的车辆不会进入到道路$i$，即节点$j$的信息在确定节点$i$的下一时刻的特征时是无用的，因此我们要筛选掉对目标节点无用的信息。这里我们通过之前介绍的边的权重来实现：
+  \begin{align}
+    \label{eq:mul_phase}
+    e_{i j} = e_{i j} * w_{i,j},
+  \end{align}
+  如果$WE_{i j} = 1$（即道路$j$到道路$i$的交通在当前相位下是可以通行的），$e_{ij}$将维持之前的计算结果。反之，如果$w_{i,j}=0$，将清除节点$j$对节点$i$的影响。
+  
+  \item 注意力分布计算：为了重新确定源节点和目标节点之间的注意力值，我们进一步将目标节点$i$和其邻近节点之间的交互等分进行归一化：
+  \begin{align}
+    \alpha_{i j}=\operatorname{softmax}\left(e_{i j}\right)=\frac{\exp \left(e_{i j} / \tau\right)}{\sum_{j \in \mathcal{N}_{i}} \exp \left(e_{i j} / \tau\right)},
+  \end{align}
+  其中$\tau$是一个温度系数，$\mathcal{N}_{i}$是目标节点$i$邻近范围的节点集合。
+  \item 特征回归：为了确定目标节点在下一个时刻的特征，这里我们将其所有邻近节点的信息按照各自的重要性进行组合：
+  \begin{align}
+    h_{i}^{\prime}=\sigma\left(\sum_{j \in \mathcal{N}_{i}} \alpha_{i j} W h_{j}\right)
+  \end{align}
+  其中$\sigma(\cdot)$是激活函数。$h_{i}$是$i$节点融合了邻域信息后的新特征。
+  \item Multi-Head Attention：进一步，我们使用多头注意力机制（Multi-Head Attention）来关注不同相关性下的信息，如下所示：
+  \begin{align}
+    h_{i}^{\prime}(K)=\sigma\left( \frac{1}{K} \sum_{k=1}^{k=K} \sum_{j \in \mathcal{N}_{i}} \alpha_{i j}^{k} W^{k} h_{j}\right)
+  \end{align}
+  其中$K$是注意力头的数量，例如当$k = 3$时，结构如图\autoref{fig:multi-head}所示：
+  \begin{figure}[htb]
+    \includegraphics[width=0.9\textwidth]{fig/multi-head.pdf}
+    \caption{多头注意力计算示意图（$k=3$）}
+    \label{fig:multi-head}
+  \end{figure}
+\end{itemize}
 
 对于每个路口，我们要估计每条引进道路在下一调度时刻的状态，即我们要对四个节点进行计算，如\autoref{fig:node-regression}中A路口的四个红色节点。通过在目标节点（红色节点）的及其邻近节点（绿色节点）构成的子图（如图\autoref{fig:node-regression}中右上角的图）上对目标节点进行上述的计算。
 \begin{figure}[htb]
@@ -184,7 +186,11 @@
 我们在三个合成的数据集以及两个真实数据集上对我们的方法进行了实验，以评估我们方法的性能。由于实验是针对大规模的多路口场景，我们这里的仿真工具使用的是CityFlow\footnote{http://cityflow-project.github.io}，其对大规模交通信号控制的支持更加出色。
 \subsection{数据集介绍}
 
-\textbf{合成数据：}延用\inlinecite{wei2019colight}的做法，我们在不同的道路($Arterial_{1\times3}$, $Grid_{3\times3}$, $Grid_{6\times6}$)上中使用了两种合成数据，即单向交通和双向交通。
+\textbf{合成数据：}延用\inlinecite{wei2019colight}的做法，我们使用了以下类中合成的交通数据：
+\begin{itemize}
+  \item $Grid_{6x6}-b$：6x6的路网结构，其中每个路口有四个方向（西$\rightarrow$东、东$\rightarrow$西、南$\rightarrow$北以及北$\rightarrow$南），每个方向有三条车道（长300米，宽3米）。车辆在西$\leftrightarrow$东方向的生成速率是300辆/车道/小时，在南$\leftrightarrow$北方向的生成速率是90辆/车道/小时。
+  \item $Grid_{6x6}$：与$Grid_{6x6}$的路网结构相同，但是只有单向的车辆流动，即只有西$\rightarrow$东和北$\rightarrow$南的单向交通流动。
+\end{itemize}
 % 在合成道路网中，每个路口有四个方向(西\rightarrow东、东\rightarrow西、南\rightarrow北以及由北\rightarrow南)，每个方向有三条车道，每条车道长300米，宽3米。
 
 \textbf{真实数据：}我们还使用了杭州和济南两个城市某个路段下采集到的真实数据\footnote{https://traffic-signal-control.github.io/\#open-datasets}进行了实验，\autoref{tab:real-world-datasets}统计了这两个数据集的关键信息。
@@ -206,7 +212,7 @@
   \item $D_{Jinan}$：与$D_{Hangzhou}$类似，数据集中包含了12个路口。
 \end{itemize}：
 
-\subsubsection{比较方法}
+\subsection{比较方法}
 我们将我们的方法与传统交通控制方法和基于强化学习的几种方法进行了对比：
 \begin{itemize}
   \item FT\cite{koonce2008traffic}: 这种方法以预先设定的方式循环改变信号。
@@ -216,7 +222,7 @@
   \item Colight\cite{wei2019colight}：与GCN方法类似，都是以路口为节点的图建模方法，不过其使用GAT来学习不同路口之间的动态交互。
   \item GAT-Road：我们的方法，基于一种新的图建模方式（以道路为节点）。
 \end{itemize}
-\subsubsection{性能表现}
+\subsection{性能表现}
 
 \begin{table}[htb]
   \caption{不同方法在合成数据集和真实数据集上关于平均通行时间的表现}
@@ -241,26 +247,24 @@
 \subsubsection{性能比较}
 
 \textbf{效率比较}：
-\autoref{tab:performance}列出了所有方法在合成数据和真实数据上路口的平均通行时间，可以看出，无论是在合成数据还是真实数据集上，我们的方法都取得了最好的表现。进一步的观察数据可以看出：
+\autoref{tab:performance}列出了所有方法在合成数据和真实数据上路口的平均通行时间，可以看出，无论是在合成数据还是真实数据集上，我们的方法都取得了最好的表现。进一步的观察数据我们可以看出：
 与传统交通控制中最先进的方法(MaxPressure)相比，我们的方法在合成数据和真实数据上都取得了一致的性能改进，其中在合成数据上的平均改进率是$16.6\%$，在真实数据上的平均改进率是$26.9\%$。
 
 在合成数据上，Fixedtime的表现相对比较出色，但是在真实数据上，和基于学习的方法的性能差异变得明显。这是因为人为合成的数据是相对比较规则的数据，车辆流动的随机性没有真实数据中强，交通相对更加稳定。
 
-GCN在真实数据上的表现并不出色是因为其在经行Communication时，是根据预先定义的静态重要性处理邻居节点的信息，而不是根据实时的交通情况进行动态调整。
+GCN在真实数据上的表现并不出色是因为其在聚合邻居节点的信息时，是根据预先定义的静态权重处理邻居节点的信息，而不是根据实时的交通情况进行动态调整。
 
 
 \textbf{收敛性比较}
+我们将GAT-Road与其他三种基于学习的方法在不同数据上的学习收敛速度进行了比较，结果如\autoref{fig:convergence}所示。通过对比我们可以看出：
 \begin{figure}[t]
-  \label{fig:convergence}
   \subfloat[$Grid_{6x6}$]{\includegraphics[width=0.45\textwidth]{./fig/conv-6x6.pdf}}\quad
   \subfloat[$Grid_{6x6}$-b]{\includegraphics[width=0.45\textwidth]{./fig/conv-6x6-b.pdf}}\\
   \subfloat[$D_{Hangzhou}$]{\includegraphics[width=0.45\textwidth]{./fig/conv-Hangzhou.pdf}}\quad
   \subfloat[$D_{Jinan}$]{\includegraphics[width=0.45\textwidth]{./fig/conv-Jinan.pdf}}
   \caption[]{GAT-Road和其他三种基于学习的方法的收敛速度}
+  \label{fig:convergence}
 \end{figure}
-
-我们将GAT-Road与其他三种基于学习的方法在不同数据上的学习收敛速度进行了比较，结果如\autoref{fig:convergence}所示。
-
 与同样是使用IRL with Communication框架的GCN和Colight相比，我们的方法的收敛速度更快，这得益于我们提出的新的建图方式，在这种建图方式下，节点在进行信息聚合时可以剔除与目标节点无关的信息，从而降低了学习的难度，模型更容易收敛。
 
 虽然Individual最终也能收敛到最佳性能，但是由于其是独立优化单个路口的策略，没有考虑到周围路口环境的交通信息，因此其刚开始时的性能表现相较于其他三种方法更差，并且收敛速度更慢。

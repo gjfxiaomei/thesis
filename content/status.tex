@@ -3,9 +3,11 @@
 \section{交通信号概述}
 交通信号控制是一个重要而具有挑战性的现实问题，其目的是通过协调车辆在道路交叉口的运动来最小化所有车辆的通行时间。目前广泛使用的交通信号控制系统仍然严重依赖过于简化的信息和基于规则的方法。车联网技术的发展、硬件性能的提升以及人工智能技术的进步使得我们现在有更丰富的数据、更多的计算能力和先进的方法来驱动智能交通的发展。 
 交通信号控制的目的为了方便车辆在交叉路口的安全和高效移动。安全是通过信号灯指定不同车道的车通行来分离相互冲突的运动实现的。为了能够有效地优化通行效率，已有的工作提出了不同的指标来量化通行效率，主要有以下三个：
-1.	通行时间：在交通信号控制中，车辆的行驶时间被定义为一辆汽车进入系统的时间与离开系统的时间的差值。 最常见的优化目标之一是就是减少进过路口的所有车辆的平均通行时间。
-2.	队列长度：队列长度是指路口等待车辆的数量，越大的队列长度意味着越多的等待车辆，路口的通行效率越低，反之通行效率越高。
-3.	路口吞吐量：吞吐量是指在一定期间内进过路口完成通行的车辆数量。越大的吞吐量代表着越高的通行效率，所以很多工作将最大化吞吐量作为优化的目标。
+\begin{itemize}
+    \item 通行时间：在交通信号控制中，车辆的行驶时间被定义为一辆汽车进入系统的时间与离开系统的时间的差值。 最常见的优化目标之一是就是减少进过路口的所有车辆的平均通行时间。
+    \item 队列长度：队列长度是指路口等待车辆的数量，越大的队列长度意味着越多的等待车辆，路口的通行效率越低，反之通行效率越高。
+    \item 路口吞吐量：吞吐量是指在一定期间内进过路口完成通行的车辆数量。越大的吞吐量代表着越高的通行效率，所以很多工作将最大化吞吐量作为优化的目标。
+\end{itemize}
 
 \begin{figure}[htb]
     \includegraphics[width=.9\textwidth]{fig/tsc.pdf}
@@ -16,7 +18,7 @@
 \begin{itemize}
     \item Approach: 指交叉路口的巷道。任何一个交叉路口都有两种approach,进入路口的incoming approach和离开路口的outgoing approach。\autoref{fig:tsc}(a)描述了一个典型的有8个approach（四个入口，四个出口）的交叉路口。
     \item Lane：一个Approach是由一组车道组成。与Approach的定义类似，车道也分为两种：转入车道（incoming lane）和转出车道(outgoing lane)。
-    \item Traffic movement：指的是车流从一个incoming approach 运动到另一个outgoing approach，表示为$\left(r_{i} \longrightarrow r_{o}\right)$，其中ri和ro分别表示incoming lane和outgoing lane。通常，traffic movement可以分为左转、直行以及右转三种，在少数特殊的路口也支持U-turn的traffic movement。
+    \item Traffic movement：指的是车流从一个incoming approach 运动到另一个outgoing approach，表示为$\left(r_{i}, r_{o}\right)$，其中ri和ro分别表示incoming lane和outgoing lane。通常，traffic movement可以分为左转、直行以及右转三种，在少数特殊的路口也支持U-turn的traffic movement。
     \item Movement signal:根据traffic movement定义的运动信号，绿色代表可以通行，红色代表禁止通行。根据大多数国家的交通规则，右转的traffic movement是可以不受信号约束的。
     \item Phase: 信号灯的一个phase(相位)是指非冲突运动信号的组合，这意味着这些信号可以同时设置为绿色，而不会引起安全冲突。 \autoref{fig:tsc}(c)展示了最常用的四相位信号模式。
     \item Phase sequence: 相序，即一组相位的序列，它定义了一组相位及其变化顺序。
@@ -42,7 +44,7 @@ GreenWave就是交通运输领域中最经典的协调相邻路口的信号控�
 \end{align}
 其中$L_{i, j}$是路口$i$和路口$j$之间的道路长度，$v$是道路上车辆的预期行驶速度。这种方法可以形成沿指定交通方向的绿色信号波，在该方向行驶的车辆可以受益于渐进的绿色信号级联，而不会在任何交叉口停留，如下图所示：
 \begin{figure}[htb]
-    \includegraphics[width=10cm]{fig/GreenWave.jpg}
+    \includegraphics[width=1.2\textwidth]{fig/green-ware.pdf}
     \caption{green-wave}
     \label{fig:green-wave}
 \end{figure}
@@ -57,10 +59,10 @@ Actuated Control根据当前相位和其他的竞争相位对绿色信号的请�
 Self-Organizing Traffic Light Control(SOTL)是一种具有附加需求响应规则的Fully-Actuated Control方法。它与Fully-Actuated Control的主要区别在于当前相位的绿色信号请求定义（虽然它们都需要最小的绿色相位持续时间）：在Fully-Actuated Control中，当车辆接近信号灯时，就会产生延长绿色信号的请求，而在SOTL中，除非接近信号灯的车辆数量大于不一定是一个阈值，否则就不会产生请求。
 
 \subsection{Max-Pressure Control}
-Max-Pressure Control的目的是通过最小化对应相位的压力（pressure）来平衡相邻路口之间的队列长度，从而降低过饱和的风险，其中压力的概念如下图所示：
+Max-Pressure Control的目的是通过最小化对应相位的压力（pressure）来平衡相邻路口之间的队列长度，从而降低过饱和的风险，其中压力的概念如图\autoref{fig:max-pressure}所示：
 \begin{figure}[htb]
-    \includegraphics[width=10cm]{fig/max-pressure.jpg}
-    \caption{路口敏感性说明}
+    \includegraphics[width=0.9\textwidth]{fig/max-pressure.jpg}
+    \caption{Max-Pressure的压力图示}
     \label{fig:max-pressure}
 \end{figure}
 从形式来看，运动信号的压力可以定义为（交通运动的）传入车道上的车辆数减去相应的传出车道上的车辆数；相位的压力定义为传入通道和传出通道上的总队列长度之间的差异。Varaiya等人证明了当将优化目标设为最小化单个路口的相位压力时，Max-Pressure Control可以最大限度地提高真个路网的吞吐量。
@@ -99,25 +101,39 @@ Max-Pressure Control的目的是通过最小化对应相位的压力（pressure�
     \begin{align}
         R\left(s^{t}, a^{t}\right): \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R}
     \end{align}
-    \item $\gamma$：智能体的目标是找到一种使预期收益最大化的政策，即折扣奖励之和。折扣因子决定了即时奖励与未来奖励的重要性。
+    \item $\gamma$：智能体的目标是找到一种使预期收益最大化的策略，即累积（折扣）奖励之和。折扣因子决定了即时奖励与未来奖励的重要性。
     \begin{align}
         G^{t}:=\sum_{i=0}^{\infty} \gamma^{i} r^{t+i}
     \end{align}
   \end{itemize}
 \subsubsection{分类}
-根据是否有学习环境模型可以分为：
-\begin{itemize}
-    \item Model-based：指在已知的状态转移分布条件下，智能体根据这个模型做出预先设定好的决策。通常意义来讲，动态规划是一种有模型的强化学习算法。
-    \item Model-free：指在未知的状态转移分布条件下，通过学习价值函数(Value Function)和策略函数（Policy Function）进行决策，通常需要大量的采样来估计状态、动作及反馈函数，从而优化动作策略。
-\end{itemize}
-根据学习目标可以分为：
-\begin{itemize}
-    \item Value-based：这类方法的目标是学习价值函数，只能应用在不连续的、离散的环境下（如围棋或某些游戏领域），对于行为集合规模庞大、动作连续的场景（如机器人控制领域），其很难学习到较好的结果。代表算法有Q-learning\cite{watkins1992q},DQN\cite{mnih2015human}等。
-    \item Policy-based：这类方法直接对策略进行优化，使制定的策略能够获得最高的反馈。代表算法有Policy Gradient\cite{sutton2000policy}算法等。
-    \item Actor-Critic：这类方法同时使用策略和价值评估来做出决策，其中，智能体会根据策略做出动作，而价值函数会对做出的动作给出评分，这样可以在原有的基于策略的方法的基础上加速学习过程，取得更好的效果。代表算法有A2C\cite{barto1983neuronlike}等。
-\end{itemize}
-\subsection{基于强化学习的交通信号控制}
-\subsection{框架}
+\begin{figure}[htb]
+    \includegraphics[width=0.9\textwidth]{fig/rl-classfication.pdf}
+    \caption{强化学习分类及常见算法}
+    \label{fig:rl-classficatoin}
+\end{figure}
+强化学习主要可以分为两大类：Model-based（有模型）和Model-free（无模型）。其中Model-based又可以分为基于策略函数（Policy-based）和值函数（Value-based）两大类，而Model-free可以分为模型学习（Learn the Model）和给定模型（Given the Model）两大类，具体如\autoref{fig:rl-classficatoin}所示。
+
+Model-free方法是指在不知道状态转移函数函数的情况下，通过采样大量的经验来学习策略函数（Policy Function）或者价值函数（Value函数）。其中Policy-based的方法直接将拟学习的策略参数化，在以最大化奖励的目标下，直接对策略函数进行优化。而Value-based的方法则是学习一个最佳策略对应的动作价值函数的近似。当然，Policy-based和Value-based并非无法兼容的，有一类方法（Actor-Critic）就是融合了两中方法的思想。
+这类方法同时使用策略和价值评估来做出决策，其中，智能体会根据策略做出动作，而价值函数会对做出的动作给出评分，这样可以在原有的基于策略的方法的基础上加速学习过程，取得更好的效果。代表算法如\autoref{fig:rl-classficatoin}中的DDPG\cite{lillicrap2015continuous}、TD3\cite{fujimoto2018addressing}以及SAC\cite{haarnoja2018soft}等。
+
+Model-based方法是指在已知状态转移函数的情况下，学习用一个模型去模拟环境，然后用这个模拟的环境去预测接下来可能会发生的所有所有情况并从中选择最有利的情况。
+
+% 根据是否有学习环境模型可以分为：
+% \begin{itemize}
+%     \item Model-based：指在已知状态转移分布条件下，智能体根据这个模型做出预先设定好的决策。通常意义来讲，动态规划是一种有模型的强化学习算法。
+%     \item Model-free：指在未知状态转移分布条件下，通过学习价值函数(Value Function)和策略函数（Policy Function）进行决策，通常需要大量的采样来估计状态、动作及反馈函数，从而优化动作策略。
+% \end{itemize}
+% 根据学习目标可以分为：
+% \begin{itemize}
+%     \item Value-based：这类方法的目标是学习价值函数，只能应用在不连续的、离散的环境下（如围棋或某些游戏领域），对于行为集合规模庞大、动作连续的场景（如机器人控制领域），其很难学习到较好的结果。代表算法有Q-learning\cite{watkins1992q},DQN\cite{mnih2015human}等。
+%     \item Policy-based：这类方法直接对策略进行优化，使制定的策略能够获得最高的反馈。代表算法有Policy Gradient\cite{sutton2000policy}算法等。
+%     \item Actor-Critic：这类方法同时使用策略和价值评估来做出决策，其中，智能体会根据策略做出动作，而价值函数会对做出的动作给出评分，这样可以在原有的基于策略的方法的基础上加速学习过程，取得更好的效果。代表算法有A2C\cite{barto1983neuronlike}等。
+% \end{itemize}
+
+
+
+\subsection{基于强化学习的交通信号控制框架}
 \begin{figure}[t]
     \label{fig:TSC-RL}
     \subfloat[单路口场景\label{fig:single-tsc-rl}]{\includegraphics[width=0.45\textwidth]{./fig/single-intersection-RL.PNG}}\quad
@@ -126,15 +142,15 @@ Max-Pressure Control的目的是通过最小化对应相位的压力（pressure�
   \end{figure}
 根据路网规模的不同，基于强化学习的交通信号控制框架可以分为以下两类：
 \begin{itemize}
-    \item 单路口交通信号控制：\autoref{fig:single-tsc-rl}描述了应用强化学习框架到单路口交通信号控制问题上的基本思路。环境是道路上的交通状况，智能体控制交通信号。在每个调度时刻$t$，环境的描述（例如，当前的信号相位，车辆的等待时间，排队长度，车辆的位置）将被生成为状态$s^t$。智能体将对下一步采取的行动作出预测，以使预期收益最大化，其中该动作可能是在单一交叉口的情况下改变到某一阶段。该动作将在环境中执行，并将产生一个奖励$r^t$，其中奖励可以定义为路口的交通状况。通常，在决策过程中，智能体采取的策略结合了对所学策略的利用和对新策略的探索。
-    \item 多路口交通信号控制：\autoref{fig:multi-tsc-rl}描述了应用强化学习框架到多路口交通信号控制问题上的基本思路。智能体被定义为环境中N个路口的信号控制者。目标是学习每个代理的最优策略，以及优化整个环境的交通状况。在每个调度时刻$t$，每个智能体$i$观察环境的一部分作为观察点$o_i^t$。智能体将对接下来要采取的行动$\mathbf{\alpha}^t$做出预测。这些动作将在环境中执行，并产生奖励$r_i^t$，其中奖励可以在环境中的单个交叉口或一组交叉口的层面上定义。
+    \item 单路口交通信号控制：\autoref{fig:single-tsc-rl}描述了应用强化学习框架到单路口交通信号控制问题上的基本思路。环境是道路上的交通状况，智能体要做的是控制交通信号。在每个调度时刻$t$，获取环境的状态描述$s^t$（例如，当前的信号相位，车辆的等待时间，排队长度，车辆的位置），智能体将根据这个状态描述对下一步采取的行动作出预测，以使预期收益最大化，然后该动作将在环境中执行，并且产生一个奖励$r^t$。通常，在决策过程中，智能体采取的策略结合了对所学策略的利用和对新策略的探索。
+    \item 多路口交通信号控制：\autoref{fig:multi-tsc-rl}描述了应用强化学习框架到多路口交通信号控制问题上的基本思路。智能体被定义为环境中N个路口的信号控制者。目标是学习每个智能体的最优策略，以优化整个环境中所有路口的通行效率。在每个调度时刻$t$，每个智能体$i$观察环境的一部分作为观察点$o_i^t$。智能体将对接下来要采取的行动$\mathbf{\alpha}^t$做出预测。这些动作将在环境中执行，并产生奖励$r_i^t$，其中奖励可以在环境中的单个路口或一组路口的层面上定义。
 \end{itemize}
 \subsection{基本要素}
 使用强化学习来解决交通信号控制问题要先确定以下几个基本要素:
 
 \textbf{奖励设计}：由于强化学习是以最大化累计奖励为目标来学习的，所以奖励的选择决定了学习的方向。在交通信号控制问题中，虽然最终目标是尽量减少所有车辆的通行时间，但由于几个原因，通行时间很难直接作为RL的有效奖励。首先，车辆的行驶时间不仅受交通信号灯的影响，还受车辆自由流动速度等其他因素的影响。其次，当交通信号控制器事先不知道车辆行驶目的地（在现实世界中往往是这样），优化道路上所有车辆的通行时间变得特别困难。 在这种情况下，车辆的通行时间只能在多个动作完成后车辆完全离开路口后才能测量。已有工作的奖励设计通常是基于一些可以直接在一个动作后测量的指标的加权和。例如，等待车辆的队列长度、车辆等待时间、速度、累计延迟、路口的吞吐量、车辆平均停车次数、信号变化频率（信号在一定时间段内变化的次数，学习到的策略不应该太过频繁的改变信号）以及路口的压力（Max-pressure中定义的pressure）等。虽然将奖励定义为几个因素的加权线性组合是现有研究中的一种常见做法，并且取得了不错的效果，但是这种特别的设计存在两个问题。第一，无法保证最大化设计的奖励等价于最优的通行效率，因为它们在交通运输理论中没有直接联系。第二，调整每个奖励函数因子的权重是相当棘手的，在权重设置上的微小差异可能会导致最终的结果有显著的差别。
 
-\textbf{状态表示}：状态表示是以一种数值化的形式来描述路口的交通状况，描述的越全面越有利于学习到最优策略，通常使用多个要素组合来描述交通状况，例如，队列长度、车辆等待时间、车辆数量（包含非等待车辆），车辆速度、车辆位置分布以及当前信号灯的相位等。最近，在基于RL的交通信号控制算法中出现了使用更复杂状态的趋势，希望能够更全面地描述交通状况。 Mousavi、Van derPol以及Wei Hua等人在他们的研究工作中提出使用位置图片来当作状态描述。但是，具有如此高维度的状态学习往往需要大量的训练样本，这意味着训练RL代理需要很长时间。 更重要的是，较长的学习进度不一定会导致显著的性能增益，因为代理可能有更困难的时间从状态表示中提取有用的信息。因此，状态的表示应该简洁且能够充分地描述环境。
+\textbf{状态表示}：状态表示是以一种数值化的形式来描述路口的交通状况，描述的越全面越有利于快速学习到最优策略，通常使用多个要素组合来描述交通状况，例如，队列长度、车辆等待时间、车辆数量（包含非等待车辆），车辆速度、车辆位置分布以及当前信号灯的相位等。最近，在基于RL的交通信号控制算法中出现了使用更复杂状态的趋势，希望能够更全面地描述交通状况。 Mousavi、Van derPol以及Wei Hua等人在他们的研究工作中提出使用位置图片来当作状态描述。但是，具有如此高维度的状态学习往往需要大量的训练样本，这意味着训练RL智能体需要很长时间。 更重要的是，较长的学习进度不一定会导致显著的性能增益，因为智能体可能需要花费更多的时间从状态表示中提取有用的信息。因此，状态的表示应该简洁且能够充分地描述环境。
 
 \textbf{动作选择机制}：动作选择机制决定了以何种方式来控制信号灯，不同的动作机制有不同的影响。主要可以总结为以下四种方式：
 \begin{itemize}
@@ -144,15 +160,15 @@ Max-Pressure Control的目的是通过最小化对应相位的压力（pressure�
     \item 选择下一个相位：这种方式直接从待选相位序列中选择一个相位并变化到该相位，其中相位序列不是预定的。因此，这种信号控制方式更加的灵活，智能体学习在不同的而状态下选择最优的相位，而不假设信号会以循环的方式改变。
 \end{itemize}
 
-\textbf{学习算法}：强化学习发展至今已经提出了很多不同的算法，根据估计潜在奖励和选择动作的不同可以分为以下两种：
-\begin{itemize}
-    \item Value-based Methods：基于值的方法近似于状态-值函数或状态-动作值函数（即，如何奖励每个状态或状态-动作对），策略是从学习的值函数隐式获得的。基于于价值的方法（Q-learning和DQN等）， 直接模拟状态值或状态动作值（例如，在当前交通情况下，如果进行一个动作，平均速度的增加/减少将生效多少？）。 这样，状态和奖励就可以直接输入模型，而不需要额外的处理。 然而，这些方法通常与ϵ-greedy的动作选择方法相结合，因此当ϵ最终衰减到一个很小的数目时，将导致一个几乎确定性的策略（即，在某些状态下的动作是确定性的）。 这可能会导致智能体陷入一些看不见的或代表性不足的情况，而没有改进。 此外，这些方法只能处理离散的动作，因为它需要对每个动作进行单独的建模过程。
-    \item Policy-based Methods：基于策略的方法直接更新策略（例如，在特定状态下采取行动的概率向量)参数，以最大限度地实现预定目标(例如平均预期回报）。 基于策略的方法，尝试学习某一状态下不同动作的概率分布。 基于政策的方法的优点是，它不要求行动是离散的。 此外，它可以学习一个随机策略，并继续探索潜在的更有价值的行动。Actor-Critic基于策略的方法中广泛使用的框架之一。 它包括基于价值的思想来学习行动概率分布的策略，Actor控制我们的智能体的行为（policy-based)，Critic衡量所采取的行动有多好(value-based）。 Aslani、Mousavi、Prashanth以及Bhatnagar在他们的工作中使用Actor-Critic，利用价值函数逼近和策略优化的优势，在交通信号控制问题上表现出优异的性能。
-\end{itemize}
+% \textbf{学习算法}：强化学习发展至今已经提出了很多不同的算法，根据估计潜在奖励和选择动作的不同可以分为以下两种：
+% \begin{itemize}
+%     \item Value-based Methods：基于值的方法的目标近似于状态-值函数或状态-动作值函数，策略是从学习的值函数隐式获得的。基于于价值的方法（Q-learning和DQN等）， 直接模拟状态价值函数或状态动作价值函数（例如，在当前交通情况下，如果进行一个动作，平均速度的增加/减少将生效多少？）。 这样，状态和奖励就可以直接输入模型，而不需要额外的处理。 然而，这些方法通常与$\epsilon-greedy$的动作选择机制相结合，因此当$\epsilon$最终衰减到一个很小的数目时，将导致一个几乎确定性的策略（即，在某些状态下的动作是确定性的）。 这可能会导致智能体陷入一些看不见的或代表性不足的情况，而没有改进。 此外，这些方法只能处理离散的动作，因为它需要对每个动作进行单独的建模过程。
+%     \item Policy-based Methods：基于策略的方法直接更新策略（例如，在特定状态下采取行动的概率向量)参数，以最大限度地实现预定目标(例如平均预期回报）。 基于策略的方法，尝试学习某一状态下不同动作的概率分布。 基于政策的方法的优点是，它不要求行动是离散的。 此外，它可以学习一个随机策略，并继续探索潜在的更有价值的行动。Actor-Critic基于策略的方法中广泛使用的框架之一。 它包括基于价值的思想来学习行动概率分布的策略，Actor控制我们的智能体的行为（policy-based)，Critic衡量所采取的行动有多好(value-based）。 Aslani\cite{aslani2019developing,aslani2017adaptive}、Mousavi\cite{mousavi2017traffic}以及Prashanth\cite{prashanth2011reinforcement}在他们的工作中使用Actor-Critic，利用价值函数逼近和策略优化的优势，在交通信号控制问题上表现出优异的性能。
+% \end{itemize}
 
 \section{图神经网络}
 由于我们的工作中涉及到图神经网络的知识，这里给出一些有关图神经网络的简单描述。
-\subsubsection{图神经网络概述}
+\subsection{图神经网络概述}
 
 深度网络的研究推进了模式识别和数据挖掘领域的发展。借助于计算资源的高速发展（如GPU），深度学习在欧几里得数据（如图像、文本和视频）中取得巨大的成功。但是在一些应用场景下，数据（图）是由非欧几里得域生成的，任然需要有效分析。
 例如，在电子商务领域，一个基于图的学习系统能够利用用户和商品之间的交互以实现精准的推荐。在化学领域，分子被建模为图，新药研发需要测定其生物活性。在论文引用网络中，论文之间通过引用关系互相连接，需要将它们分成不同的类别。
@@ -164,16 +180,16 @@ Max-Pressure Control的目的是通过最小化对应相位的压力（pressure�
 
 图神经网络可以分为：图卷积网络（Convolutional graph neural networks），图注意力网络（Graph Attention Network），图自编码器（Graph Auto-encoder），图生成网络（Graph Generative Network）和图时空网络（Graph Spatial-Temporal Network）。
 
-\subsubsection{图卷积网络}
+\subsection{图卷积网络}
 图卷积网络是将卷积运算从传统数据（如图片、视频）推广到了图数据上的模型，如\autoref{fig:GCN}所示。其主要思想是通过聚合节点$v$自身的特征和邻居节点的特征来生成节点$v$的表示。图卷积网络在构建许多其他的图神经网络模型方面发挥了重要作用。
 \begin{figure}[htb]
     \includegraphics[width=1.2\textwidth]{fig/GCN.pdf}
     \caption{图卷积示意图}
     \label{fig:GCN}
   \end{figure}
-图卷积网络按照卷积的方式可以分为两类：基于谱的（spectral-based）和基于空间的（spatial-based）。基于谱的方法通过从图信号处理的角度引入滤波器来定义图卷积 [82]，其中图卷积操作被解释为从图信号中去除噪声。基于空间的方法继承了 RecGNN 的思想，通过信息传播来定义图卷积。
+图卷积网络按照卷积的方式可以分为两类：基于谱（spectral-based）和基于空间（spatial-based）的方法。基于谱的方法从信号处理的角度引入滤波器来定义图卷积 [82]，其中图卷积操作被解释为从图信号中去除噪声。基于空间的方法则是通过信息传播来定义图卷积。
 
-\subsubsection{图注意力网络}
+\subsection{图注意力网络}
 图注意力网络是将注意力机制引入到基于空间域的图神经网络。图神经网络不需要使用拉普拉斯等矩阵进行复杂的计算，仅通过邻居节点的表征来更新目标节点的特征。由于能够放大数据中最重要部分的影响，注意力机制已经广泛应用到很多基于序列的任务中，图神经网络也受益于此，在聚合过程中使用注意力整合多个模型的输出。主要方法包括：
 \begin{figure}[htb]
     \includegraphics[width=1.2\textwidth]{fig/gcn-gat.png}
@@ -201,11 +217,11 @@ Max-Pressure Control的目的是通过最小化对应相位的压力（pressure�
     \end{align}
     其中$\mathbf{f}_{h}(\cdot)$是一个LSTM网络，$f_s$是一个step network，它会优先访问当前节点$v_{t-1}$优先级高的邻居并将它们的信息进行聚合。
 \end{itemize}
-\subsubsection{图自编码器}
+\subsection{图自编码器}
 图自编码器是一类图嵌入方法，其目的是利用神经网络将图的顶点表示为低维向量。典型的解决方案是利用多层感知机作为编码器来获取节点嵌入，其中解码器重建节点的邻域统计信息，如positive pointwise mutual information （PPMI）或一阶和二阶近似值。
 主要包括基于GCN的自编码器，如Graph Autoencoder（GAE）\cite{kipf2016variational}和Adversarially Regularized Graph Autoencoder (ARGA）\cite{pan2018adversarially}，以及Network Representations with Adversarially Regularized Autoencoders (NetRA)\cite{yu2018learning}、Deep Neural Networks for Graph Representations (DNGR)\cite{cao2016deep}、Structural Deep Network Embedding (SDNE)\cite{wang2016structural}和Deep Recursive Network Embedding (DRNE)\cite{tu2018deep}。
 DNGR和SDNE学习仅给出拓扑结构的节点嵌入，而GAE、ARGA、NetRA、DRNE用于学习当拓扑信息和节点内容特征都存在时的节点嵌入。图自动编码器的一个挑战是邻接矩阵A的稀疏性，这使得解码器的正条目数远远小于负条目数。为了解决这个问题，DNGR重构了一个更密集的矩阵，即PPMI矩阵，SDNE对邻接矩阵的零项进行惩罚，GAE对邻接矩阵中的项进行重加权，NetRA将图线性化为序列。
-\subsubsection{图生成网络}
+\subsection{图生成网络}
 图生成网络的目标是在给定一组观察到的图的情况下生成新的图。图生成网络的许多方法都是特定于领域的。例如，在分子图生成中，一些工作模拟了称为SMILES的分子图的字符串表示。在自然语言处理中，生成语义图或知识图通常以给定的句子为条件。这种方法通常使用GCN或者其他框架作为基础构建模块，其中使用GCN构建的方法有：
 \begin{itemize}
     \item Molecular Generative Adversarial Networks (MolGAN)\cite{de2018molgan}：MolGAN整合了图卷积网络、图注意力网络和强化学习以生成具有预期属性的图。MolGAN由生成器和判别器组成，相互竞争以提高生成器的真实性。在MolGAN中，生成器尝试提出一个假图及其特征矩阵，而鉴别器旨在将假样本与经验数据区分开来。此外，还引入了一个奖励网络来促使生成器能够按照外部的评估生成具有特定属性的图。
@@ -217,12 +233,12 @@ DNGR和SDNE学习仅给出拓扑结构的节点嵌入，而GAE、ARGA、NetRA、
     \item NetGAN\cite{2018NetGAN}：Netgan将LSTM与Wasserstein-GAN结合在一起，使用基于随机行走的方法生成图形。GAN框架由两个模块组成，一个生成器和一个鉴别器。生成器尽最大努力在LSTM网络中生成合理的随机行走序列，而鉴别器则试图区分伪造的随机行走序列和真实的随机行走序列。训练完成后，对一组随机行走中节点的共现矩阵进行正则化，我们可以得到一个新的图。
 \end{itemize}
 
-\subsubsection{图时空网络}
+\subsection{图时空网络}
 许多现实世界的应用中的图在图结构和图输入方面都是动态的。图时空神经网络在捕捉图的动态性方面占据了重要地位。这类方法旨在为动态节点输入建模，同时假设连接节点之间的相互依存关系。例如，一个交通网络由放置在道路上的速度传感器组成，边缘权重由传感器对之间的距离决定。由于一条道路的交通状况可能取决于其相邻道路的状况，在进行交通速度预测时有必要考虑空间依赖性。作为一种解决方案，STGNNs同时捕捉图的空间和时间依赖性。图时空网络可以分为两个方向，一种是基于RNN的方法，另一种是基于CNN的方法。
 
 大多数基于 RNN 的方法通过过滤输入和使用图卷积传递给循环单元的隐藏状态来捕获时空依赖性。但是基于RNN的方法存在耗时的迭代传播和梯度爆炸或者消失的问题。作为替代解决方案，基于CNN的方法以非递归的方式处理空间-时间图，具有并行计算、稳定梯度和低内存需求的优势。基于CNN的方法将一维卷积层和图卷积层交织在一起，分别学习时间和空间的依赖关系。
 
-\subsubsection{任务类别}
+\subsection{任务分类}
 以图结构和节点特征信息作为输入，根据输出的类别，可以将GNN的分析任务分为以下几类：
 \begin{itemize}
 \item 节点级别：节点级的输出与节点回归（Node Regression）和节点分类（Node Classification）任务相关。如图卷积网络可以通过信息传播和图卷积操作提取出节点的潜在表示。使用多感知器或 softmax 层作为输出层，GNN 能够以端到端的方式执行节点级任务。

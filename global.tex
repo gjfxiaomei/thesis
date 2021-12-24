@@ -40,7 +40,7 @@
   thesisid = {1028704 18-S000},   % 论文编号
 }
 \nuaasetEn{
-  title = {\nuaathesis{} Quick Start\linebreak and Document Snippets},
+  title = {Traffic Signal Control Based on Deep Reinforcement Learning},
   author = {nuaatug},
   college = {College of \TeX},
   majorsubject = {\LaTeX{} Typesetting},
@@ -51,20 +51,23 @@
 
 % 摘要
 \begin{abstract}
-本文介绍如何使用\nuaathesis{} 文档类撰写南京航空航天大学学位论文。
+  先进的学习技术的不断发展和更容易获得的实时交通数据使得动态调整交通信号成为可能。一些研究工作提出使用强化学习（RL）进行交通信号控制，与传统的方法相比，取得了卓越的性能。然而，现有的方法仍然有一些需要改进的地方。例如，大多数基于RL的单路口交通控制方法只关注于提高总效率，而忽略了公平问题。而对于多路口的交通信号控制，现有的方法在学习通信时试图将自己路口的所有信息传递给目标路口，这使得目标路口难以挖掘有效信息。
 
-首先介绍如何获取并编译本文档，然后展示论文部件的实例，最后列举部分常用宏包的使用方法。
+  在本文中，我们对已有工作在这两种场景下的缺点进行了改进。对于单个路口的交通信号控制，我们提出了一个基于公平意识的RL模型，该模型受到比例公平调度的启发，可以在效率和公平之间提供一个良好的权衡。为了简化多路口交通信号控制中的协调工作，我们提出了一种新的建图方法，在汇总邻居信息时，可以消除与目标节点无关的信息。最后，我们进行综合实验来验证这两项工作的有效性。
 \end{abstract}
-\keywords{学位论文, 模板, \nuaathesis}
+\keywords{交通信号控制, 强化学习, 公平性, 协调, 图神经网络}
 
 \begin{abstractEn}
-This document introduces \nuaathesis, the \LaTeX{} document class for NUAA Thesis.
+Increasing development in advanced learning techniques and easier access to real-time traffic data make it possible to adjust the traffic signal dynamically. Several studies have proposed to use reinforcement learning (RL) for traffic signal
+control and achieved superior performance compared with the traditional methods. However, existing methods still have something to be improved. For example, most of the RL-based single intersection traffic control methods only focus on improving
+the total efficiency but ignore the fairness problem. And for multi-intersection traffic signal control, Existing methods try to transfer all the information of their own intersection to the target intersection when learning to communicate, 
+which makes it difficult for the target intersection to mine the effective information.
 
-First, we show how to get the source code and compile this document.
-Then we provide snippets for figures, tables, equations, etc.
-Finally we enforce some usage patterns.
+In this paper, we improve the existing work in these two scenarios. For single-intersection traffic signal control, we propose a fairness-aware RL-based model inspired by the proportional fair scheduling which can provide a good trade-off between
+efficiency and fairness. To simplify the coordination in multi-intersection traffic signal control, we propose a new making graph method which can eliminate information irrelevant to the target node when aggregating neighbor information.
+Finally, we conduct comprehensive experiments to verify the effectiveness of these two works.
 \end{abstractEn}
-\keywordsEn{NUAA thesis, document class, space is accepted here}
+\keywordsEn{Traffic Signal Control, Reinforcement Learning, Fairness-Aware, Coordination, Graph Neural Network}
 
 
 % 请按自己的论文排版需求，随意修改以下全局设置

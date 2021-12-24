@@ -1,7 +1,7 @@
 % 本文件是示例论文的一部分
 % 论文的主文件位于上级目录的 `bachelor.tex` 或 `master.tex`
 
-\chapter{单路口场景交通信号调度}
+\chapter{单路口场景智能交通信号调度}
 \section{相关工作}
 最近，强化学习算法在交通信号控制领域表现出了优异的性能，这些算法将当前道路上的交通状况当作状态，并通过与环境交互学习操控信号的策略。
 现有的基于强化学习的交通信号控制方法之间的差异主要体现在以下这三个方面：状态表示、奖励设计以及学习算法。
@@ -33,12 +33,7 @@
 
 \section{改进}
 \subsection{目标}
-本工作的目的是在提高通行效率（最小化平均通行时间）的同时，希望每条车道能够有尽可能相同的服务延迟（得到放行所需的时间）。这个目标可以用以下的Jain Fairness Index(JFI)指标来量化：
-\begin{align}
-    \mathcal{J} = \frac{(\sum_{i=1}^{M}\overline{D}_i)^2}{M\sum_{i=1}^{M}\overline{D}_i^2},
-\end{align}
-其中$\overline{D}_i$是第$i$条进近车道的平均延迟。当且仅当每一个$\overline{D}_i$都相等时，这个指标达到最大值，即是$1$。所以我们的目标也就是最大化这个指标。
-
+本工作的目的是在提高通行效率（最小化平均通行时间）的同时，希望每条车道能够有尽可能相同的服务延迟（得到放行所需的时间）。
 \subsection{智能体设计}
 \subsection*{状态表示}
 在$t$时刻的状态$S(t)$由以下几个部分组成：
@@ -144,7 +139,7 @@
     \item LIT\cite{zheng2019diagnosing}：这是一种基于学习的方法，比大多数现有的致力于提高通行效率的方法效果更好。
     \item FIT(\textbf{F}airness-aware \textbf{I}ntelligent \textbf{T}raffic Light Control)：我们的方法。
 \end{itemize}
-\subsection{性能评价}
+\subsection{性能表现}
 首先，我们通过实验评估了不同方法的通信效率的表现，为了得到一个综合的结果，我们在不同的$\rho$值下进行了实验，实验结果如\autoref{fig:efficiency}所示。
 可以观察到，我们的方法（FIT）的车辆通过路口的平均行驶时间远低于传统方法（行驶时间越短意味着效率越高），并且仅略低于只注重效率的LIT方法。
 \begin{figure}[htb]

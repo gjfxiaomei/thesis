@@ -1,7 +1,6 @@
 \contentsline {chapter}{摘要}{i}{section*.1}%
 \contentsline {chapter}{Abstract}{ii}{section*.2}%
-\contentsline {chapter}{\numberline {第一章\hspace {.3em}}背景和研究意义}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}研究背景}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {第一章\hspace {.3em}}研究背景}{1}{chapter.1}%
 \contentsline {chapter}{\numberline {第二章\hspace {.3em}}概述}{3}{chapter.2}%
 \contentsline {section}{\numberline {2.1}交通信号概述}{3}{section.2.1}%
 \contentsline {section}{\numberline {2.2}基本术语}{3}{section.2.2}%
@@ -12,47 +11,43 @@
 \contentsline {subsection}{\numberline {2.3.4}Actuated Control}{6}{subsection.2.3.4}%
 \contentsline {subsection}{\numberline {2.3.5}SOTL}{7}{subsection.2.3.5}%
 \contentsline {subsection}{\numberline {2.3.6}Max-Pressure Control}{7}{subsection.2.3.6}%
-\contentsline {section}{\numberline {2.4}基于强化学习的交通信号控制}{8}{section.2.4}%
+\contentsline {section}{\numberline {2.4}基于强化学习的交通信号控制}{7}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}强化学习概述}{8}{subsection.2.4.1}%
 \contentsline {subsubsection}{\numberline {2.4.1.1}分类}{9}{subsubsection.2.4.1.1}%
-\contentsline {subsection}{\numberline {2.4.2}基于强化学习的交通信号控制}{10}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}框架}{10}{subsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.4.4}基本要素}{11}{subsection.2.4.4}%
+\contentsline {subsection}{\numberline {2.4.2}基于强化学习的交通信号控制框架}{10}{subsection.2.4.2}%
+\contentsline {subsection}{\numberline {2.4.3}基本要素}{11}{subsection.2.4.3}%
 \contentsline {section}{\numberline {2.5}图神经网络}{13}{section.2.5}%
-\contentsline {subsubsection}{\numberline {2.5.0.1}图神经网络概述}{13}{subsubsection.2.5.0.1}%
-\contentsline {subsubsection}{\numberline {2.5.0.2}图卷积网络}{14}{subsubsection.2.5.0.2}%
-\contentsline {subsubsection}{\numberline {2.5.0.3}图注意力网络}{15}{subsubsection.2.5.0.3}%
-\contentsline {subsubsection}{\numberline {2.5.0.4}图自编码器}{17}{subsubsection.2.5.0.4}%
-\contentsline {subsubsection}{\numberline {2.5.0.5}图生成网络}{17}{subsubsection.2.5.0.5}%
-\contentsline {subsubsection}{\numberline {2.5.0.6}图时空网络}{19}{subsubsection.2.5.0.6}%
-\contentsline {subsubsection}{\numberline {2.5.0.7}任务类别}{19}{subsubsection.2.5.0.7}%
-\contentsline {chapter}{\numberline {第三章\hspace {.3em}}单路口场景交通信号调度}{21}{chapter.3}%
-\contentsline {section}{\numberline {3.1}相关工作}{21}{section.3.1}%
-\contentsline {section}{\numberline {3.2}已有工作中的不足}{22}{section.3.2}%
-\contentsline {section}{\numberline {3.3}改进}{23}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}目标}{23}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}智能体设计}{24}{subsection.3.3.2}%
-\contentsline {section}{\numberline {3.4}实验}{26}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}评价指标}{27}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}比较方法}{27}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}性能评价}{28}{subsection.3.4.3}%
-\contentsline {chapter}{\numberline {第四章\hspace {.3em}}多路口场景下交通信号控制}{33}{chapter.4}%
-\contentsline {section}{\numberline {4.1}相关工作}{33}{section.4.1}%
-\contentsline {section}{\numberline {4.2}已有工作中的不足}{35}{section.4.2}%
-\contentsline {section}{\numberline {4.3}改进}{36}{section.4.3}%
-\contentsline {section}{\numberline {4.4}方法}{37}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}重要性计算}{37}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}特征筛选}{38}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}注意力分布计算}{38}{subsection.4.4.3}%
-\contentsline {subsection}{\numberline {4.4.4}特征回归}{38}{subsection.4.4.4}%
-\contentsline {subsection}{\numberline {4.4.5}Multi-Head Attention}{39}{subsection.4.4.5}%
-\contentsline {subsection}{\numberline {4.4.6}模型框架}{40}{subsection.4.4.6}%
-\contentsline {section}{\numberline {4.5}实验}{42}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}数据集介绍}{42}{subsection.4.5.1}%
-\contentsline {subsubsection}{\numberline {4.5.1.1}比较方法}{43}{subsubsection.4.5.1.1}%
-\contentsline {subsubsection}{\numberline {4.5.1.2}性能表现}{44}{subsubsection.4.5.1.2}%
-\contentsline {subsubsection}{\numberline {4.5.1.3}性能比较}{45}{subsubsection.4.5.1.3}%
-\contentsline {chapter}{\numberline {第五章\hspace {.3em}}总结与展望}{47}{chapter.5}%
-\contentsline {chapter}{参考文献}{48}{section*.30}%
-\contentsline {chapter}{致谢}{51}{appendix*.32}%
+\contentsline {subsection}{\numberline {2.5.1}图神经网络概述}{13}{subsection.2.5.1}%
+\contentsline {subsection}{\numberline {2.5.2}图卷积网络}{14}{subsection.2.5.2}%
+\contentsline {subsection}{\numberline {2.5.3}图注意力网络}{14}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.4}图自编码器}{17}{subsection.2.5.4}%
+\contentsline {subsection}{\numberline {2.5.5}图生成网络}{17}{subsection.2.5.5}%
+\contentsline {subsection}{\numberline {2.5.6}图时空网络}{18}{subsection.2.5.6}%
+\contentsline {subsection}{\numberline {2.5.7}任务分类}{19}{subsection.2.5.7}%
+\contentsline {chapter}{\numberline {第三章\hspace {.3em}}单路口场景智能交通信号调度}{20}{chapter.3}%
+\contentsline {section}{\numberline {3.1}相关工作}{20}{section.3.1}%
+\contentsline {section}{\numberline {3.2}已有工作中的不足}{21}{section.3.2}%
+\contentsline {section}{\numberline {3.3}改进}{22}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}目标}{22}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}智能体设计}{22}{subsection.3.3.2}%
+\contentsline {section}{\numberline {3.4}实验}{25}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}评价指标}{25}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}比较方法}{26}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}性能表现}{27}{subsection.3.4.3}%
+\contentsline {chapter}{\numberline {第四章\hspace {.3em}}多路口场景智能交通信号调度}{32}{chapter.4}%
+\contentsline {section}{\numberline {4.1}相关工作}{32}{section.4.1}%
+\contentsline {section}{\numberline {4.2}已有工作中的不足}{34}{section.4.2}%
+\contentsline {section}{\numberline {4.3}改进}{35}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}目标}{35}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}基于道路的图建模方式}{35}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Learn to Communicate}{36}{subsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.3.4}模型框架}{38}{subsection.4.3.4}%
+\contentsline {section}{\numberline {4.4}实验}{42}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}数据集介绍}{42}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}比较方法}{43}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}性能表现}{43}{subsection.4.4.3}%
+\contentsline {subsubsection}{\numberline {4.4.3.1}性能比较}{43}{subsubsection.4.4.3.1}%
+\contentsline {chapter}{\numberline {第五章\hspace {.3em}}总结与展望}{46}{chapter.5}%
+\contentsline {chapter}{参考文献}{47}{section*.31}%
+\contentsline {chapter}{致谢}{50}{appendix*.33}%
 \contentsfinish 

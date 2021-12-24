@@ -1,29 +1,24 @@
 \begin{thebibliography}{10}
 
-\bibitem{watkins1992q}
-Watkins C~J, Dayan P.
-\newblock Q-learning[J].
-\newblock Machine learning, 1992, 8(3-4):279--292.
+\bibitem{lillicrap2015continuous}
+Lillicrap T~P, Hunt J~J, Pritzel A, et~al.
+\newblock Continuous control with deep reinforcement learning[J].
+\newblock arXiv preprint arXiv:1509.02971, 2015..
 
-\bibitem{mnih2015human}
-Mnih V, Kavukcuoglu K, Silver D, et~al.
-\newblock Human-level control through deep reinforcement learning[J].
-\newblock nature, 2015, 518(7540):529--533.
+\bibitem{fujimoto2018addressing}
+Fujimoto S, Hoof H, Meger D.
+\newblock Addressing function approximation error in actor-critic methods[C].
+\newblock Proceedings of International Conference on Machine Learning. PMLR,
+  2018.
+\newblock  1587--1596.
 
-\bibitem{sutton2000policy}
-Sutton R~S, McAllester D~A, Singh S~P, et~al.
-\newblock Policy gradient methods for reinforcement learning with function
-  approximation[C].
-\newblock Proceedings of Advances in neural information processing systems,
-  2000.
-\newblock  1057--1063.
-
-\bibitem{barto1983neuronlike}
-Barto A~G, Sutton R~S, Anderson C~W.
-\newblock Neuronlike adaptive elements that can solve difficult learning
-  control problems[J].
-\newblock IEEE transactions on systems, man, and cybernetics, 1983,
-  (5):834--846.
+\bibitem{haarnoja2018soft}
+Haarnoja T, Zhou A, Abbeel P, et~al.
+\newblock Soft actor-critic: Off-policy maximum entropy deep reinforcement
+  learning with a stochastic actor[C].
+\newblock Proceedings of International conference on machine learning. PMLR,
+  2018.
+\newblock  1861--1870.
 
 \bibitem{gori2005new}
 Gori M, Monfardini G, Scarselli F.
@@ -158,6 +153,11 @@ Pham T~T, Brys T, Taylor M~E, et~al.
 Zheng G, Zang X, Xu N, et~al.
 \newblock Diagnosing reinforcement learning for traffic signal control[J].
 \newblock arXiv preprint arXiv:1905.04716, 2019..
+
+\bibitem{mnih2015human}
+Mnih V, Kavukcuoglu K, Silver D, et~al.
+\newblock Human-level control through deep reinforcement learning[J].
+\newblock nature, 2015, 518(7540):529--533.
 
 \bibitem{miller1963settings}
 Miller A~J.

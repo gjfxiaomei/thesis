@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.12.9)  22 DEC 2021 20:03
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.12.9)  24 DEC 2021 14:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1932,27 +1932,6 @@ LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
 (Font)              scaled to size 8.0pt on input line 14.
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
 (Font)              scaled to size 6.0pt on input line 14.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 16.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ifnextchar' on input line 16.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\mathsurround' on input line 16.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\z@' on input line 16.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 16.
-
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: xetex
 * paper: <default>
@@ -1984,6 +1963,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 * \@mparswitchfalse
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
 
 
 Package fontspec Warning: Font "FandolHei-Regular" does not contain requested
@@ -2145,10 +2125,6 @@ Overfull \hbox (87.1737pt too wide) in paragraph at lines 17--17
 ]
 LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
 (Font)              scaled to size 13.55052pt on input line 19.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 19.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 12.045pt on input line 19.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 12.045pt on input line 19.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
@@ -2172,10 +2148,6 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 
 
 ]
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 16.06pt on input line 19.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 22.08249pt on input line 19.
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2189,7 +2161,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 [2
 
-] (./bachelor.toc
+]
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2201,10 +2173,34 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[3
+[3] (./bachelor.toc
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
 
 
-])
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[4
+
+
+]
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[5])
 \tf@toc=\write5
 \openout5 = `bachelor.toc'.
 
@@ -2219,7 +2215,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[4]
+[6]
 \openout2 = `content/background.aux'.
 
  (./content/background.tex
@@ -2255,15 +2251,15 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
  (./content/status.tex
 第二章
-File: fig/tsc.pdf Graphic file (type pdf)
-<use fig/tsc.pdf>
 LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input lin
-e 17.
+e 7.
 (d:/Software/texlive/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.045pt on input line 17.
+(Font)              scaled to size 12.045pt on input line 7.
+File: fig/tsc.pdf Graphic file (type pdf)
+<use fig/tsc.pdf>
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2305,38 +2301,10 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
 [5]
-File: fig/GreenWave.jpg Graphic file (type bmp)
-<fig/GreenWave.jpg>
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
+File: fig/green-ware.pdf Graphic file (type pdf)
+<use fig/green-ware.pdf>
 
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[6]
-File: fig/max-pressure.jpg Graphic file (type bmp)
-<fig/max-pressure.jpg>
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 10.53937pt on input line 69.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.0pt on input line 71.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.0pt on input line 71.
-LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 6.29996pt on input line 71.
-LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 4.49997pt on input line 71.
-LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 7.0pt on input line 71.
-LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 5.0pt on input line 71.
-
-Overfull \hbox (41.75124pt too wide) in paragraph at lines 71--81
+Overfull \hbox (86.49504pt too wide) in paragraph at lines 47--48
  [][] 
  []
 
@@ -2350,9 +2318,41 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[7]
+[6]
+File: fig/max-pressure.jpg Graphic file (type bmp)
+<fig/max-pressure.jpg>
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 10.53937pt on input line 71.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 7.0pt on input line 73.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 5.0pt on input line 73.
+LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
+(Font)              scaled to size 6.29996pt on input line 73.
+LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
+(Font)              scaled to size 4.49997pt on input line 73.
+LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
+(Font)              scaled to size 7.0pt on input line 73.
+LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
+(Font)              scaled to size 5.0pt on input line 73.
+
+Overfull \hbox (41.75124pt too wide) in paragraph at lines 73--83
+ [][] 
+ []
+
 File: fig/rl.pdf Graphic file (type pdf)
 <use fig/rl.pdf>
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[7]
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2365,6 +2365,10 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
 [8]
+File: fig/rl-classfication.pdf Graphic file (type pdf)
+<use fig/rl-classfication.pdf>
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
+(Font)              scaled to size 8.0pt on input line 118.
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2381,12 +2385,6 @@ File: ./fig/single-intersection-RL.PNG Graphic file (type bmp)
 <./fig/single-intersection-RL.PNG>
 File: ./fig/multi-intersection-RL.PNG Graphic file (type bmp)
 <./fig/multi-intersection-RL.PNG>
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.045pt on input line 130.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 130.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.0pt on input line 130.
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2399,6 +2397,12 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
 [10]
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 12.045pt on input line 146.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 8.0pt on input line 146.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 6.0pt on input line 146.
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2411,8 +2415,6 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
 [11]
-Missing character: There is no ϵ ("3F5) in font ntx-Regular-tlf-t1!
-Missing character: There is no ϵ ("3F5) in font ntx-Regular-tlf-t1!
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2440,7 +2442,14 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 File: fig/GCN.pdf Graphic file (type pdf)
 <use fig/GCN.pdf>
 
-Overfull \hbox (86.49504pt too wide) in paragraph at lines 170--171
+Overfull \hbox (86.49504pt too wide) in paragraph at lines 186--187
+ [][] 
+ []
+
+File: fig/gcn-gat.png Graphic file (type bmp)
+<fig/gcn-gat.png>
+
+Overfull \hbox (86.49504pt too wide) in paragraph at lines 195--196
  [][] 
  []
 
@@ -2455,15 +2464,9 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
 [14]
-File: fig/gcn-gat.png Graphic file (type bmp)
-<fig/gcn-gat.png>
-
-Overfull \hbox (86.49504pt too wide) in paragraph at lines 179--180
- [][] 
- []
-
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
+
 
 Package fancyhdr Warning: \headheight is too small (15.6585pt): 
 (fancyhdr)                Make it at least 16.86298pt, for example:
@@ -2474,7 +2477,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 [15]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.0pt on input line 197.
+(Font)              scaled to size 6.0pt on input line 213.
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2510,7 +2513,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[18]
+[18])
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2522,19 +2525,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[19])
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[20]
+[19]
 \openout2 = `content/fairness.aux'.
 
  (./content/fairness.tex
@@ -2549,7 +2540,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[21
+[20
 
 
 
@@ -2568,7 +2559,23 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
+[21]
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
 [22]
+File: fig/sysmodel.pdf Graphic file (type pdf)
+<use fig/sysmodel.pdf>
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 69.
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2593,10 +2600,16 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
 [24]
-File: fig/sysmodel.pdf Graphic file (type pdf)
-<use fig/sysmodel.pdf>
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 74.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 9.03374pt on input line 107.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 9.03374pt on input line 107.
+LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
+(Font)              scaled to size 5.0pt on input line 107.
+LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
+(Font)              scaled to size 8.1303pt on input line 107.
+LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
+(Font)              scaled to size 9.03374pt on input line 107.
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2609,16 +2622,12 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
 [25]
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.03374pt on input line 112.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 9.03374pt on input line 112.
+(Font)              scaled to size 10.53937pt on input line 121.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 5.0pt on input line 112.
-LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
-(Font)              scaled to size 8.1303pt on input line 112.
-LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 9.03374pt on input line 112.
+(Font)              scaled to size 7.0pt on input line 121.
+File: fig/efficiency.pdf Graphic file (type pdf)
+<use fig/efficiency.pdf>
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2631,10 +2640,10 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
 [26]
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.53937pt on input line 126.
-LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 7.0pt on input line 126.
+File: fig/fairness.pdf Graphic file (type pdf)
+<use fig/fairness.pdf>
+File: fig/major_delay.pdf Graphic file (type pdf)
+<use fig/major_delay.pdf>
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2647,10 +2656,14 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
 [27]
-File: fig/efficiency.pdf Graphic file (type pdf)
-<use fig/efficiency.pdf>
-File: fig/fairness.pdf Graphic file (type pdf)
-<use fig/fairness.pdf>
+File: fig/minor_delay.pdf Graphic file (type pdf)
+<use fig/minor_delay.pdf>
+File: fig/des.pdf Graphic file (type pdf)
+<use fig/des.pdf>
+File: fig/window_efficiency.pdf Graphic file (type pdf)
+<use fig/window_efficiency.pdf>
+File: fig/window_fairness.pdf Graphic file (type pdf)
+<use fig/window_fairness.pdf>
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2662,13 +2675,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[28]
-File: fig/major_delay.pdf Graphic file (type pdf)
-<use fig/major_delay.pdf>
-File: fig/minor_delay.pdf Graphic file (type pdf)
-<use fig/minor_delay.pdf>
-File: fig/des.pdf Graphic file (type pdf)
-<use fig/des.pdf>
+[28])
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2681,11 +2688,6 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
 [29]
-File: fig/window_efficiency.pdf Graphic file (type pdf)
-<use fig/window_efficiency.pdf>
-File: fig/window_fairness.pdf Graphic file (type pdf)
-<use fig/window_fairness.pdf>
-)
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2710,18 +2712,6 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
 [31]
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[32]
 \openout2 = `content/communication.aux'.
 
  (./content/communication.tex
@@ -2736,7 +2726,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[33
+[32
 
 
 
@@ -2753,7 +2743,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[34]
+[33]
 File: ppt/network-graph.pdf Graphic file (type pdf)
 <use ppt/network-graph.pdf>
 
@@ -2778,16 +2768,28 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[35]
+[34]
 File: ppt/graph-modeling.pdf Graphic file (type pdf)
 <use ppt/graph-modeling.pdf>
 
-Overfull \hbox (86.49504pt too wide) in paragraph at lines 51--52
+Overfull \hbox (86.49504pt too wide) in paragraph at lines 55--56
  [][] 
  []
 
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
+[35]
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
 
 Package fancyhdr Warning: \headheight is too small (15.6585pt): 
 (fancyhdr)                Make it at least 16.86298pt, for example:
@@ -2809,18 +2811,6 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
 [37]
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[38]
 File: fig/multi-head.pdf Graphic file (type pdf)
 <use fig/multi-head.pdf>
 File: fig/node-regression.pdf Graphic file (type pdf)
@@ -2836,9 +2826,21 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
+[38]
+Missing character: There is no ， ("FF0C) in font ntx-Regular-tlf-ot1!
+Missing character: There is no ， ("FF0C) in font ntx-Regular-tlf-ot1!
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
 [39]
-Missing character: There is no ， ("FF0C) in font ntx-Regular-tlf-ot1!
-Missing character: There is no ， ("FF0C) in font ntx-Regular-tlf-ot1!
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2851,22 +2853,10 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
 [40]
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[41]
 File: fig/model-framework.pdf Graphic file (type pdf)
 <use fig/model-framework.pdf>
 
-Overfull \hbox (172.99008pt too wide) in paragraph at lines 179--180
+Overfull \hbox (172.99008pt too wide) in paragraph at lines 181--182
  [][] 
  []
 
@@ -2880,7 +2870,21 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
+[41]
+File: ./logo//nuaa.pdf Graphic file (type pdf)
+<use ./logo//nuaa.pdf>
+
+
+Package fancyhdr Warning: \headheight is too small (15.6585pt): 
+(fancyhdr)                Make it at least 16.86298pt, for example:
+(fancyhdr)                \setlength{\headheight}{16.86298pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
+
 [42]
+LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
+(Font)              scaled to size 10.53937pt on input line 241.
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2893,20 +2897,6 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
 [43]
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.53937pt on input line 235.
-File: ./logo//nuaa.pdf Graphic file (type pdf)
-<use ./logo//nuaa.pdf>
-
-
-Package fancyhdr Warning: \headheight is too small (15.6585pt): 
-(fancyhdr)                Make it at least 16.86298pt, for example:
-(fancyhdr)                \setlength{\headheight}{16.86298pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
-
-[44]
 File: ./fig/conv-6x6.pdf Graphic file (type pdf)
 <use ./fig/conv-6x6.pdf>
 File: ./fig/conv-6x6-b.pdf Graphic file (type pdf)
@@ -2915,15 +2905,6 @@ File: ./fig/conv-Hangzhou.pdf Graphic file (type pdf)
 <use ./fig/conv-Hangzhou.pdf>
 File: ./fig/conv-Jinan.pdf Graphic file (type pdf)
 <use ./fig/conv-Jinan.pdf>
-
-
-Package caption Warning: \label without proper reference on input line 254.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:convergence' on page 45 undefined on input line 2
-62.
-
 )
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
@@ -2936,7 +2917,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[45]
+[44]
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2948,7 +2929,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[46]
+[45]
 \openout2 = `content/conclusion.aux'.
 
  (./content/conclusion.tex
@@ -2965,7 +2946,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[47
+[46
 
 
 
@@ -2982,7 +2963,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[48
+[47
 
 
 
@@ -3000,7 +2981,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[49])
+[48])
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -3012,7 +2993,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[50]
+[49]
 \openout2 = `content/acknowledge.aux'.
 
  (./content/acknowledge.tex)
@@ -3027,7 +3008,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
-[51
+[50
 
 
 ]
@@ -3041,19 +3022,16 @@ See the caption package documentation for explanation.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `bachelor.out' has not changed.
-(rerunfilecheck)             Checksum: 8D2AAAEB0B67334D7770F2DC9B8EBDF4;5869.
+(rerunfilecheck)             Checksum: FA05E52CA8AA2AB6265DAE673FAF4524;6534.
  ) 
 Here is how much of TeX's memory you used:
- 48685 strings out of 476919
- 1127996 string characters out of 5823632
- 1535146 words of memory out of 5000000
- 67720 multiletter control sequences out of 15000+600000
- 560179 words of font info for 260 fonts, out of 8000000 for 9000
+ 48688 strings out of 476919
+ 1128274 string characters out of 5823632
+ 1536947 words of memory out of 5000000
+ 67723 multiletter control sequences out of 15000+600000
+ 551284 words of font info for 257 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  115i,18n,118p,1211b,1113s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on bachelor.xdv (57 pages, 564784 bytes).
+Output written on bachelor.xdv (58 pages, 575200 bytes).
