@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d (TeX Live 2021/W32TeX)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: master.aux
+A level-1 auxiliary file: content/abbr.aux
+A level-1 auxiliary file: content/background.aux
+A level-1 auxiliary file: content/status.aux
+A level-1 auxiliary file: content/fairness.aux
+A level-1 auxiliary file: content/communication.aux
+A level-1 auxiliary file: content/conclusion.aux
+The style file: nuaabib.bst
+A level-1 auxiliary file: content/acknowledge.aux
+A level-1 auxiliary file: content/backmatter.aux
+Database file #1: bib/ref.bib
+Warning--there's a publisher but no address in bakker2010traffic
+Warning--there's a publisher but no address in varaiya2013max
+Warning--can't use both volume and number fields in cao2016deep
+Warning--empty journal in 2018GraphRNN
+Warning--empty journal in 2018NetGAN
+Warning--there's a publisher but no address in cools2013self
+You've used 58 entries,
+            2306 wiz_defined-function locations,
+            872 strings with 16144 characters,
+and the built_in function-call counts, 30120 in all, are:
+= -- 3070
+> -- 788
+< -- 23
++ -- 368
+- -- 184
+* -- 2368
+:= -- 3984
+add.period$ -- 142
+call.type$ -- 58
+change.case$ -- 1
+chr.to.int$ -- 0
+cite$ -- 64
+duplicate$ -- 2141
+empty$ -- 3062
+format.name$ -- 236
+if$ -- 6916
+int.to.chr$ -- 0
+int.to.str$ -- 58
+missing$ -- 57
+newline$ -- 309
+num.names$ -- 58
+pop$ -- 260
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 643
+stack$ -- 0
+substring$ -- 3984
+swap$ -- 213
+text.length$ -- 23
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 6
+while$ -- 338
+width$ -- 60
+write$ -- 705
+(There were 6 warnings)

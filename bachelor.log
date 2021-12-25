@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.12.9)  24 DEC 2021 16:59
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.12.9)  24 DEC 2021 20:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2342,8 +2342,6 @@ Overfull \hbox (41.75124pt too wide) in paragraph at lines 75--85
  [][] 
  []
 
-File: fig/rl.pdf Graphic file (type pdf)
-<use fig/rl.pdf>
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2355,6 +2353,8 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
 [7]
+File: fig/rl.pdf Graphic file (type pdf)
+<use fig/rl.pdf>
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2458,6 +2458,13 @@ Overfull \hbox (86.49504pt too wide) in paragraph at lines 208--209
  [][] 
  []
 
+File: fig/gcn-gat.png Graphic file (type bmp)
+<fig/gcn-gat.png>
+
+Overfull \hbox (86.49504pt too wide) in paragraph at lines 217--218
+ [][] 
+ []
+
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -2469,15 +2476,9 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 (fancyhdr)                \addtolength{\topmargin}{-1.20448pt}.
 
 [15]
-File: fig/gcn-gat.png Graphic file (type bmp)
-<fig/gcn-gat.png>
-
-Overfull \hbox (86.49504pt too wide) in paragraph at lines 217--218
- [][] 
- []
-
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
+
 
 Package fancyhdr Warning: \headheight is too small (15.6585pt): 
 (fancyhdr)                Make it at least 16.86298pt, for example:
@@ -2895,7 +2896,7 @@ Package fancyhdr Warning: \headheight is too small (15.6585pt):
 
 [43]
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.53937pt on input line 241.
+(Font)              scaled to size 10.53937pt on input line 240.
 File: ./logo//nuaa.pdf Graphic file (type pdf)
 <use ./logo//nuaa.pdf>
 
@@ -3050,10 +3051,10 @@ Package rerunfilecheck Info: File `bachelor.out' has not changed.
 Here is how much of TeX's memory you used:
  48689 strings out of 476919
  1128285 string characters out of 5823632
- 1537947 words of memory out of 5000000
+ 1536947 words of memory out of 5000000
  67724 multiletter control sequences out of 15000+600000
  551284 words of font info for 257 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  115i,18n,118p,1211b,1111s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on bachelor.xdv (60 pages, 601332 bytes).
+Output written on bachelor.xdv (60 pages, 601908 bytes).

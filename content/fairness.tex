@@ -23,7 +23,9 @@
   \item 信号变化频率：信号改变的频率被定义为在某一时间段内信号改变的次数。直观地说，学到的政策不应该导致闪烁，即频繁地改变交通信号，因为车辆通过交叉口的有效绿色时间可能会减少。
 \end{itemize}
 \section{已有工作中的不足}
-虽然目前已经有不少基于强化学习的智能交通信号控制的研究，但是已有的方法更多的只注重提高通行效率，例如最小化队列长度或者最大化吞吐量，而忽略了公平性问题。事实上，这样的目标会导致学习到一个有偏见的策略。例如可能会出现如\autoref{fig:last-vehicle}所示的"last-vehicle"情况：N-S方向的道路上有源源不断的车辆到达，而E-W方向上是该车流的最后一辆车（Last-Vehicle）。显然，为了最大化通行效率，会优先放行N-S方向上的车流，而E-W车道上的车要等所有的所有的车流通过才能够得到响应，这对Last-Vehicle来说是极其不公平的。
+虽然目前已经有不少基于强化学习的智能交通信号控制的研究，但是已有的方法更多的只注重提高通行效率，例如最小化队列长度或者最大化吞吐量，而忽略了公平性问题。
+事实上，这样的目标会导致学习到一个有偏见的策略，即为了最大化系统的通行效率，控制模型会倾向于优先调度交通流量大的车道（即将这些交通流量对应的信号变为绿色），而忽略那些交通流量小的车道，因为这样做对整个路口的通行效率增益更高，但是这中做法会导致那些在交通流量小的车道上的车辆出现“饥饿”的情况，甚至在一些极端情况下会导致这些车辆要等待很长的时间才能够得到通过路口的机会。 更极端一点会出现如\autoref{fig:last-vehicle}所示的"last-vehicle"情况：N-S方向的道路上有源源不断的车辆到达，而E-W方向上是该车流的最后一辆车（Last-Vehicle）。
+显然，为了最大化通行效率，会优先放行N-S方向上的车流，而E-W车道上的车要等所有的所有的车流通过才能够得到响应，这对E-W方向上的车来说是极其不公平的。
 
 \begin{figure}[t]
   \includegraphics[width=0.9\textwidth]{fig/lastvehicle.pdf}
@@ -46,7 +48,21 @@
 \subsection*{动作选择}
 在本文中，动作选择机制是每次选择即将转换的信号相位。之后，交通信号灯将转换到这一新的相位并持续$\Delta t$的时间。为了安全起见，我们在两个不同的信号相位之间插入了3秒的黄色信号和2秒的红色信号。如果新选择的相位和当前相位相同，则不插入黄色和红色信号，以确保交通流畅。
 \subsection*{奖励函数}
-受PFS分配原则的启发，我们设计了一个可以在效率和公平之间提供良好的平衡的奖励函数，如下所示：
+为了能够在效率和公平性之间得到一个良好的平衡，我们借鉴了Proportional Fair Schedule(PFS)的思想。PFS是一种应用于无线通信领域的调度算法，它能够在最大化吞吐量的同时保证每个用户的比例公平，其中比例的定义如下：
+\begin{definition}[比例公平]
+\label{def:PFS}
+一个调度方案$P$是比例公平的当且仅当任何其他调度方案$S$满足下列条件：
+\begin{align}
+    \sum_{i \in U} \frac{R_{i}^{(S)}-R_{i}^{(P)}}{R_{i}^{(P)}} \leq 0
+\end{align}
+其中$U$是服务的用户集合，$R_i^{(S)}$表示在调度方案$S$下，用户$i$的平均速率。
+\end{definition}
+上述的约束表明，一个用户在分配上的任何正向变化必须导致系统的平均负向变化。在单载波无线网络情况下[20]，每次只允许一个用户传输，比例公平性的实现是通过每次将唯一的载波（或信道）按照以下规则分配给用户来实现的。
+\begin{align}
+    i^*=\underset{i\in U}{\arg \max } \frac{I_{i}}{\bar{T}_{i}}
+\end{align}
+其中$I_i$是根据实时信道条件估计的用户$i$瞬时吞吐量，$T_i$是用户$i$的平均吞吐量。这一原则意味着具有更高瞬时吞吐量的用户应具有更高的优先级来访问信道资源，以提高系统的整体吞吐量，同时，其平均吞吐量越小越有可能被调度，以保证一定程度的公平性。
+我们将这一思想拓展到交通信号控制领域，然后设计了一个可以在效率和公平之间提供良好的平衡的奖励函数，如下所示：
 \begin{align}
 \label{eq:reward}
     r = -\sum_{i=1}^{M} \frac{Q_i(t)}{\overline{L}_i(t) + \delta},
@@ -58,7 +74,7 @@
 其中$L_i(t)$是此次调度中车道$i$上得到放行的车的数量，$W$是一个平衡通行效率和公平性的参数。另外，为了避免公式\ref{eq:reward}的分母为0， 我们加上了一个可以忽略不计的正数$\delta$。
 
 \begin{figure}[htb]
-  \includegraphics[width=.9\textwidth]{fig/sysmodel.pdf}
+  \includegraphics[width=1.0\textwidth]{fig/sysmodel.pdf}
   \caption{系统模型}
   \label{fig:system-model}
 \end{figure}
@@ -92,9 +108,9 @@
                 \State 环境转移到新的状态$s_{t+1}$并返回一个奖励$r_{t+1}$。
                 \State 将经验$(s_t,a_t,r_{t+1},s_{t+1})$ 存储到经验回放池M中。
                 \If{$|M|>b$}{
-                    \State 从经验回放池M中随机采样b条经验数据。
+                    \State 从经验回放池M中随机采样$b$条经验数据。
                     \State 计算损失函数 $\mathcal{L}_j$:
-                    $\mathcal{L}_Q=[ r_{t+1}+\gamma \mathop{\arg\max}_{a^{'}} \mathcal{Q}(s_{t+1},a^{'};\theta)-\mathcal{Q}(s_t,a_t;\theta)]^2$;
+                    $\mathcal{L}_Q=[ r_{t+1}+\gamma \mathop{\arg\max}_{a^{'}} \mathcal{Q}(s_{t+1},a^{'};\theta)-\mathcal{Q}(s_t,a_t;\theta)]^2$。
                     \State 更新DQN参数。
                 }
                 \EndIf
@@ -140,11 +156,11 @@
     \item FIT(\textbf{F}airness-aware \textbf{I}ntelligent \textbf{T}raffic Light Control)：我们的方法。
 \end{itemize}
 \subsection{性能表现}
-首先，我们通过实验评估了不同方法的通信效率的表现，为了得到一个综合的结果，我们在不同的$\rho$值下进行了实验，实验结果如\autoref{fig:efficiency}所示。
+首先，我们通过实验评估了不同方法的通行效率的表现，为了得到一个综合的结果，我们在不同的$\rho$值下进行了实验，实验结果如\autoref{fig:efficiency}所示。
 可以观察到，我们的方法（FIT）的车辆通过路口的平均行驶时间远低于传统方法（行驶时间越短意味着效率越高），并且仅略低于只注重效率的LIT方法。
 \begin{figure}[htb]
-    \includegraphics[width=10cm]{fig/efficiency.pdf}
-    \caption{效率}
+    \includegraphics[width=0.9\textwidth]{fig/efficiency.pdf}
+    \caption{不同交通负载情况下四种方法的系统效率表现}
     \label{fig:efficiency}
 \end{figure}
 
@@ -154,14 +170,14 @@
 \end{align}
 其中$\bar{D}_{i}$是车道$i$的平均延误时间。当每个车道具有相同的平均延误时间时，JFI的值达到最大值，即1。\autoref{fig:fairness}展示了四种方法在不同$\rho$值下的平均延迟的JFI表现。从中我们可以看出FT和LIT的JFI值随着交通不平衡情况的加剧（即$\rho$值越大）而减小，而FIT任然能偶保持较高的值，并且高于同样能够保持稳定JFI值的SOTL方法。
 \begin{figure}[htb]
-    \includegraphics[width=10cm]{fig/fairness.pdf}
-    \caption{公平}
+    \includegraphics[width=0.9\textwidth]{fig/fairness.pdf}
+    \caption{不同交通负载情况下四种方法的系统公平性表现}
     \label{fig:fairness}
 \end{figure}
 
 然后，我们更加详细地研究了不同方法的延误情况。下面我们具体分析在主干道和支干道上四种方法在不同的$\rho$值情况下车辆延误时间分布情况。
 \begin{figure}[htb]
-    \includegraphics[width=10cm]{fig/major_delay.pdf}
+    \includegraphics[width=0.9\textwidth]{fig/major_delay.pdf}
     \caption{主干道(N-S方向)的车辆延误时间分布}
     \label{fig:major_delay}
 \end{figure}
@@ -170,7 +186,7 @@
 从\autoref{fig:minor_delay}中我们可以看出，在支干道上，随着$\rho$值的增加（即交通不平衡情况的加重），原先在主干道上表现优异的LIT方法性能开始恶化（），但是FIT依然能够保持一个相对低的延迟。
 
 \begin{figure}[htb]
-    \includegraphics[width=10cm]{fig/minor_delay.pdf}
+    \includegraphics[width=0.9\textwidth]{fig/minor_delay.pdf}
     \caption{支干道(N-S方向)的车辆延误时间分布}
     \label{fig:minor_delay}
 \end{figure}
@@ -186,10 +202,10 @@
 最后，我们研究了$W$参数的影响，因为$W$是用来平衡效率和公平性的，不同的值会导致学习到不同的策略，从\autoref{fig:window-size}中我们可以看出W值越高，越有利于系统的公平性。相反，W值越小，系统效率就越高。具体来说，当$W=1$时，我们方法FIT的整体性能接近于LIT
 \begin{figure}[htb]
     
-    \subfloat[效率\label{fig:window-size-efficiency}]{\includegraphics[width=0.4\textwidth]{fig/window_efficiency.pdf}}
-    \subfloat[公平性\label{fig:window-size-fairness}]{\includegraphics[width=0.4\textwidth]{fig/window_fairness.pdf}}
-    \caption{$W$对效率和公平性的影响}
+    \subfloat[参数$W$的取值对系统效率的影响\label{fig:window-size-efficiency}]{\includegraphics[width=0.45\textwidth]{fig/window_efficiency.pdf}}
+    \subfloat[参数$W$的取值对系统公平性的影响\label{fig:window-size-fairness}]{\includegraphics[width=0.45\textwidth]{fig/window_fairness.pdf}}
+    \caption{参数$W$的取值对系统效率和公平性的影响}
     \label{fig:window-size}
   \end{figure}
 
-
+\section{本章小结}

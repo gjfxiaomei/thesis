@@ -9,10 +9,10 @@
 \contentsline {subsection}{\numberline {2.3.1}Fixed-Time}{5}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Webster}{5}{subsection.2.3.2}%
 \contentsline {subsection}{\numberline {2.3.3}GreenWave}{5}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}Actuated Control}{6}{subsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.3.4}Actuated Control}{7}{subsection.2.3.4}%
 \contentsline {subsection}{\numberline {2.3.5}SOTL}{7}{subsection.2.3.5}%
 \contentsline {subsection}{\numberline {2.3.6}Max-Pressure Control}{7}{subsection.2.3.6}%
-\contentsline {section}{\numberline {2.4}基于强化学习的交通信号控制}{7}{section.2.4}%
+\contentsline {section}{\numberline {2.4}基于强化学习的交通信号控制}{8}{section.2.4}%
 \contentsline {subsection}{\numberline {2.4.1}强化学习概述}{8}{subsection.2.4.1}%
 \contentsline {subsubsection}{\numberline {2.4.1.1}分类}{10}{subsubsection.2.4.1.1}%
 \contentsline {subsection}{\numberline {2.4.2}基于强化学习的交通信号控制框架}{11}{subsection.2.4.2}%
@@ -20,7 +20,7 @@
 \contentsline {section}{\numberline {2.5}图神经网络}{14}{section.2.5}%
 \contentsline {subsection}{\numberline {2.5.1}图神经网络概述}{14}{subsection.2.5.1}%
 \contentsline {subsection}{\numberline {2.5.2}图卷积网络}{15}{subsection.2.5.2}%
-\contentsline {subsection}{\numberline {2.5.3}图注意力网络}{16}{subsection.2.5.3}%
+\contentsline {subsection}{\numberline {2.5.3}图注意力网络}{15}{subsection.2.5.3}%
 \contentsline {subsection}{\numberline {2.5.4}图自编码器}{17}{subsection.2.5.4}%
 \contentsline {subsection}{\numberline {2.5.5}图生成网络}{18}{subsection.2.5.5}%
 \contentsline {subsection}{\numberline {2.5.6}图时空网络}{19}{subsection.2.5.6}%

@@ -25,7 +25,7 @@
   title = {基于深度强化学习智能交通信号调度},
   author = {陈建},
   college = {计算机科学与技术学院},
-  advisers = {朱琨},
+  advisers = {朱琨教授},
   % applydate = {二〇一八年六月}  % 默认当前日期
   %
   % 本科
@@ -33,32 +33,36 @@
   studentid = {SX1916039},
   classid = {1318001},
   % 硕/博士
-  majorsubject = {\LaTeX},
-  researchfield = {\LaTeX 排版},
+  majorsubject = {计算机科学与技术},
+  researchfield = {网络与分布计算},
   libraryclassid = {TP371},       % 中图分类号
   subjectclassid = {080605},      % 学科分类号
-  thesisid = {1028704 18-S000},   % 论文编号
+  thesisid = {1028716 22-S038},   % 论文编号
 }
 \nuaasetEn{
   title = {Traffic Signal Control Based on Deep Reinforcement Learning},
-  author = {nuaatug},
-  college = {College of \TeX},
-  majorsubject = {\LaTeX{} Typesetting},
-  advisers = {Prof.~Donald Knuth, tex.se users},
-  degreefull = {Master of Art and Engineering},
+  author = {Jian Chen},
+  college = {College of Compute Science and Technology},
+  majorsubject = {Compute Science and Technology},
+  advisers = {Prof.Kun Zhu},
+  degreefull = {Network and distributed computing},
   % applydate = {June, 8012}
 }
 
 % 摘要
 \begin{abstract}
-  先进的学习技术的不断发展和更容易获得的实时交通数据使得动态调整交通信号成为可能。一些研究工作提出使用强化学习（RL）进行交通信号控制，与传统的方法相比，取得了卓越的性能。然而，现有的方法仍然有一些需要改进的地方。例如，大多数基于RL的单路口交通控制方法只关注于提高总效率，而忽略了公平问题。而对于多路口的交通信号控制，现有的方法在学习通信时试图将自己路口的所有信息传递给目标路口，这使得目标路口难以挖掘有效信息。
+  随着近些年来车辆数量的不断增加，交通拥塞情况已经变得越来越严重，并且极大地影响了人们的日常生活和城市的运作。传统的交通信号控制方法由于受限于严苛的假设条件以及没有考虑实时的交通状况，已经难以在现在更为负责的交通模式下起到很好的作用，如何设计出能够进一步提高通行效率的智能交通信号调度方法是一个亟需解决的问题。
+  
+  随着人工智能技术的不断发展以及对实时交通数据的获取变得更加容易，使得根据实时交通状况动态调整信号这一想法成为可能。一些研究工作提出使用强化学习（RL）进行交通信号控制，与传统的方法相比，取得了卓越的性能。然而，现有的方法仍然有一些需要改进的地方。例如，大多数基于RL的单路口交通控制方法只关注于提高总效率，而忽略了公平问题。另一方面，对于多路口的交通信号控制，现有的方法在学习通信时试图将自己路口的所有信息传递给目标路口，这使得目标路口难以挖掘有效信息。
 
   在本文中，我们对已有工作在这两种场景下的缺点进行了改进。对于单个路口的交通信号控制，我们提出了一个基于公平意识的RL模型，该模型受到比例公平调度的启发，可以在效率和公平之间提供一个良好的权衡。为了简化多路口交通信号控制中的协调工作，我们提出了一种新的建图方法，在汇总邻居信息时，可以消除与目标节点无关的信息。最后，我们进行综合实验来验证这两项工作的有效性。
 \end{abstract}
 \keywords{交通信号控制, 强化学习, 公平性, 协调, 图神经网络}
 
 \begin{abstractEn}
-Increasing development in advanced learning techniques and easier access to real-time traffic data make it possible to adjust the traffic signal dynamically. Several studies have proposed to use reinforcement learning (RL) for traffic signal
+With the increasing number of vehicles in recent years, traffic congestion has become more and more serious, and has greatly affected people's daily life and urban operation. The traditional traffic signal control methods have been difficult to play a good role in the more responsible traffic mode because they are limited by strict assumptions and do not consider the real-time traffic conditions. How to design an intelligent traffic signal scheduling method that can further improve the traffic efficiency is an urgent problem to be solved.
+
+With the continuous development of artificial intelligence technology and the easier acquisition of real-time traffic data, it is possible to dynamically adjust the signal according to the real-time traffic conditions. Several studies have proposed to use reinforcement learning (RL) for traffic signal
 control and achieved superior performance compared with the traditional methods. However, existing methods still have something to be improved. For example, most of the RL-based single intersection traffic control methods only focus on improving
 the total efficiency but ignore the fairness problem. And for multi-intersection traffic signal control, Existing methods try to transfer all the information of their own intersection to the target intersection when learning to communicate, 
 which makes it difficult for the target intersection to mine the effective information.
@@ -90,12 +94,12 @@ Finally, we conduct comprehensive experiments to verify the effectiveness of the
 \usepackage{pifont}
 
 \usepackage{algorithm}  
-\usepackage{algorithmicx}  
+\usepackage{algorithmicx}
 \usepackage{algpseudocode}  
 \usepackage{amsmath}  
 \floatname{algorithm}{算法}  
-\renewcommand{\algorithmicrequire}{\textbf{输入:}}  
-\renewcommand{\algorithmicensure}{\textbf{输出:}}  
+\renewcommand{\algorithmicrequire}{\textbf{输入:}}
+\renewcommand{\algorithmicensure}{\textbf{输出:}}
 
 
 % -------------------------允许算法跨页-------------
@@ -119,6 +123,8 @@ Finally, we conduct comprehensive experiments to verify the effectiveness of the
    \end{center}
   }
 \makeatother
+
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}  
 
 \lstdefinestyle{lstStyleBase}{%
   basicstyle=\small\ttfamily,
