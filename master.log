@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.12.9)  26 DEC 2021 01:38
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.12.9)  26 DEC 2021 21:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2065,32 +2065,31 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
  [2
 
 
-] (./master.toc [3
+] [3] (./master.toc [4
 
 
 ])
 \tf@toc=\write5
 \openout5 = `master.toc'.
 
- [4] (./master.lof)
+ [5] [6] (./master.lof)
 \tf@lof=\write6
 \openout6 = `master.lof'.
 
- (./master.lot)
+ (./master.lot [7
+
+
+])
 \tf@lot=\write7
 \openout7 = `master.lot'.
 
-
-[5
-
-
-]
+ [8]
 \openout2 = `content/abbr.aux'.
 
- (./content/abbr.tex [6
+ (./content/abbr.tex [9
 
 
-]) [7
+]) [10
 
 ]
 \openout2 = `content/background.aux'.
@@ -2109,8 +2108,11 @@ LaTeX Font Info:    Font shape `T1/qhv/m/n' will be
 
 ] [2]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 7.0pt on input line 55.
- [3] [4]) [5]
+(Font)              scaled to size 7.0pt on input line 54.
+ [3] [4]
+File: fig/paper-struct.pdf Graphic file (type pdf)
+<use fig/paper-struct.pdf>
+) [5] [6]
 \openout2 = `content/status.aux'.
 
  (./content/status.tex
@@ -2124,7 +2126,7 @@ LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
 (Font)              scaled to size 10.53937pt on input line 7.
 File: fig/tsc.pdf Graphic file (type pdf)
 <use fig/tsc.pdf>
- [6
+ [7
 
 
 
@@ -2135,10 +2137,12 @@ Overfull \hbox (67.90149pt too wide) in paragraph at lines 25--26
  信 号 计 划，|  由 一 组 相 位 序 列 及 其 相 应 的 起 始 时 间 组 成。|  通 常 表 示 为 $[] [] [] [] []$
  []
 
-[7]
+[8]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 5.0pt on input line 45.
- [8] [9]
+ [9]
+Missing character: There is no ￥ ("FFE5) in font ntx-Regular-tlf-ot1!
+ [10]
 File: fig/green-ware.pdf Graphic file (type pdf)
 <use fig/green-ware.pdf>
 
@@ -2151,60 +2155,57 @@ Overfull \hbox (22.66875pt too wide) in paragraph at lines 112--126
  [][] 
  []
 
-[10]
+[11]
 File: fig/max-pressure.pdf Graphic file (type pdf)
 <use fig/max-pressure.pdf>
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 141.
- [11] [12]
-Overfull \hbox (85.29994pt too wide) in paragraph at lines 189--200
- [][] 
- []
-
+ [12] [13]
 File: fig/rl.pdf Graphic file (type pdf)
 <use fig/rl.pdf>
-[13] [14]
+ [14] [15]
 File: fig/rl-classfication.pdf Graphic file (type pdf)
 <use fig/rl-classfication.pdf>
- [15]
+ [16]
 File: ./fig/single-intersection-RL.pdf Graphic file (type pdf)
 <use ./fig/single-intersection-RL.pdf>
 File: ./fig/multi-intersection-RL.pdf Graphic file (type pdf)
 <use ./fig/multi-intersection-RL.pdf>
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.53937pt on input line 282.
+(Font)              scaled to size 10.53937pt on input line 291.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 7.0pt on input line 282.
+(Font)              scaled to size 7.0pt on input line 291.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 5.0pt on input line 282.
- [16] [17] [18]
+(Font)              scaled to size 5.0pt on input line 291.
+ [17] [18] [19]
 File: fig/GCN.pdf Graphic file (type pdf)
 <use fig/GCN.pdf>
 File: fig/gcn-gat.pdf Graphic file (type pdf)
 <use fig/gcn-gat.pdf>
- [19] [20] [21] [22]) [23]
+ [20] [21] [22] [23]) [24]
 \openout2 = `content/fairness.aux'.
 
- (./content/fairness.tex
+
+(./content/fairness.tex
 第三章
-[24
+[25
 
 
 
 
-]
+] [26]
 File: fig/lastvehicle.pdf Graphic file (type pdf)
 <use fig/lastvehicle.pdf>
- [25] [26]
+ [27] [28]
 File: fig/sysmodel.pdf Graphic file (type pdf)
 <use fig/sysmodel.pdf>
- [27]
+ [29]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 7.52812pt on input line 123.
- [28] [29]
+(Font)              scaled to size 7.52812pt on input line 166.
+ [30] [31]
 File: fig/efficiency.pdf Graphic file (type pdf)
 <use fig/efficiency.pdf>
- [30]
+ [32]
 File: fig/fairness.pdf Graphic file (type pdf)
 <use fig/fairness.pdf>
 File: fig/major_delay.pdf Graphic file (type pdf)
@@ -2213,18 +2214,18 @@ File: fig/minor_delay.pdf Graphic file (type pdf)
 <use fig/minor_delay.pdf>
 File: fig/des.pdf Graphic file (type pdf)
 <use fig/des.pdf>
- [31]
+ [33]
 File: fig/window_efficiency.pdf Graphic file (type pdf)
 <use fig/window_efficiency.pdf>
 File: fig/window_fairness.pdf Graphic file (type pdf)
 <use fig/window_fairness.pdf>
-) [32] [33] [34]
+) [34] [35] [36]
 \openout2 = `content/communication.aux'.
 
 
 (./content/communication.tex
 第四章
-[35
+[37
 
 
 
@@ -2233,31 +2234,32 @@ File: fig/window_fairness.pdf Graphic file (type pdf)
 File: ppt/network-graph.pdf Graphic file (type pdf)
 <use ppt/network-graph.pdf>
 
-Overfull \hbox (86.49504pt too wide) in paragraph at lines 35--36
+Overfull \hbox (86.49504pt too wide) in paragraph at lines 40--41
  [][] 
  []
 
 File: ppt/information-redundancy.pdf Graphic file (type pdf)
 <use ppt/information-redundancy.pdf>
 
-Overfull \hbox (86.49504pt too wide) in paragraph at lines 42--43
+Overfull \hbox (86.49504pt too wide) in paragraph at lines 47--48
  [][] 
  []
 
+[38]
 File: ppt/graph-modeling.pdf Graphic file (type pdf)
 <use ppt/graph-modeling.pdf>
-[36] [37] [38]
+ [39] [40] [41]
 File: fig/multi-head.pdf Graphic file (type pdf)
 <use fig/multi-head.pdf>
 File: fig/node-regression.pdf Graphic file (type pdf)
 <use fig/node-regression.pdf>
- [39]
+ [42]
 Missing character: There is no ， ("FF0C) in font ntx-Regular-tlf-ot1!
 Missing character: There is no ， ("FF0C) in font ntx-Regular-tlf-ot1!
- [40] [41]
+ [43]
 File: fig/model-framework.pdf Graphic file (type pdf)
 <use fig/model-framework.pdf>
- [42] [43] [44]
+ [44] [45] [46]
 File: ./fig/conv-6x6.pdf Graphic file (type pdf)
 <use ./fig/conv-6x6.pdf>
 File: ./fig/conv-6x6-b.pdf Graphic file (type pdf)
@@ -2266,34 +2268,34 @@ File: ./fig/conv-Hangzhou.pdf Graphic file (type pdf)
 <use ./fig/conv-Hangzhou.pdf>
 File: ./fig/conv-Jinan.pdf Graphic file (type pdf)
 <use ./fig/conv-Jinan.pdf>
-) [45] [46]
+) [47] [48]
 \openout2 = `content/conclusion.aux'.
 
 
 (./content/conclusion.tex
 第五章
-) [47
+[49
 
 
 
 
-] (./master.bbl [48
+]) [50] (./master.bbl [51
 
 
 
 
 
-] [49] [50]) [51]
+] [52] [53] [54]) [55]
 \openout2 = `content/acknowledge.aux'.
 
- (./content/acknowledge.tex) [52
+ (./content/acknowledge.tex)
+[56
 
 
 ]
 \openout2 = `content/backmatter.aux'.
 
-
-(./content/backmatter.tex) [53
+ (./content/backmatter.tex) [57
 
 
 
@@ -2308,15 +2310,15 @@ See the caption package documentation for explanation.
 (./content/conclusion.aux) (./content/acknowledge.aux)
 (./content/backmatter.aux))
 Package rerunfilecheck Info: File `master.out' has not changed.
-(rerunfilecheck)             Checksum: 163B0D5F8552FF4C6AEC307D54A6192A;7912.
+(rerunfilecheck)             Checksum: F7E5E6B2622A0CF0E2FC8C78545E9187;8162.
  ) 
 Here is how much of TeX's memory you used:
- 48741 strings out of 476919
- 1129995 string characters out of 5823632
- 1546320 words of memory out of 5000000
- 67762 multiletter control sequences out of 15000+600000
+ 48820 strings out of 476919
+ 1132479 string characters out of 5823632
+ 1552552 words of memory out of 5000000
+ 67840 multiletter control sequences out of 15000+600000
  522118 words of font info for 190 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 115i,17n,118p,1209b,1213s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 115i,17n,118p,1209b,1273s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on master.xdv (63 pages, 840368 bytes).
+Output written on master.xdv (70 pages, 934496 bytes).

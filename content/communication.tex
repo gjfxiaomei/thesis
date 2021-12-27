@@ -1,5 +1,10 @@
 
-\chapter{多路口场景智能交通信号调度}
+\chapter{基于深度强化学习的多路口智能交通信号调度}
+\section{引言}
+相较于单路口的交通信号调度，多路口场景下的交通信号调度更注重对信号协调的研究。信号协调是指交通流量能够不间断地通过连续的交叉路口，即在行驶过程中没有因为遇到红色信号而停靠，那么这些路口的交通信号就是实现了协调。
+在现在交通协调系统中，这种信号协调只有在交通流量相对稳定的单行道上才能够实现，但为了缓解高峰时刻的交通压力，更多的是使用双向道。此外，交叉路口之间的相互干扰造成的交通拥堵也会致使信号协调失败，因此实现交叉路口之间的协调控制显得格外重要，因为信号灯的行动可能会相互影响，特别是当交叉路口紧密相连时，交通信号灯之间的良好合作能够使车辆更快地通过。
+
+在传统交通信号控制领域，解决交叉路口之间协调合作问题的典型方法就是将其转化成一个优化问题，并在某些假设条（例如，均匀的车辆到达率\cite{roess2004traffic,webster1958traffic}以及无限的车道容量\cite{}）件下求解。但是由于假设条件在现实场景下很难实现，这类方法并没有很好的表现。
 
 \section{相关工作}
 由于强化学习在单路口交通信号控制上取得了优异的成绩，人们开始致力于使用多智能体强化学习（Multi-Agent Reinforcement Learning, MARL）来解决多路口场景下的交通信号调度。Claus在\inlinecite{claus1998dynamics}中将MARL分为了两类：联合动作学习（Joint Action Learning）和独立学习（Independent Learning）。
@@ -18,7 +23,7 @@
 \end{align}
 其中$w_{i,j}$是预先定义的权重。他们试图通过在单个智能体的学习过程的损失函数中增加一个整形项，并使单个Q值的加权和与全局Q值的差异最小化，从而确保单个智能体在学习过程中能够考虑到其他智能体的情况。
 
-多路口信号控制的另一条研究路线是使用独立的RL（IRL）智能体来控制交通信号，其中每个RL智能体控制一个路口。与联合动作学习方法不同，每个智能体可以在不知道其他智能体的奖励信号的情况下学习控制策略。根据智能体之间是否进行信息交互进一步分为以下两类：
+多路口智能交通信号调度的另一条研究路线是使用独立的强化学习（Independent Reinforcement Learning, IRL）智能体来控制交通信号，其中每个RL智能体控制一个路口。与联合动作学习方法不同，每个智能体可以在不知道其他智能体的奖励信号的情况下学习控制策略。根据智能体之间是否进行信息交互进一步分为以下两类：
 \begin{itemize}
   \item IRL without Communication：IRL单独处理每个交叉口，每个agent观察自己的本地环境，不使用显式通信来解决冲突\inlinecite{mannion2016experimental,casas2017deep,zheng2020learning,pham2013learning,liu2018deep,calvo2018heterogeneous,gong2019decentralized}。在一些简单的场景中，如动脉网络，这种方法表现良好，可以形成了几个小绿波（Green waves）。
   然而，当环境变得复杂时，来自相邻agent的非平稳影响将被带到环境中，如果agent之间没有通信或协调机制，学习过程通常无法收敛到平稳策略。为了应对这一挑战，wei在\inlinecite{wei2019presslight}中提出了一个特定的奖励函数，去描述相邻智能体之间的需求从而实现协调。
@@ -29,45 +34,46 @@
   在其他工作中，\inlinecite{wei2019colight,wang2020stmarl}提出使用图注意网络来学习相邻智能体和自我智能体的隐藏状态之间的动态相互作用。应该指出的是，利用max-plus学习联合行动学习者的方法和利用图卷积网络学习通信的方法之间有很强的联系，因为它们都可以被看作是学习图上的信息传递，其中前一种方法传递奖励，后一种方法传递状态观测信息。
 \end{itemize}
 
-\section{已有工作中的不足}
-目前大多数工作在使用图神经网络Learn to Communicate的时候，都是以intersection为节点来进行图建模，将每一个路口视作图中的一个节点，每条道路作为连接两个节点的边，很自然地可以将一张交通道路网建模成一个图， 如\autoref{fig:network-graph-old}所示：
+\section{研究目标}
+目前大多数工作在使用图神经网络进行信息交互的过程中，都是以交叉路口为节点来进行图建模，将每一个路口视作图中的一个节点，每条道路作为连接两个节点的边，很自然地可以将一张交通道路网建模成一个图， 如\autoref{fig:network-graph-old}所示：
 \begin{figure}[htb]
   \includegraphics[width=1.2\textwidth]{ppt/network-graph.pdf}
   \caption{以路口为节点的建图方式示意图}
   \label{fig:network-graph-old}
 \end{figure}
-在这种建模方式下，每条车道的车辆以及当前的相位将作为该节点的特征。这种建模方式虽然可以很清晰的将多路口场景变成一张图。但是，因为是以一个路口为一个节点，所有车道的状态信息都整合到了一起，有些车道的的信息对目标节点是无用的，
+在这种建模方式下，每条车道的车辆以及当前的相位将作为该节点的特征。这种建模方式虽然可以很清晰的将多路口场景变成一张图。但是，因为是以一个路口为一个节点，所有车道的状态信息都整合到了一起，在进行信息交互的时候会出现信息冗余的情况，即当前路口下有些车道的的信息对目标路口是没有价值的，
 如\autoref{fig:information-redundancy}所示：
 \begin{figure}[htb]
   \includegraphics[width=1.2\textwidth]{ppt/information-redundancy.pdf}
   \caption{在以路口为节点的建图方式下的信息传递示意图}
   \label{fig:information-redundancy}
 \end{figure}
-路口B中只有车道2的交通流向与路口A有关，车道1和车道3的车辆不会行驶到路口A。在信息传递的时候，如果将路口B所有的信息都笼统地传递过去，将会增加路口A的智能体提取有效信息的难度，从而降低学习的效率。
+路口B中只有车道2的交通流向与路口A有关，车道1和车道3的车辆不会行驶到路口A。在信息交互的时候，如果将路口B所有的信息都笼统地传递过去，将会增加路口A的智能体提取有效信息的难度，从而降低学习的效率。
 
-\section{改进}
-\subsection{目标}
-我们的目标是在进行信息交互的时候能够剔除与目标节点无关的信息，从而降低目标节点聚合邻居节点信息的难度，提高学习效率。
+因此本工作的研究目标是在进行信息交互的时候能够剔除与目标节点无关的信息，从而降低目标节点聚合邻居节点信息的难度，提高学习效率。
+
+\section{系统设计}
+本文沿用已有的工作\cite{wei2019colight}采用IRL with Communication的协调控制策略。首先提出了一种新的道路网建图方式，在此基础上，我们设计了一个新的信息交互模块，并与基于深度强化学习的智能交通调度模块想相结合从而实现协调控制。
 
 \subsection{基于道路的图建模方式}
-本文同样采用IRL with Communication的框架，与已有工作不同的是，我们采用不同的建模方式：以道路为节点进行图建模，即一条道路就是一个节点，如\autoref{fig:network-graph-new}所示：
+为了缓解智能体之间信息交互过程中的信息冗余问题 我们提出了一种新的图建模方式：以道路为节点进行图建模，即一条道路就是一个节点，如\autoref{fig:network-graph-new}所示：
 \begin{figure}[htb]
   \includegraphics[width=0.9\textwidth]{ppt/graph-modeling.pdf}
   \caption{以道路为节点的建图方式示意图}
   \label{fig:network-graph-new}
 \end{figure}
 
-此外，我们根据当前的信号相位对图的边设一个权重。这里我们规定，如果在当前相位下，道路$i$到道路$j$之间的交通是允许通行的，则表示$(i,j)$的状态是'connected'，权重的具体定义方法如下：
+此外，我们根据当前的信号相位对图中的每边赋予了一个权重。这里我们规定，如果在当前相位下，道路$i$到道路$j$之间的交通是允许通行的，则表示$(i,j)$的状态是'connected'，权重的具体定义方法如下：
 \begin{align}
   w_{i,j} = \begin{cases}
     1 & (i, j) \text{ is connected} \\
     0 & \text{otherwise}
   \end{cases}
 \end{align}
-这个权重$w_{i,j}$将被用于剔除对目标节点无用的信息。
+这个权重$w_{i,j}$信息将被用于在信息交互过程中无效信息的剔除。
 
-\subsection{Learn to Communicate}
-这里我们沿用\inlinecite{wei2019colight,wang2020stmarl}工作使用图注意网络，但是与之不同的是，我们不是用来学习目标节点和邻近节点的隐藏状态之间的动态相互作用，而是用来做节点回归（Node Regression），即估计目标节点在下一个时间点的特征。具体包括以下几个过程：
+\subsection{信息交互模块设计}
+这里我们沿用\inlinecite{wei2019colight,wang2020stmarl}工作使用图注意网络来学习信息交互，但是与之不同的是，我们不是用来学习目标节点和邻近节点的隐藏状态之间的动态相互作用，而是用来做节点回归（Node Regression），即估计目标节点在下一个时间点的特征。具体包括以下几个过程：
 \begin{itemize}
   \item 重要性计算：为了了解节点$j$（源节点）的信息在确定节点$i$（目标节点）下一时刻的特征的重要性，我们首先嵌入两个节点的特征，然后计算他们之间的相关系数$e_{i j}$（节点$j$在确定节点$i$的特征时的重要性），具体操作如下：
   \begin{align}
@@ -112,7 +118,7 @@
 \end{figure}
 由于我们是以道路为节点进行建图的，所以即便是单个路口也可以表示成一个图，所以当有多个路口的时候，会产生一张很大的图。这里每个节点维护自己路口的子图，包括更新子图中的节点特征以及边的权重（根据当前路口的信号相位确定）。
 
-\subsection{模型框架}
+\subsection{系统框架}
 如\autoref{fig:model-framework}所示，对于单个路口来说，有两个模型，一个是用来进行交通信号控制的DQN模型$\mathcal{Q}$，另一个是用来预测下一调度时刻状态的GAT模型$\mathcal{G}$。
 对于DQN模型来说，每次根据输入的状态来选择动作，其中状态由以下几部分组成：
 \begin{itemize}
@@ -137,7 +143,7 @@
 
 具体的算法流程如\autoref{alg:dqn-gat}所示。
 \begin{breakablealgorithm}
-  \caption{multi-intersection}
+  \caption{多路口协调控制中单一路口智能调度策略训练流程}
   \label{alg:dqn-gat}
   \begin{algorithmic}[1] %每行显示行号  
       \Require 
@@ -179,13 +185,16 @@
 
 \begin{figure}[htb]
   \includegraphics[width=0.9\textwidth]{fig/model-framework.pdf}
-  \caption{模型框架}
+  \caption{多路口场景下信号调度智能体与环境交互示意图}
   \label{fig:model-framework}
 \end{figure}
+
 \section{实验}
+\subsection{环境介绍}
 我们分别在两个合成的数据集和两个真实数据集上对我们的方法进行了实验，以评估我们方法的性能。由于实验是对针对多路口场景，我们这里的仿真工具使用的是CityFlow\footnote{http://cityflow-project.github.io}，其对大规模交通信号控制的支持更加出色。
-\subsection{数据集介绍}
+
 \textbf{合成数据：}延用\inlinecite{wei2019colight}的做法，我们使用了以下以下两种人为合成的交通数据：
+
 \begin{itemize}
   \item $Grid_{6x6}-b$：6x6的路网结构，其中每个路口有四个方向（西$\rightarrow$东、东$\rightarrow$西、南$\rightarrow$北以及北$\rightarrow$南），每个方向有三条车道（长300米，宽3米）。车辆在西$\leftrightarrow$东方向的生成速率是300辆/车道/小时，在南$\leftrightarrow$北方向的生成速率是90辆/车道/小时。
   \item $Grid_{6x6}$：与$Grid_{6x6}$的路网结构相同，但是只有单向的车辆流动，即只有西$\rightarrow$东和北$\rightarrow$南的单向交通流动。
@@ -217,18 +226,20 @@
   \item FT\cite{koonce2008traffic}: 这种方法以预先设定的方式循环改变信号。
   \item MaxPressure\cite{varaiya2013max}：传统交通领域最先进的网络级的交通信号控制方法，每次调度时，选择压力最大的相位。
   \item Individual RL\cite{wei2018intellilight}：一种基于深度强化学习的交通信号控制方法，不考虑邻居信息。每个路口由一个智能体控制，智能体之间不共享参数，而是独立更新自己的网络。
-  \item GCN\cite{van2016coordinated}：一种基于深度强化学习的交通信号控制方法，使用图卷积神经网络（GCN）提取相邻路口的交通特征，不过其图建模方式是以路口为节点。
+  \item GCN\cite{van2016coordinated}：一种基于深度强化学习的交通信号控制方法，使用GCN提取相邻路口的交通特征，不过其图建模方式是以路口为节点。
   \item Colight\cite{wei2019colight}：与GCN方法类似，都是以路口为节点的图建模方法，不过其使用GAT来学习不同路口之间的动态交互。
   \item GAT-Road：我们的方法，基于一种新的图建模方式（以道路为节点）。
 \end{itemize}
-\subsection{性能表现}
+\subsection{性能评估}
 
 \begin{table}[htb]
   \caption{不同方法在合成数据集和真实数据集上关于平均通行时间的表现}
   \label{tab:performance}
   \begin{tabular}{lcccc}
   \toprule
-  方法 & $Grid_{6x6}-Uni$ & $Grid_{6x6}-Bi$ & $D_Hangzhou$ & $D_Jinan$ \\
+  \multirow{2}{*}{方法} & \multicolumn{4}{c}{所有路口的车辆平均通行时间（单位：秒）} \\
+  \cline{2-5}
+  &\multicolumn{1}{c}{$Grid_{6x6}-Uni$} & \multicolumn{1}{c}{$Grid_{6x6}$-b} & \multicolumn{1}{c}{$D_Hangzhou$} & \multicolumn{1}{c}{$D_Jinan$}\\
   \hline
   Fixedtime & 209.68 & 209.68 & 728.79 & 869.85 \\
   MaxPressure & 186.07 & 194.96 &  422.15 & 361.33 \\
@@ -237,15 +248,14 @@
   GCN & 205.40 & 272.14 & 768.43 & 625.66 \\
   CoLight & 173.79 & 170.11 & 297.26 & 291.14 \\
   \hline
-  GAT-Road & \textbf{156.32} & \textbf{161.56} & \textbf{290.44} & \textbf{279.67} \\
+  \textbf{GAT-Road} & \textbf{156.32} & \textbf{161.56} & \textbf{290.44} & \textbf{279.67} \\
   \bottomrule
   \end{tabular}
 \end{table}
 我们在合成数据和真实数据上进行了大量实验，并和已有方法进行了对比，然后在通行效率和模型收敛性上进行了分析。
 
-\subsubsection{性能比较}
+\textbf{（1）效率比较}：
 
-\textbf{效率比较}：
 \autoref{tab:performance}列出了所有方法在合成数据和真实数据上路口的平均通行时间，可以看出，无论是在合成数据还是真实数据集上，我们的方法都取得了最好的表现。进一步的观察数据我们可以看出：
 与传统交通控制中最先进的方法(MaxPressure)相比，我们的方法在合成数据和真实数据上都取得了一致的性能改进，其中在合成数据上的平均改进率是$16.6\%$，在真实数据上的平均改进率是$26.9\%$。
 
@@ -255,14 +265,15 @@ GCN在真实数据上的表现并不出色是因为其在聚合邻居节点的�
 
 虽然CoLight也是使用GAT学习邻居节点的动态交互，但是由于其是以路口为节点来进行建图的，在数据交互的时候传递的是路口的所有交通信息，导致目标节点在聚合信息时难以挖掘有效的信息。而我们的方法GAT-Road以道路为节点进行建模，并且根据相位信息剔除掉了对目标节点无效的信息，因此表现更加出色。
 
-\textbf{收敛性比较}：
-我们将我们的方法GAT-Road与其他三种基于学习的方法（Individual、GCN和Colight）分别合成数据和真实数据上的学习收敛速度进行了比较，结果如\autoref{fig:convergence}所示通过对比我们可以看出：
+\textbf{（2）收敛性比较}：
+
+我们将我们的方法GAT-Road与其他三种基于深度强化学习的方法（Individual、GCN和Colight）分别合成数据和真实数据上的学习收敛速度进行了比较，结果如\autoref{fig:convergence}所示通过对比我们可以看出：
 \begin{figure}[t]
-  \subfloat[$Grid_{6x6}$]{\includegraphics[width=0.45\textwidth]{./fig/conv-6x6.pdf}}\quad
-  \subfloat[$Grid_{6x6}$-b]{\includegraphics[width=0.45\textwidth]{./fig/conv-6x6-b.pdf}}\\
-  \subfloat[$D_{Hangzhou}$]{\includegraphics[width=0.45\textwidth]{./fig/conv-Hangzhou.pdf}}\quad
-  \subfloat[$D_{Jinan}$]{\includegraphics[width=0.45\textwidth]{./fig/conv-Jinan.pdf}}
-  \caption[]{GAT-Road和其他三种基于学习的方法的收敛速度}
+  \subfloat[四种基于深度强化学习的方法在数据集$Grid_{6x6}$上的训练收敛性表现]{\includegraphics[width=0.45\textwidth]{./fig/conv-6x6.pdf}}\quad
+  \subfloat[四种基于深度强化学习的方法在数据集$Grid_{6x6}$-b上的训练收敛性表现]{\includegraphics[width=0.45\textwidth]{./fig/conv-6x6-b.pdf}}\\
+  \subfloat[四种基于深度强化学习的方法在数据集$D_{Hangzhou}$上的训练收敛性表现]{\includegraphics[width=0.45\textwidth]{./fig/conv-Hangzhou.pdf}}\quad
+  \subfloat[四种基于深度强化学习的方法在数据集$D_{Jinan}$上的训练收敛性表现]{\includegraphics[width=0.45\textwidth]{./fig/conv-Jinan.pdf}}
+  \caption[]{四种基于深度强化学习的方法在合成数据集以及真实数据集上的训练收敛性表现}
   \label{fig:convergence}
 \end{figure}
 与同样是使用IRL with Communication框架的GCN和Colight相比，我们的方法的收敛速度更快，这得益于我们提出的新的建图方式，在这种建图方式下，节点在进行信息聚合时可以剔除与目标节点无关的信息，从而降低了学习的难度，模型更容易收敛。
@@ -271,5 +282,6 @@ GCN方法在合成数据上收敛效果较好，但是在真实数据上收敛�
 
 虽然Individual最终也能收敛到最佳性能，但是由于其是独立优化单个路口的策略，没有考虑到周围路口环境的交通信息，因此其刚开始时的性能表现相较于其他三种方法更差，并且收敛速度更慢。
 
-
 \section{本章小结}
+本章首先给出了多路口场景下交通信号调度的主要研究目标，然后总结了近些年来基于深度强化学习的多路口交通信号调度的研究工作，通过分析这些工作的不足，我们给出了本章工作的研究目标。
+我们提出了一个新的路网建图方式并在此基础上设计了一种新的信息交互模块，可以有效地剔除数据交互过程中邻居节点的无效信息。最后我们在仿真环境中分别就合成交通数据和真实交通数据进行了实验，并与已有方法进行对比，进一步阐述了我们的模型在通行效率和学习速度上的提升。

@@ -1,30 +1,32 @@
-\contentsline {figure}{\numberline {2.1}{\ignorespaces 交通信号术语图示\relax }}{6}{figure.caption.8}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces green-wave\relax }}{10}{figure.caption.9}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Max-Pressure的压力图示\relax }}{12}{figure.caption.11}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces 马尔可夫决策过程\relax }}{14}{figure.caption.13}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces 强化学习分类及常见算法\relax }}{15}{figure.caption.14}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {单路口场景}}}{16}{subfigure.6.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {多路口场景}}}{16}{subfigure.6.2}%
-\contentsline {figure}{\numberline {2.7}{\ignorespaces 图卷积示意图\relax }}{19}{figure.caption.16}%
-\contentsline {figure}{\numberline {2.8}{\ignorespaces GCN与GAT聚合信息的区别示意图\relax }}{20}{figure.caption.17}%
-\contentsline {figure}{\numberline {3.1}{\ignorespaces last vehicle\relax }}{25}{figure.caption.18}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces 系统模型\relax }}{27}{figure.caption.19}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces 不同交通负载情况下四种方法的系统效率表现\relax }}{30}{figure.caption.21}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces 不同交通负载情况下四种方法的系统公平性表现\relax }}{31}{figure.caption.22}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces 主干道(N-S方向)的车辆延误时间分布\relax }}{32}{figure.caption.23}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces 支干道(N-S方向)的车辆延误时间分布\relax }}{33}{figure.caption.24}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces 驾驶体验得分统计\relax }}{33}{figure.caption.25}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces 参数$W$的取值对系统效率和公平性的影响\relax }}{34}{figure.caption.26}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {参数$W$的取值对系统效率的影响}}}{34}{subfigure.8.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {参数$W$的取值对系统公平性的影响}}}{34}{subfigure.8.2}%
-\contentsline {figure}{\numberline {4.1}{\ignorespaces 以路口为节点的建图方式示意图\relax }}{37}{figure.caption.27}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces 在以路口为节点的建图方式下的信息传递示意图\relax }}{38}{figure.caption.28}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces 以道路为节点的建图方式示意图\relax }}{39}{figure.caption.29}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces 多头注意力计算示意图（$k=3$）\relax }}{40}{figure.caption.30}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces 节点回归计算示意图\relax }}{41}{figure.caption.31}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces 模型框架\relax }}{42}{figure.caption.32}%
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {$Grid_{6x6}$}}}{45}{subfigure.7.1}%
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {$Grid_{6x6}$-b}}}{45}{subfigure.7.2}%
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {$D_{Hangzhou}$}}}{45}{subfigure.7.3}%
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {$D_{Jinan}$}}}{45}{subfigure.7.4}%
+\contentsline {figure}{\numberline {1.1}{\ignorespaces 论文组织结构\relax }}{5}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces 交通信号术语图示\relax }}{7}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces GreenWave方法的绿色信号波示意图\relax }}{11}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Max-Pressure的压力图示\relax }}{13}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces 马尔可夫决策过程示意图\relax }}{15}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces 强化学习分类及常见算法\relax }}{16}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces 基于强化学习的交通信号控制框架\relax }}{17}{figure.caption.16}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {单路口场景}}}{17}{subfigure.6.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {多路口场景}}}{17}{subfigure.6.2}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces 图卷积示意图\relax }}{21}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces GCN与GAT聚合信息的区别示意图\relax }}{21}{figure.caption.18}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces "last-vehicle"情况示意图\relax }}{28}{figure.caption.20}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces 单路口场景下信号调度智能体与环境交互示意图\relax }}{29}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces 不同交通负载情况下四种方法的路口通行效率表现\relax }}{32}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces 不同交通负载情况下四种方法的调度公平性表现\relax }}{33}{figure.caption.24}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces 不同交通负载情况下四种方法在主干道(N-S方向)的车辆延误时间分布\relax }}{34}{figure.caption.25}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces 不同交通负载情况下四种方法在支干道(N-S方向)的车辆延误时间分布（单位：秒）\relax }}{35}{figure.caption.26}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces 在$\rho =0.75$的交通负载情况下四种方法的驾驶体验得分分布\relax }}{35}{figure.caption.27}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces \autoref {eq:li-update}中的参数$W$的取值对通行效率和调度公平性的影响\relax }}{36}{figure.caption.28}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\autoref {eq:li-update}中的参数$W$的取值对通行效率的影响}}}{36}{subfigure.8.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {\autoref {eq:li-update}中的参数$W$的取值对调度公平性的影响}}}{36}{subfigure.8.2}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces 以路口为节点的建图方式示意图\relax }}{39}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces 在以路口为节点的建图方式下的信息传递示意图\relax }}{40}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces 以道路为节点的建图方式示意图\relax }}{41}{figure.caption.31}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces 多头注意力计算示意图（$k=3$）\relax }}{42}{figure.caption.32}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces 节点回归计算示意图\relax }}{43}{figure.caption.33}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces 多路口场景下信号调度智能体与环境交互示意图\relax }}{45}{figure.caption.34}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {四种基于深度强化学习的方法在数据集$Grid_{6x6}$上的训练收敛性表现}}}{48}{subfigure.7.1}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {四种基于深度强化学习的方法在数据集$Grid_{6x6}$-b上的训练收敛性表现}}}{48}{subfigure.7.2}%
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {四种基于深度强化学习的方法在数据集$D_{Hangzhou}$上的训练收敛性表现}}}{48}{subfigure.7.3}%
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {四种基于深度强化学习的方法在数据集$D_{Jinan}$上的训练收敛性表现}}}{48}{subfigure.7.4}%
 \contentsfinish 

@@ -1915,6 +1915,9 @@ INPUT content/background.tex
 INPUT d:/Software/texlive/texmf-dist/fonts/tfm/public/tex-gyre/ec-qhvr.tfm
 INPUT d:/Software/texlive/texmf-dist/fonts/tfm/public/tex-gyre/ec-qhvr.tfm
 INPUT d:/Software/texlive/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-t1.tfm
+INPUT ./fig/paper-struct.pdf
+INPUT ./fig/paper-struct.pdf
+INPUT fig/paper-struct.pdf
 INPUT ./content/status.tex
 INPUT ./content/status.tex
 INPUT ./content/status.tex
