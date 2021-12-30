@@ -1,8 +1,8 @@
-\contentsline {table}{\numberline {1.1}{\ignorespaces 2016-2020年汽车保有量超过100万的城市数据统计(数据来源：公安部)\relax }}{2}{table.caption.7}%
-\contentsline {table}{\numberline {2.1}{\ignorespaces Actuated Control 信号相位请求触发规则\relax }}{12}{table.caption.11}%
-\contentsline {table}{\numberline {2.2}{\ignorespaces 传统交通信号控制方法总结\relax }}{14}{table.caption.13}%
-\contentsline {table}{\numberline {3.1}{\ignorespaces 基于深度强化学习的智能交通信号调度方法分类\relax }}{27}{table.caption.19}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces 驾驶体验得分标准\relax }}{31}{table.caption.22}%
-\contentsline {table}{\numberline {4.1}{\ignorespaces 数据统计\relax }}{46}{table.caption.35}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces 不同方法在合成数据集和真实数据集上关于平均通行时间的表现\relax }}{47}{table.caption.36}%
+\contentsline {table}{\numberline {1.1}{\ignorespaces 2016-2020年汽车保有量城市数据统计(数据来源：公安部)\relax }}{2}{table.caption.7}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Actuated Control 信号相位请求触发规则\relax }}{12}{table.caption.12}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces 传统交通信号控制方法总结\relax }}{14}{table.caption.14}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces 基于深度强化学习的智能交通信号调度方法分类\relax }}{26}{table.caption.20}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces 驾驶体验得分标准\relax }}{31}{table.caption.23}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces 真实数据集（杭州和济南）的相关信息\relax }}{46}{table.caption.37}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces 不同方法在合成数据集和真实数据集上关于平均通行时间的表现\relax }}{47}{table.caption.38}%
 \contentsfinish 

@@ -13,13 +13,14 @@
 %% 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{nuaathesis}
-[2018/11/01 v2.1 NUAA Thesis Template]
+[2021/05/16 v2.3 NUAA Thesis Template]
 \InputIfFileExists{nuaathesis.cfg}{}{}
 \AtEndOfClass{
 \newcommand\nuaa@label@nuaa{南京航空航天大学}
 \newcommand\nuaa@label@nuaajc{南京航空航天大学金城学院}
 \newcommand\nuaa@label@worktype@paper{毕业论文}
 \newcommand\nuaa@label@worktype@design{毕业设计}
+\newcommand\nuaa@label@worktype@bachelor{本科毕业设计（论文）}
 \newcommand\nuaa@label@worktype@master{硕士学位论文}
 \newcommand\nuaa@label@worktype@doctor{博士学位论文}
 \newcommand\nuaa@label@thesisnum{编号}
@@ -32,6 +33,7 @@
 \newcommand\nuaa@label@major{专\hfill 业}
 \newcommand\nuaa@label@classid{班\hfill 级}
 \newcommand\nuaa@label@adviser{指\hfill 导\hfill 教\hfill 师}
+\newcommand\nuaa@label@industrialadviser{企\hfill 业\hfill 导\hfill 师}
 \newcommand\nuaa@label@researchername{研究生姓名}
 \newcommand\nuaa@label@majorsubject{学科、专业}
 \newcommand\nuaa@label@researchfield{研\hfill 究\hfill 方\hfill 向}
@@ -40,14 +42,14 @@
 \newcommand\nuaa@label@graduateschool{研究生院}
 \newcommand\nuaa@labelEn@nuaa{Nanjing University of Aeronautics and Astronautics}
 \newcommand\nuaa@labelEn@graduateschool{The Graduate School}
-\newcommand\nuaa@label@abstract{摘\quad 要}
+\newcommand\nuaa@label@abstract{摘\qquad 要}
 \newcommand\nuaa@label@abstractshort{摘要}
 \newcommand\nuaa@label@keywords{关键词：}
 \newcommand\nuaa@label@keywordsep{，}
 \newcommand\nuaa@label@abstract@toc{摘要}
 \newcommand\nuaa@labelEn@abstract{Abstract}
 \newcommand\nuaa@labelEn@ABSTRACT{ABSTRACT}
-\newcommand\nuaa@labelEn@KeyWords{Key Words: }
+\newcommand\nuaa@labelEn@KeyWords{KEY WORDS: }
 \newcommand\nuaa@labelEn@keywords{Keywords: }
 \newcommand\nuaa@labelEn@keywordsep{, }
 \newcommand\nuaa@labelJa@abstract{要 旨}
@@ -55,6 +57,7 @@
 \newcommand\nuaa@labelJa@keywordsep{、}
 \newcommand\nuaa@label@reportpaper{毕业设计（论文）报告纸}
 \ifnuaa@lang@cn
+  \renewcommand\contentsname{目\qquad 录}
   \newcommand\listfiguretablename{图表清单}
   \def\equationautorefname{式}
   \def\AMSautorefname{式}
@@ -79,6 +82,7 @@
 \define@key{nuaa}{degree}{
   \expandafter\csname nuaa@#1true\endcsname}
 \DeclareBoolOption[false]{zhuanshuo}
+\DeclareBoolOption[false]{blindtrail}
 \newif\ifnuaa@lang@cn \nuaa@lang@cnfalse
 \newif\ifnuaa@lang@en \nuaa@lang@enfalse
 \newif\ifnuaa@lang@ja \nuaa@lang@jafalse
@@ -103,13 +107,6 @@
     degree=[bachelor|master|doctor]}
 \fi\fi\fi
 \ifnuaa@bachelor
-  \ifnuaa@worktype@paper\relax\else
-    \ifnuaa@worktype@design\relax\else
-      \ClassError{nuaathesis}{
-        Thesis Type must be specified: \MessageBreak
-        type=[paper|design]}
-    \fi
-  \fi
 \else
   \ifnuaa@worktype@design
     \ClassError{nuaathesis}{You should submit paper instead of design}
@@ -125,19 +122,15 @@
   \fi
 \fi
 \iffalse
-  \newcommand\nuaa@university{\nuaa@label@nuaajc}
+  \newcommand\nuaa@university{\secretize{\nuaa@label@nuaajc}}
   \newcommand\nuaa@universityLogo{nuaa-jc.jpg}
 \else
-  \newcommand\nuaa@university{\nuaa@label@nuaa}
+  \newcommand\nuaa@university{\secretize{\nuaa@label@nuaa}}
   \newcommand\nuaa@universityLogo{nuaa.pdf}
 \fi
 \newcommand\nuaa@worktypecn{%
   \ifnuaa@bachelor%
-    \ifnuaa@worktype@paper%
-      \nuaa@label@worktype@paper%
-    \else%
-      \nuaa@label@worktype@design%
-    \fi%
+    \nuaa@label@worktype@bachelor%
   \else%
     \ifnuaa@master%
       \nuaa@label@worktype@master%
@@ -153,6 +146,12 @@
   \define@key{nuaa}{#1}{\csname #1\endcsname{##1}}
   \expandafter\gdef\csname #1\endcsname##1{
     \expandafter\gdef\csname nuaa@#1\endcsname{##1}}
+  \csname #1\endcsname{}
+}
+\def\nuaa@define@sec #1{
+  \define@key{nuaa}{#1}{\csname #1\endcsname{##1}}
+  \expandafter\gdef\csname #1\endcsname##1{
+    \expandafter\gdef\csname nuaa@#1\endcsname{\secretize{##1}}}
   \csname #1\endcsname{}
 }
 \def\nuaa@define@list#1#2{
@@ -172,18 +171,41 @@
     \expandafter\gdef\csname nuaa@#1@pdf\endcsname{##1}
   }
 }
+\def\nuaa@define@list@sec#1#2{
+  \define@key{nuaa}{#1}{\csname #1\endcsname{##1}}
+  \expandafter\gdef\csname nuaa@#1\endcsname{}
+  \expandafter\gdef\csname nuaa@#1@pdf\endcsname{}
+  \expandafter\gdef\csname #1\endcsname##1{
+    \ifnuaa@blindtrail
+      \expandafter\gdef\csname nuaa@#1\endcsname{\secretize{}}
+    \else
+      \@for\reserved@a:=##1\do{
+        \expandafter\ifx\csname nuaa@#1\endcsname\@empty\else
+          \expandafter\g@addto@macro\csname nuaa@#1\endcsname{%
+            \ignorespaces #2}
+          \expandafter\g@addto@macro\csname nuaa@#1@pdf\endcsname{,}
+        \fi
+        \expandafter\expandafter\expandafter\g@addto@macro%
+          \expandafter\csname nuaa@#1\expandafter\endcsname\expandafter{\reserved@a}
+      }
+      \expandafter\gdef\csname nuaa@#1@pdf\endcsname{##1}
+    \fi
+  }
+}
 \nuaa@define{value@title}
-\nuaa@define{value@author}
-\nuaa@define{value@college}
+\nuaa@define@sec{value@author}
+\nuaa@define@sec{value@college}
 \nuaa@define{value@applydate}
 \ifnuaa@bachelor
-  \nuaa@define@list{value@advisers}{、}
+  \nuaa@define@list@sec{value@advisers}{、}
+  \nuaa@define@list@sec{value@industrialadvisers}{、}
 \else
-  \nuaa@define@list{value@advisers}{\linebreak}
+  \nuaa@define@list@sec{value@advisers}{\linebreak}
+  \nuaa@define@list@sec{value@industrialadvisers}{、}
 \fi
-  \nuaa@define{value@major}
-  \nuaa@define{value@studentid}
-  \nuaa@define{value@classid}
+  \nuaa@define@sec{value@major}
+  \nuaa@define@sec{value@studentid}
+  \nuaa@define@sec{value@classid}
   \nuaa@define{value@libraryclassid}
   \nuaa@define{value@subjectclassid}
   \nuaa@define{value@thesisid}
@@ -193,10 +215,10 @@
 \ifnuaa@bachelor\relax
 \else
 \fi
-  \nuaa@define{valueEn@college}
+  \nuaa@define@sec{valueEn@college}
   \nuaa@define{valueEn@majorsubject}
-  \nuaa@define{valueEn@author}
-  \nuaa@define{valueEn@advisers}
+  \nuaa@define@sec{valueEn@author}
+  \nuaa@define@sec{valueEn@advisers}
   \nuaa@define{valueEn@degreefull}
   \nuaa@define{valueEn@applydate}
 \nuaa@define{valueJa@title}
@@ -218,18 +240,18 @@
 \else\ifnuaa@lang@ja
   \newcommand\nuaa@title{\nuaa@valueJa@title}
 \fi\fi\fi
-\newcommand\nuaa@font@toc{\normalsize}
 \RequirePackage{expl3}
 \ExplSyntaxOn
 \sys_if_engine_xetex:TF{
   \PassOptionsToPackage{no-math}{fontspec}
 }{}
 \ExplSyntaxOff
+\RequirePackage{amsmath}
 \ifnuaa@lang@cn
   \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
   \ProcessKeyvalOptions*
   \ifnuaa@bachelor
-    \PassOptionsToClass{zihao=-4,linespread=1.625}{ctexbook}
+    \PassOptionsToClass{zihao=-4,linespread=1.653543}{ctexbook}
   \else
     \PassOptionsToClass{zihao=5,linespread=1.5873}{ctexbook}
   \fi
@@ -296,6 +318,11 @@
     \def\pgfsysdriver{pgfsys-dvipdfm.def}
   }{}
 }
+\sys_if_engine_uptex:T{
+  \renewcommand \CJKrmdefault { mc }
+  \renewcommand \CJKsfdefault { gt }
+  \renewcommand \CJKttdefault { mc }
+}
 \ExplSyntaxOff
 \ifnuaa@nobold
   \newcommand\nuaa@textbf[1]{#1}
@@ -304,6 +331,7 @@
 \fi
 \RequirePackage{geometry}  % 页边距
 \RequirePackage{fancyhdr}  % 页眉页脚
+\RequirePackage[perpage,flushmargin]{footmisc}  % 脚注
 \RequirePackage{titlesec}  % 各级标题
 \RequirePackage{titletoc}  % 目录
 \RequirePackage[numbers,square,comma,super,sort&compress]{natbib}
@@ -316,9 +344,9 @@
 \RequirePackage{multicol}
 \RequirePackage{caption}   % DeclareCaptionFont
 \RequirePackage{hyperref}
+\urlstyle{same} % 在使用\url时保持相同字体
 \RequirePackage{ifxetex}
 \RequirePackage{siunitx}
-\RequirePackage{amsmath}
 \RequirePackage{amsthm}
 \RequirePackage{amssymb}
 \RequirePackage{aliascnt} % newaliascnt/aliascntresetthe
@@ -332,22 +360,23 @@
 \RequirePackage{newtxmath}
 \ExplSyntaxOn
 \cs_set:Npn \zhcn #1{
-  \str_if_eq_x:nnTF{\f@family}{\rmdefault}
+  \str_if_eq:eeTF{\f@family}{\rmdefault}
   {{\songti#1}}{
-  \str_if_eq_x:nnTF{\f@family}{\sfdefault}
+  \str_if_eq:eeTF{\f@family}{\sfdefault}
   {{\heiti#1}}{
-  \str_if_eq_x:nnTF{\f@family}{\ttdefault}
+  \str_if_eq:eeTF{\f@family}{\ttdefault}
   {{\kaiti#1}}{#1}
   }}}
 \cs_set:Npn \jpn #1{
-  \str_if_eq_x:nnTF{\f@family}{\rmdefault}
+  \str_if_eq:eeTF{\f@family}{\rmdefault}
   {{\mcfamily#1}}{
-  \str_if_eq_x:nnTF{\f@family}{\sfdefault}
+  \str_if_eq:eeTF{\f@family}{\sfdefault}
   {{\gtfamily#1}}{#1}
   }}
 \ExplSyntaxOff
 \newif\if@frontmatter
 \newif\if@backmatter
+\newif\ifnuaa@mainmatter
 \let\nuaa@frontmatter\frontmatter
 \let\nuaa@mainmatter\mainmatter
 \let\nuaa@appendix\appendix
@@ -356,27 +385,42 @@
   \nuaa@frontmatter
   \@frontmattertrue
   \@backmatterfalse
-  \ifnuaa@bachelor\pagenumbering{roman}\else\pagenumbering{Roman}\fi
-  \pagestyle{style@main}
+  \nuaa@mainmatterfalse
+  \ifnuaa@bachelor
+    \pagenumbering{roman}
+    \assignpagestyle{\chapter}{style@footonly}
+  \else
+    \pagenumbering{Roman}
+    \pagestyle{style@main}
+  \fi
 }
 \renewcommand{\mainmatter}{
   \nuaa@mainmatter
   \@frontmatterfalse
   \@backmatterfalse
+  \nuaa@mainmattertrue
   \pagenumbering{arabic}
   \pagestyle{style@main}
   \setlength\leftskip{\nuaaparleft}
+  \assignpagestyle{\chapter}{style@main}
 }
 \renewcommand{\backmatter}{
   \nuaa@backmatter
   \@frontmatterfalse
   \@backmattertrue
+  \nuaa@mainmatterfalse
   \setlength\nuaaparleft{0pt}
   \setlength\leftskip{\nuaaparleft}
 }
+\renewcommand{\appendix}{
+  \nuaa@appendix
+  \@frontmatterfalse
+  \@backmatterfalse
+  \nuaa@mainmatterfalse
+}
 \newlength\nuaaparleft
 \ifnuaa@bachelor
-  \setlength\nuaaparleft{2\ccwd}
+  \setlength\nuaaparleft{0pt}
 \else
   \setlength\nuaaparleft{0pt}
 \fi
@@ -388,13 +432,10 @@
 \ifnuaa@bachelor \geometry{
   top=2.5cm,
   bottom=2cm,
-  left=2cm,
+  left=2.5cm,
   right=2cm,
-  headheight=0.75cm,
-  headsep=2bp,
-  %footskip=0.8cm,
-  includehead,
-  includefoot
+  headheight=15.874bp,
+  headsep=1.75bp,
 } \else \geometry{
   top=3.3cm,
   bottom=3.3cm,
@@ -407,6 +448,7 @@
 \fi
 \newcommand\nuaa@footerpagenum@decorate[1]{%
 \ifnuaa@bachelor%
+  \fontsize{10.5bp}{15.874bp}\selectfont%
   \if@frontmatter{#1}\else{- #1 -}\fi%
 \else%
   {#1}%
@@ -417,23 +459,32 @@
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}
 }
+\fancypagestyle{style@footonly}{
+  \fancyhf{}
+  \fancyfoot{}
+  \if@twoside
+    \fancyfoot[OR,EL]{\footnotesize{\nuaa@footerpagenum@decorate{\thepage}}}
+  \else
+    \fancyfoot[R]{\footnotesize{\nuaa@footerpagenum@decorate{\thepage}}}
+  \fi
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
 \fancypagestyle{style@main}{
   \fancyhead{}
-  \ifnuaa@bachelor
-    \fancyhead[L]{
-      \setlength{\unitlength}{1mm}
-      \begin{picture}(0,0)
-        \put(7.3,1.5){\includegraphics[width=6cm]{\nuaa@universityLogo}}
-      \end{picture}
-    }
-    \fancyhead[R]{\songti\zihao{4}\nuaa@label@reportpaper\hspace{1\ccwd}}
+  \fancyhead[C]{\ifodd\value{page}
+    {\mbox{\songti\zihao{5}\nuaa@university\nuaa@worktypecn}}
   \else
-    \fancyhead[C]{\ifodd\value{page}
-      {\mbox{\songti\zihao{5}\nuaa@university\nuaa@worktypecn}}
+    \ifnuaa@bachelor
+      \ifnuaa@mainmatter
+        {\mbox{\songti\zihao{5}\leftmark}}
+      \else
+        {\mbox{\songti\zihao{5}\nuaa@university\nuaa@worktypecn}}
+      \fi
     \else
       {\mbox{\zihao{5}\nuaa@title}}
-    \fi}
-  \fi
+    \fi
+  \fi}
   \fancyfoot{}
   \if@twoside
     \fancyfoot[OR,EL]{\footnotesize{\nuaa@footerpagenum@decorate{\thepage}}}
@@ -441,24 +492,23 @@
     \fancyfoot[R]{\footnotesize{\nuaa@footerpagenum@decorate{\thepage}}}
   \fi
   \renewcommand{\headrulewidth}{0.75bp}
-  \ifnuaa@bachelor
-    \renewcommand{\footrulewidth}{0.75bp}
-  \fi
+  \renewcommand{\footrulewidth}{0pt}
 }
+\renewcommand*{\footnotelayout}{\linespread{1}\fontsize{9bp}{15.874bp}\selectfont}
 \ifnuaa@bachelor
+  \renewcommand\thesubsubsection{（\arabic{subsubsection}）}
   \titleformat{\chapter}
-    {\centering\linespread{2.41}\nuaa@font@title\fontsize{15bp}{15.6bp}\selectfont}
+    {\centering\linespread{1}\nuaa@font@title\fontsize{15bp}{31.748bp}\selectfont}
     {\nuaa@chaptername}{1em}{}
-  \titlespacing*{\chapter}{0pt}{23.7bp}{16.5bp}
-  \assignpagestyle{\chapter}{style@main}
+  \titlespacing*{\chapter}{0pt}{\ifnuaa@mainmatter{-5bp}\else{-20.874bp}\fi}{0bp}
   \titleformat*{\section}
-    {\linespread{1.5}\nuaa@font@title\fontsize{14bp}{20.8bp}\selectfont}
+    {\linespread{1.0}\nuaa@font@title\fontsize{14bp}{31.748bp}\selectfont}
   \titlespacing*{\section}{0pt}{0bp}{0bp}
   \titleformat*{\subsection}
-    {\linespread{1.5}\nuaa@font@title\fontsize{12bp}{15.6bp}\selectfont}
+    {\linespread{1.0}\nuaa@font@title\fontsize{12bp}{23.811bp}\selectfont}
   \titlespacing*{\subsection}{0pt}{0bp}{0bp}
   \titleformat*{\subsubsection}
-    {\linespread{1.5}\nuaa@font@title\fontsize{12bp}{15.6bp}\selectfont}
+    {\linespread{1.0}\fontsize{12bp}{23.811bp}\selectfont}
   \titlespacing*{\subsubsection}{0pt}{0bp}{0bp}
 \else
   \titleformat{\chapter}
@@ -477,46 +527,89 @@
   \titlespacing*{\subsubsection}{0pt}{7.8bp}{7.8bp}
 \fi
 \setcounter{secnumdepth}{3}
-\ifnuaa@lang@en
-  \titlecontents{chapter}[5pc]
-    {\nuaa@font@toc}
-    {\contentslabel[\chaptername~\thecontentslabel]{5pc}}
-    {\renewcommand\thecontentslabel{\relax}\hspace*{-5pc}}
-    {\titlerule*[1ex]{.}\contentspage}
-\else
-  \titlecontents{chapter}[3.5pc]
-    {\nuaa@font@toc}
+\newcommand\nuaa@toc@rule{.57ex}
+\ifnuaa@bachelor
+  \newcommand\nuaa@toc@font{\fontsize{12bp}{15.874bp}\selectfont}
+  \ifnuaa@lang@en
+    \titlecontents{chapter}[5pc]
+      {\nuaa@toc@font}
+      {\contentslabel[\chaptername~\thecontentslabel]{5pc}}
+      {\renewcommand\thecontentslabel{\relax}\hspace*{-5pc}}
+      {\titlerule*[\nuaa@toc@rule]{.}\contentspage}
+  \else
+    \titlecontents{chapter}[5.5pc]
+      {\nuaa@toc@font}
+      {\contentslabel[\thecontentslabel]{3.5pc}}
+      {\hspace*{-3.5pc}}
+      {\titlerule*[\nuaa@toc@rule]{.}\contentspage}
+  \fi
+  \titlecontents{section}[6.5pc]
+    {\nuaa@toc@font}
     {\contentslabel[\thecontentslabel]{3.5pc}}
-    {\hspace*{-3.5pc}}
-    {\titlerule*[1ex]{.}\contentspage}
+    {}
+    {\titlerule*[\nuaa@toc@rule]{.}\contentspage}
+  \titlecontents{subsection}[7.5pc]
+    {\nuaa@toc@font}
+    {\contentslabel[\thecontentslabel]{3.5pc}}
+    {}
+    {\titlerule*[\nuaa@toc@rule]{.}\contentspage}
+  \titlecontents{figure}[\nuaa@indentloft]
+    {\nuaa@toc@font}
+    {\contentslabel[\figurename~\thecontentslabel]{\nuaa@indentloft}}
+    {\figurename}
+    {\titlerule*[\nuaa@toc@rule]{.}\contentspage}
+  \titlecontents{table}[\nuaa@indentloft]
+    {\nuaa@toc@font}
+    {\contentslabel[\tablename~\thecontentslabel]{\nuaa@indentloft}}
+    {\tablename}
+    {\titlerule*[\nuaa@toc@rule]{.}\contentspage}
+\else
+  \newcommand\nuaa@toc@font{\normalsize}
+  \ifnuaa@lang@en
+    \titlecontents{chapter}[5pc]
+      {\nuaa@toc@font}
+      {\contentslabel[\chaptername~\thecontentslabel]{5pc}}
+      {\renewcommand\thecontentslabel{\relax}\hspace*{-5pc}}
+      {\titlerule*[\nuaa@toc@rule]{.}\contentspage}
+  \else
+    \titlecontents{chapter}[3.5pc]
+      {\nuaa@toc@font}
+      {\contentslabel[\thecontentslabel]{3.5pc}}
+      {\hspace*{-3.5pc}}
+      {\titlerule*[\nuaa@toc@rule]{.}\contentspage}
+  \fi
+  \titlecontents{section}[3pc]
+    {\nuaa@toc@font}
+    {\contentslabel[\thecontentslabel]{2pc}}
+    {}
+    {\titlerule*[\nuaa@toc@rule]{.}\contentspage}
+  \titlecontents{subsection}[5pc]
+    {\nuaa@toc@font}
+    {\contentslabel[\thecontentslabel]{3pc}}
+    {}
+    {\titlerule*[\nuaa@toc@rule]{.}\contentspage}
+  \titlecontents{figure}[\nuaa@indentloft]
+    {\nuaa@toc@font}
+    {\contentslabel[\figurename~\thecontentslabel]{\nuaa@indentloft}}
+    {\figurename}
+    {\titlerule*[\nuaa@toc@rule]{.}\contentspage}
+  \titlecontents{table}[\nuaa@indentloft]
+    {\nuaa@toc@font}
+    {\contentslabel[\tablename~\thecontentslabel]{\nuaa@indentloft}}
+    {\tablename}
+    {\titlerule*[\nuaa@toc@rule]{.}\contentspage}
 \fi
-\titlecontents{section}[3pc]
-  {\nuaa@font@toc}
-  {\contentslabel[\thecontentslabel]{2pc}}
-  {}
-  {\titlerule*[1ex]{.}\contentspage}
-\titlecontents{subsection}[5pc]
-  {\nuaa@font@toc}
-  {\contentslabel[\thecontentslabel]{3pc}}
-  {}
-  {\titlerule*[1ex]{.}\contentspage}
-\titlecontents{figure}[\nuaa@indentloft]
-  {\nuaa@font@toc}
-  {\contentslabel[\figurename~\thecontentslabel]{\nuaa@indentloft}}
-  {\figurename}
-  {\titlerule*[1ex]{.}\contentspage}
-\titlecontents{table}[\nuaa@indentloft]
-  {\nuaa@font@toc}
-  {\contentslabel[\tablename~\thecontentslabel]{\nuaa@indentloft}}
-  {\tablename}
-  {\titlerule*[1ex]{.}\contentspage}
+\ifnuaa@bachelor
+  \newcommand\nuaa@font@bib{\linespread{1.0}\fontsize{10.5bp}{15.874bp}\selectfont}
+\else
+  \newcommand\nuaa@font@bib{\linespread{1.0}\fontsize{10.5bp}{15.6bp}\selectfont}
+\fi
 \pretocmd{\bibliography}
-  {\begingroup\linespread{1.0}\fontsize{10.5bp}{15.6bp}\selectfont}
+  {\begingroup\nuaa@font@bib}
   {}{}
 \apptocmd{\bibliography}
   {\endgroup}
   {}{}
-\newcommand\nuaa@font@bib{\linespread{1.0}\fontsize{10.5bp}{15.6bp}\selectfont}
 \renewcommand\@biblabel[1]{\nuaa@font@bib[#1]}
 \renewenvironment{thebibliography}[1]{
   \chapter*{\bibname}
@@ -683,7 +776,7 @@
 \newtheorem{dummytheorem}{Dummy}[chapter]
 \newcommand\nuaafontcaption{
   \ifnuaa@bachelor
-    \nuaa@font@title\fontsize{10.5bp}{15.6bp}\selectfont
+    \nuaa@font@title\linespread{1.0}\fontsize{10.5bp}{15.874bp}\selectfont
   \else
     \normalfont
   \fi
@@ -693,11 +786,17 @@
 \DeclareCaptionFont{nuaacaption}{\nuaafontcaption}
 \captionsetup{font=nuaacaption}
 \captionsetup[subfigure]{font=nuaacaption}
+\ifnuaa@bachelor
+  \captionsetup{skip=0bp}
+\fi
 \setlength\heavyrulewidth{0.5bp}
 \setlength\lightrulewidth{0.5bp}
 \setlength\cmidrulewidth{0.5bp}
 \ifnuaa@bachelor
-  \DeclareFloatFont{bachelor}{\linespread{1.5}\fontsize{10.5bp}{15.6bp}\selectfont}
+  \setlength\heavyrulewidth{1.5bp}
+  \setlength\lightrulewidth{0.75bp}
+  \setlength\cmidrulewidth{0.75bp}
+  \DeclareFloatFont{bachelor}{\linespread{1.0}\fontsize{10.5bp}{15.874bp}\selectfont}
   \floatsetup[table]{font=bachelor}
 \fi
 \setlist{nosep}
@@ -731,6 +830,14 @@
     \nuaa@cleardoublepage
     }
   }
+\fi
+\newcommand\dunderline[3][-1pt]{{%
+  \setbox0=\hbox{#3}
+  \ooalign{\copy0\cr\rule[\dimexpr#1-#2\relax]{\wd0}{#2}}}}
+\ifnuaa@blindtrail
+  \newcommand{\secretize}[1]{$\times\times\times$}
+\else
+  \newcommand{\secretize}[1]{#1}
 \fi
 \newbox\nuaa@kw
 \newcommand{\nuaa@put@kw}[2]{%
@@ -798,11 +905,8 @@
 }
 \newcommand\nuaatableofcontents{
   \cleardoublepage
-  \chapter*{
-    \ifnuaa@bachelor
-      \linespread{1.5}\fontsize{16bp}{15.6bp}\selectfont
-    \fi
-    \contentsname}
+  \chapter*{\contentsname}
+
   \@starttoc{toc}
 }
 \newcommand\nuaalistoffigurestables{
@@ -814,27 +918,30 @@
 }
 \newcommand\nuaa@make@cover@bachelor{
   \cleardoublepage
-  \newgeometry{top=1.0in, bottom=1.0in, left=1.25in, right=1.25in}
+  \linespread{1}\fontsize{12bp}{15.874bp}\selectfont
 
   \begin{flushright}
-    \linespread{1.25}\sffamily\heiti\fontsize{14bp}{16.8bp}\selectfont
-    \nuaa@label@thesisnum\underline{\hspace{60bp}}
-    \vspace{\stretch{4}}
+    \sffamily\heiti\fontsize{15bp}{31.748bp}\selectfont
+    \setlength\arrayrulewidth{.75bp}
+    \begin{tabular} {cc}
+      \nuaa@label@thesisnum & \makebox[1.6in]{\nuaa@value@thesisid} \\ \cline{2-2}
+    \end{tabular}
   \end{flushright}
-
+  \vspace{20bp}
   \begin{center}
-    \linespread{1}\kaishu\fontsize{22bp}{30bp}\selectfont
-    \nuaa@textbf{\nuaa@university}
-    \vspace{\stretch{3}}
-
-    \linespread{1}\songti\fontsize{55bp}{55bp}\selectfont
-    \nuaa@textbf{\nuaa@worktypecn}
-    \vspace{\stretch{5}}
+    \begin{tabular}{c}
+    \secretize{
+      \raisebox{4.011bp}{\includegraphics[height=0.55in]{nuaa-logo-black.pdf}}\hspace{12bp}
+      \raisebox{10.401bp}{\includegraphics[height=.4in]{nuaa.pdf}}
+     } \\
+    \includegraphics{bachelor-title.pdf} \\
+    \end{tabular}
   \end{center}
+  \vspace{\stretch{1}}
 
   \begin{center}
-    \linespread{1.212}\fontsize{22bp}{26.4bp}\selectfont
-    \begin{tabular}{C{1.4in}C{4.0in}}
+    \linespread{1}\fontsize{22bp}{31.748bp}\selectfont
+    \begin{tabular}{C{1.48in}C{4.81in}}
     {\sffamily\heiti\nuaa@label@title} &
     \ifnuaa@lang@ja
       {\sffamily\gtfamily\nuaa@valueJa@title \par}
@@ -843,147 +950,143 @@
     \fi\fi
     {\sffamily\heiti\nuaa@value@title}
     \end{tabular}
-    \vspace{\stretch{5}}
+    \vspace{\stretch{1}}
+    \vspace{47.622bp}
 
-    \linespread{1}\sffamily\heiti\fontsize{16bp}{47.6bp}\selectfont
+    \sffamily\heiti\fontsize{15bp}{.51in}\selectfont
+    \setlength\arrayrulewidth{.5bp}
     \begin{tabular} {cc}
       \nuaa@label@author & \nuaa@value@author \\ \cline{2-2}
       \nuaa@label@studentid & \nuaa@value@studentid \\ \cline{2-2}
       \nuaa@label@college & \nuaa@value@college \\ \cline{2-2}
       \nuaa@label@major & \nuaa@value@major \\ \cline{2-2}
-      \nuaa@label@classid & \makebox[3.22in]{\nuaa@value@classid} \\ \cline{2-2}
+      \nuaa@label@classid & \makebox[2.59in]{\nuaa@value@classid} \\ \cline{2-2}
       \nuaa@label@adviser & \nuaa@value@advisers \\ \cline{2-2}
+      \ifdefempty{\nuaa@value@industrialadvisers}{}{%
+      \nuaa@label@industrialadviser & \nuaa@value@industrialadvisers \\ \cline{2-2}}
     \end{tabular}
-    \vspace{\stretch{3}}
+    \vspace{31.748bp}
 
-    \linespread{1}\sffamily\heiti\fontsize{16bp}{30bp}
+    \sffamily\heiti\fontsize{15bp}{31.748bp}
     \ifdefempty{\nuaa@value@applydate}{\nuaa@dateCn}{\nuaa@value@applydate}
   \end{center}
   \restoregeometry
 }
+\newcommand\nuaa@datefield{%
+  \dunderline{.5bp}{20\hspace{24bp}} 年%
+  \dunderline{.5bp}{\hspace{24bp}} 月%
+  \dunderline{.5bp}{\hspace{24bp}} 日}
 \newcommand\nuaa@make@declare@bachelor{
   \cleardoublepage
-  \newgeometry{top=1.0in, bottom=1.0in, left=1.25in, right=1.25in}
+  %\@makeschapterhead\relax\vskip -40pt
 
   \begin{center}
-    \linespread{1.0}\heiti\fontsize{18bp}{31.2bp}\selectfont
-    \nuaa@textbf{\nuaa@university} \par
-    \nuaa@textbf{本科\nuaa@worktypecn 诚信承诺书}
+    \linespread{1.0}\heiti\fontsize{15bp}{31.748bp}\selectfont
+    \nuaa@university \par
+    本科毕业设计（论文）诚信承诺书
   \end{center}
 
   \begingroup
-    \linespread{1.0}\songti\fontsize{14bp}{31.2bp}\selectfont
+    \linespread{1.0}\songti\fontsize{12bp}{23.811bp}\selectfont
     \setlength\parindent{2\ccwd}\indent
+    本人郑重声明：所呈交的毕业设计（论文）是本人在导师的指导下独立进行研究所取得的成果。
+    尽我所知，除了文中特别加以标注和致谢的内容外，
+    本设计（论文）不包含任何其他个人或集体已经发表或撰写的成果作品。
+    对本设计（论文）所涉及的研究工作作出贡献的其他个人和集体，均已在文中以明确方式标明。
 
-    本人郑重声明：所呈交的\nuaa@worktypecn
-    （题目：{%
-      \renewcommand\linebreak{}%
-      \ifnuaa@lang@cn{\expandafter\uline\expandafter{\nuaa@value@title}}\else%
-      \ifnuaa@lang@en{\expandafter\uline\expandafter{\nuaa@valueEn@title}}\else%
-      \ifnuaa@lang@ja{\mcfamily\expandafter\uline\expandafter{\nuaa@valueJa@title}}%
-      \fi\fi\fi%
-    }）
-    是本人在导师的指导下独立进行研究所取得的成果。
-    尽本人所知，除了\nuaa@worktypecn 中特别加以标注引用的内容外，
-    本\nuaa@worktypecn 不包含任何其他个人或集体已经发表或撰写的成果作品。
-
-    \vspace{31.2bp}
+    \par
 
     \begin{flushright}
-      \setlength{\tabcolsep}{0bp}
-      \begin{tabular}{rcr}
-      作者签名： & \hspace{7.5em} & \hspace{2em} 年 \hspace{0.75em} 月 \hspace{0.75em} 日 \\
-      （学号）： & \hspace{7.5em} & \\
+      \linespread{1.0}\fontsize{12bp}{.59in}\selectfont
+      \setlength{\tabcolsep}{0pt}
+      \begin{tabular}{cl}
+      \makebox[5\ccwd][c]{作者签名：} & \hspace{2.17in} \\ \cline{2-2}
+      \makebox[5\ccwd][c]{日\hfill 期 ：} & \nuaa@datefield \\
       \end{tabular}
     \end{flushright}
 
   \endgroup
-  \restoregeometry
-}
-\newcommand\nuaa@make@abstract@bachelor@cn{
-  \ifnuaa@abstractopenright
-    \cleardoublepage
-  \else
-    \clearpage
-  \fi
+
+  \vspace{\stretch{1}}
 
   \begin{center}
-    \vspace*{-4.3pt}\sffamily\heiti\zihao{2}
-    \phantomsection
-    \addcontentsline{toc}{chapter}{\nuaa@label@abstractshort}
-    \nuaa@value@title
-  \end{center}
-
-  \begin{center}
-    \sffamily\heiti\zihao{-3}\vspace{1em}
-    \nuaa@label@abstract
+    \linespread{1.0}\heiti\fontsize{15bp}{31.748bp}\selectfont
+    \par\par
+    \nuaa@university \par
+    毕业设计（论文）使用授权书
   \end{center}
 
   \begingroup
+    \linespread{1.0}\songti\fontsize{12bp}{23.811bp}\selectfont
+    \setlength\parindent{2\ccwd}\indent
+    本人完全了解\nuaa@university{}有关收集、保留和使用本人所送交的毕业设计（论文）的规定，
+    即：本科生在校攻读学位期间毕业设计（论文）工作的知识产权单位属\nuaa@university{}。
+    学校有权保留并向国家有关部门或机构送交毕业设计（论文）的复印件和电子版，
+    允许论文被查阅和借阅，可以公布论文的全部或部分内容，
+    可以采用影印、缩印或扫描等复制手段保存、汇编论文。保密的论文在解密后适用本声明。
+
+    论文涉密情况：
+
+    $\square$ 不保密
+
+    $\square$ 保密，保密期（起讫日期：\hspace{131bp}）
+
+    \begin{center}
+      \linespread{1.0}\fontsize{12bp}{.59in}\selectfont
+      \setlength{\tabcolsep}{0pt}
+      \begin{tabular}{clccl}
+      \makebox[5\ccwd][c]{作者签名：} & \hspace{2.17in} & \makebox[.2in]{} &
+      \makebox[5\ccwd][c]{导师签名：} & \hspace{2.17in} \\ \cline{2-2} \cline{5-5}
+      \makebox[5\ccwd][c]{日\hfill 期 ：} & \nuaa@datefield & &
+      \makebox[5\ccwd][c]{日\hfill 期 ：} & \nuaa@datefield \\
+      \end{tabular}
+    \end{center}
+
+  \endgroup
+
+  \vspace{\stretch{1}}
+}
+\newcommand\nuaa@make@abstract@bachelor@cn{
+  \clearpage
+
+  \chapter*{\heiti\nuaa@label@abstract}
+
+  \begingroup
     \setlength\parindent{2\ccwd}\songti\indent
+    \vspace{-1\baselineskip}
 
     \nuaa@abstract
   \endgroup
 
-  \vspace{3em}
+  \vspace{23.811bp minus 20bp}
 
-  \nuaa@put@kw{\nuaa@textbf{\heiti\zihao{-3}\nuaa@label@keywords}}{\songti\nuaa@keywords}
+  \nuaa@put@kw{\heiti\zihao{-3}\nuaa@label@keywords}{\songti\nuaa@keywords}
 }
 \newcommand\nuaa@make@abstract@bachelor@en{
-  \ifnuaa@abstractopenright
-    \cleardoublepage
-  \else
-    \clearpage
-  \fi
+  \clearpage
 
-  \begin{center}
-    \vspace*{-4.3pt}\sffamily\heiti\zihao{2}
-    \phantomsection
-    \addcontentsline{toc}{chapter}{\nuaa@labelEn@abstract}
-    \nuaa@valueEn@title
-  \end{center}
-
-  \begin{center}
-    \sffamily\heiti\zihao{-3}\vspace{18pt}
-    \nuaa@labelEn@abstract
-    \vspace{10pt}
-  \end{center}
+  \chapter*{\textbf{\textrm{\nuaa@labelEn@ABSTRACT}}}
 
   \begingroup
     \setlength\parindent{1em}\rmfamily\songti
     \nuaa@abstractEn
   \endgroup
 
-  \vspace{3em}
+  \vspace{23.811bp minus 20bp}
 
-  \nuaa@put@kw{\nuaa@textbf{\zihao{-3}\nuaa@labelEn@KeyWords}}{\nuaa@keywordsEn}
+  \nuaa@put@kw{\zihao{-3}\nuaa@labelEn@KeyWords}{\nuaa@keywordsEn}
 }
 \newcommand\nuaa@make@abstract@bachelor@ja{
-  \ifnuaa@abstractopenright
-    \cleardoublepage
-  \else
-    \clearpage
-  \fi
+  \clearpage
 
-  \begin{center}
-    \vspace*{-4.3pt}\sffamily\gtfamily\zihao{2}
-    \phantomsection
-    \addcontentsline{toc}{chapter}{\nuaa@labelJa@abstract}
-    \nuaa@valueJa@title
-  \end{center}
-
-  \begin{center}
-    \sffamily\gtfamily\zihao{-3}\vspace{18pt}
-    \nuaa@labelJa@abstract
-    \vspace{10pt}
-  \end{center}
+  \chapter*{\nuaa@labelJa@abstract}
 
   \begingroup
     \setlength\parindent{1em}\rmfamily\mcfamily
     \nuaa@abstractJa
   \endgroup
 
-  \vspace{3em}
+  \vspace{23.811bp minus 20bp}
 
   \nuaa@put@kw{\nuaa@textbf{\zihao{-3}\nuaa@labelJa@keywords}}{\nuaa@keywordsJa}
 }
@@ -1014,7 +1117,7 @@
   \begin{center}
   \linespread{1}\rmfamily\songti\fontsize{16bp}{31.2bp}\selectfont
   \renewcommand\linebreak{\par}
-  \begin{tabular} {@{\hskip 1.125in}c@{\hskip .6389in}p{3.1115in}}
+  \begin{tabular} {@{\hskip 1.125in}c@{\hskip .6389in}p{3.0in}}
     \nuaa@label@researchername & \nuaa@value@author \\
 \ifnuaa@zhuanshuo
     \nuaa@label@professionaltype & \nuaa@value@majorsubject \\
@@ -1030,10 +1133,11 @@
 
   \begin{center}
     \linespread{1}
-    \includegraphics{nuaa-jianqi.pdf}
+    \kaishu\fontsize{18bp}{31.2bp}\selectfont
+    \secretize{\includegraphics{nuaa-jianqi.pdf}}
 
     \kaishu\fontsize{18bp}{31.2bp}\selectfont
-    \nuaa@label@graduateschool\quad \nuaa@value@college
+    \secretize{\nuaa@label@graduateschool\quad \nuaa@value@college}
 
     \kaishu\fontsize{16bp}{31.2bp}\selectfont
     \ifdefempty{\nuaa@value@applydate}{\nuaa@dateCn}{\nuaa@value@applydate}
@@ -1045,8 +1149,8 @@
 
   \begin{center}
     \linespread{1.5}\fontsize{14bp}{14bp}\rmfamily\selectfont
-    \nuaa@labelEn@nuaa \par
-    \nuaa@labelEn@graduateschool \par
+    \secretize{\nuaa@labelEn@nuaa} \par
+    \secretize{\nuaa@labelEn@graduateschool} \par
     \nuaa@valueEn@college \vspace{\stretch{1}}
 
     \linespread{1}\fontsize{22bp}{31.2bp}\rmfamily\selectfont
@@ -1064,7 +1168,7 @@
     Advised by \\
     \nuaa@valueEn@advisers \par \bigskip
 
-    Submitted in Partial Fullfillment \\
+    Submitted in Partial Fulfillment \\
     of the Requirements \\
     for the Degree of \\
     \nuaa@valueEn@degreefull \par\bigskip
@@ -1088,9 +1192,9 @@
 
   本人声明所呈交的\nuaa@worktypecn 是本人在导师指导下进行的研究工作及取得的研究成果。
   除了文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表或撰写过的研究成果，
-  也不包含为获得\nuaa@label@nuaa 或其他教育机构的学位或证书而使用过的材料。
+  也不包含为获得\secretize{\nuaa@label@nuaa} 或其他教育机构的学位或证书而使用过的材料。
 
-  本人授权\nuaa@label@nuaa 可以将学位论文的全部或部分内容编入有关数据库进行检索，
+  本人授权\secretize{\nuaa@label@nuaa} 可以将学位论文的全部或部分内容编入有关数据库进行检索，
   可以采用影印、缩印或扫描等复制手段保存、汇编学位论文。
 
   （保密的学位论文在解密后适用本承诺书）
@@ -1172,7 +1276,7 @@
 }
 \newcommand\cquthesis{\textsc{Cqu}\-\textsc{Thesis}}
 %% 
-%% Copyright (C) 2018 by nuaatug
+%% Copyright (C) 2020 by nuaatug
 %% 
 %% Licensed under the Apache License, Version 2.0 (the "License");
 %% you may not use this file except in compliance with the License.

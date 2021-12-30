@@ -70,6 +70,36 @@ Pol E, Oliehoek F~A.
 \newblock Proceedings of Learning, Inference and Control of Multi-Agent Systems
   (at NIPS 2016), 2016..
 
+\bibitem{mannion2016experimental}
+Mannion P, Duggan J, Howley E.
+\newblock An experimental review of reinforcement learning algorithms for
+  adaptive traffic signal control[J].
+\newblock Autonomic road transport support systems, 2016. 47--66.
+
+\bibitem{genders2016using}
+Genders W, Razavi S.
+\newblock Using a deep reinforcement learning agent for traffic signal
+  control[J].
+\newblock arXiv preprint arXiv:1611.01142, 2016..
+
+\bibitem{gao2017adaptive}
+Gao J, Shen Y, Liu J, et~al.
+\newblock Adaptive traffic signal control: Deep reinforcement learning
+  algorithm with experience replay and target network[J].
+\newblock arXiv preprint arXiv:1705.02755, 2017..
+
+\bibitem{liu2017cooperative}
+Liu M, Deng J, Xu M, et~al.
+\newblock Cooperative deep reinforcement learning for tra ic signal control[C].
+\newblock Proceedings of Proc. 23rd ACM SIGKDD Conf. Knowl. Discovery Data
+  Mining (KDD), 2017.
+
+\bibitem{arel2010reinforcement}
+Arel I, Liu C, Urbanik T, et~al.
+\newblock Reinforcement learning-based multi-agent system for network traffic
+  signal control[J].
+\newblock IET Intelligent Transport Systems, 2010, 4(2):128--135.
+
 \bibitem{wei2018intellilight}
 Wei H, Zheng G, Yao H, et~al.
 \newblock Intellilight: A reinforcement learning approach for intelligent
@@ -77,12 +107,6 @@ Wei H, Zheng G, Yao H, et~al.
 \newblock Proceedings of Proceedings of the 24th ACM SIGKDD International
   Conference on Knowledge Discovery \& Data Mining, 2018.
 \newblock  2496--2505.
-
-\bibitem{mannion2016experimental}
-Mannion P, Duggan J, Howley E.
-\newblock An experimental review of reinforcement learning algorithms for
-  adaptive traffic signal control[J].
-\newblock Autonomic road transport support systems, 2016. 47--66.
 
 \bibitem{nishi2018traffic}
 Nishi T, Otaki K, Hayakawa K, et~al.
@@ -108,12 +132,41 @@ Chen C, Wei H, Xu N, et~al.
   Intelligence, volume~34, 2020.
 \newblock  3414--3421.
 
+\bibitem{koonce2008traffic}
+Koonce P, Rodegerdts L.
+\newblock Traffic signal timing manual.[R].
+\newblock Technical report, United States. Federal Highway Administration,
+  2008.
+
+\bibitem{roess2004traffic}
+Roess R~P, Prassas E~S, McShane W~R.
+\newblock Traffic engineering[M].
+\newblock Pearson/Prentice Hall, 2004.
+
+\bibitem{little1981maxband}
+Little J~D, Kelson M~D, Gartner N~H.
+\newblock MAXBAND: A versatile program for setting signals on arteries and
+  triangular networks[J].
+\newblock 1981..
+
+\bibitem{cools2013self}
+Cools S~B, Gershenson C, D’Hooghe B.
+\newblock Self-organizing traffic lights: A realistic simulation[M]. .
+\newblock Proceedings of Advances in applied self-organizing systems. Springer,
+  2013: 45--55.
+
 \bibitem{varaiya2013max}
 Varaiya P.
 \newblock The max-pressure controller for arbitrary networks of signalized
   intersections[M]. .
 \newblock Proceedings of Advances in Dynamic Network Modeling in Complex
   Transportation Systems. Springer, 2013: 27--66.
+
+\bibitem{lowrie1990scats}
+Lowrie P.
+\newblock Scats, sydney co-ordinated adaptive traffic system: A traffic
+  responsive method of controlling urban traffic[J].
+\newblock 1990..
 
 \bibitem{lillicrap2015continuous}
 Lillicrap T~P, Hunt J~J, Pritzel A, et~al.
@@ -349,12 +402,6 @@ Abdoos M, Mozayani N, Bazzan A~L.
   coding[J].
 \newblock Applied intelligence, 2014, 40(2):201--213.
 
-\bibitem{arel2010reinforcement}
-Arel I, Liu C, Urbanik T, et~al.
-\newblock Reinforcement learning-based multi-agent system for network traffic
-  signal control[J].
-\newblock IET Intelligent Transport Systems, 2010, 4(2):128--135.
-
 \bibitem{zang2020metalight}
 Zang X, Yao H, Zheng G, et~al.
 \newblock Metalight: Value-based meta-reinforcement learning for traffic signal
@@ -404,21 +451,26 @@ Mnih V, Kavukcuoglu K, Silver D, et~al.
 \newblock Human-level control through deep reinforcement learning[J].
 \newblock nature, 2015, 518(7540):529--533.
 
-\bibitem{cools2013self}
-Cools S~B, Gershenson C, D’Hooghe B.
-\newblock Self-organizing traffic lights: A realistic simulation[M]. .
-\newblock Proceedings of Advances in applied self-organizing systems. Springer,
-  2013: 45--55.
+\bibitem{hunt1981scoot}
+Hunt P, Robertson D, Bretherton R, et~al.
+\newblock SCOOT-a traffic responsive method of coordinating signals[R].
+\newblock Technical report, 1981.
 
-\bibitem{roess2004traffic}
-Roess R~P, Prassas E~S, McShane W~R.
-\newblock Traffic engineering[M].
-\newblock Pearson/Prentice Hall, 2004.
+\bibitem{hunt1982scoot}
+Hunt P, Robertson D, Bretherton R, et~al.
+\newblock The SCOOT on-line traffic signal optimisation technique[J].
+\newblock Traffic Engineering \& Control, 1982, 23(4).
 
-\bibitem{webster1958traffic}
-Webster F.
-\newblock Traffic signal settings, road research technical paper no. 39[J].
-\newblock Road Research Laboratory, 1958..
+\bibitem{gartner1991multi}
+Gartner N~H, Assman S~F, Lasaga F, et~al.
+\newblock A multi-band approach to arterial traffic signal optimization[J].
+\newblock Transportation Research Part B: Methodological, 1991, 25(1):55--74.
+
+\bibitem{diakaki2002multivariable}
+Diakaki C, Papageorgiou M, Aboudolas K.
+\newblock A multivariable regulator approach to traffic-responsive network-wide
+  signal control[J].
+\newblock Control Engineering Practice, 2002, 10(2):183--195.
 
 \bibitem{claus1998dynamics}
 Claus C, Boutilier C.
@@ -488,11 +540,5 @@ Wang Y, Xu T, Niu X, et~al.
 \newblock STMARL: A spatio-temporal multi-agent reinforcement learning approach
   for cooperative traffic light control[J].
 \newblock IEEE Transactions on Mobile Computing, 2020..
-
-\bibitem{koonce2008traffic}
-Koonce P, Rodegerdts L.
-\newblock Traffic signal timing manual.[R].
-\newblock Technical report, United States. Federal Highway Administration,
-  2008.
 
 \end{thebibliography}

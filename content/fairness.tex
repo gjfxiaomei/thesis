@@ -7,12 +7,17 @@
 交通信号调度问题研究的就是如何高效以及安全的调度交叉路口的不同交通流量。早期，由于技术的不成熟以及成本的约束，城市交通管理通常使用基于预先定义规则的调度方法来控制交叉路口的信号灯，这种做法的好处是可以保证调度的安全性以及不需要更多的人为干预成本，
 但是随着城市汽车数量的增加，这种方法已经难以高效地调度交通流量，因为它在调度时没有考虑路口的实时交通状况，只是按照预先定义的规则以固定的顺序改变信号灯的状态。
 
-传统方法的失利促使了人们对智能交通信号调度方法的研究。与传统方法不同的是，智能交通信号调度方法能够根据实时的交通状况制定出最优的策略，从而最大程度地缓解交通拥堵。
+传统方法的不足促使了人们对智能交通信号调度方法的研究。与传统方法不同的是，智能交通信号调度方法能够根据实时的交通状况制定出最优的策略，从而最大程度地缓解交通拥堵。
 在这些方法中，基于深度强化学习的智能交通信号调度方法在近些年逐渐成为了研究热点。首先神经网络的发展以及强化学习理论的成熟为这类方法的研究提供了技术支持。其次，强化学习的无模型特性使得它能够在训练中进行自我学习，而不需要外部的人为干涉，
 与那些需要人为定期修改控制规则的调度方法相比，降低了模型部署之后的管理成本。
 
+\begin{figure}[htb]
+    \includegraphics[width=0.9\textwidth]{fig/single-intersection-RL.pdf}
+    \caption{基于深度强化学习的单路口交通信号控制框架}
+    \label{fig:single-tsc-rl}
+\end{figure}
 \section{相关工作}
-虽然目前有很多基于强化学习的交通信号调度研究工作，但它们的差异主要体现在智能体的设计方面，包括以下三点：
+目前有很多基于强化学习的智能交通信号调度研究工作，这些工作大多数都是使用如\autoref{fig:single-tsc-rl}所示的控制框架，在这个框架下，环境是道路上的交通状况，智能体要做的是控制交通信号灯，在每个调度时刻$t$，获取环境的状态描述$s^t$（例如，当前的信号相位，车辆的等待时间，排队长度，车辆的位置），然和根据这个状态描述对下一步采取的行动作出预测，以使预期收益最大化，然后该动作将在环境中执行，并且产生一个奖励$r^t$。通常，在决策过程中，智能体采取的策略结合了对所学策略的利用和对新策略的探索。已有共组的差异主要体现在智能体的设计方面，包括以下三点：
 
 \textbf{（1）状态表示}
 
@@ -106,12 +111,12 @@ Policy-based的方法直接对控制策略进行建模并在迭代过程中对�
 我们将这一思想拓展到交通信号控制领域，然后设计了一个可以在效率和公平之间提供良好的平衡的奖励函数，如下所示：
 \begin{align}
 \label{eq:reward}
-    r = -\sum_{i=1}^{M} \frac{Q_i(t)}{\overline{L}_i(t) + \delta},
+    r = -\sum_{i=1}^{M} \frac{Q_i(t)}{\overline{L}_i(t) + \delta}
 \end{align}
 其中$Q_i(t)$ 和 $\overline{L}_i(t)$ 分别是第$i$条进近车道的队列长度和平均吞吐量。在每一次调度后（这里，我们将一次动作选择视作一次调度），$\overline{L}_i(t)$ 按照以下方式进行更新：
 \begin{align}
     \label{eq:li-update}
-    \overline{L}_i(t) = (1-\frac{1}{W})\overline{L}_i(t-1) + \frac{1}{W}L_i(t),
+    \overline{L}_i(t) = (1-\frac{1}{W})\overline{L}_i(t-1) + \frac{1}{W}L_i(t)
 \end{align}
 其中$L_i(t)$是此次调度中车道$i$上得到放行的车的数量，$W$是一个平衡通行效率和公平性的参数。另外，为了避免公式\ref{eq:reward}的分母为0， 我们加上了一个可以忽略不计的正数$\delta$。
 
@@ -122,7 +127,9 @@ Policy-based的方法直接对控制策略进行建模并在迭代过程中对�
 \end{figure}
 
 \subsection{系统框架}
-如\autoref{fig:system-model}所示，这里我们用DQN作为学习算法，并且采用经验回放\cite{mnih2015human}（experience replay）方法定期提取样本来更新模型，具体算法过程如\autoref{alg:dqn-single}所示。
+如\autoref{fig:system-model}所示，这里我们使用DQN作为学习算法，并且通过经验回放\cite{mnih2015human}（experience replay）机制定期提取样本来更新学习模型，具体算法过程如\autoref{alg:dqn-single}所示。之所以使用DQN作为学习算法是因为，一方面DQN使用了神经网络来拟合动作价值函数，可以应对连续状态空间的控制问题，并且降低了模型存储的难度。此外，DQN作为一种离线学习方法，可以更加高效地利用历史数据；
+另一方面，强化学习算法更新迭代速度很快，而我们重点是研究针对PFS的调度思路而设计的框架对调度公平性的提升。当然，在我们的框架下，将DQN替换成其他更加先进的算法，例如，DDPG、TD3等，可能会带来进一步的性能提升。
+
 \begin{breakablealgorithm}
     \caption{基于深度强化学习的智能交通信号控制模型训练流程}
     \label{alg:dqn-single}
@@ -199,6 +206,9 @@ Policy-based的方法直接对控制策略进行建模并在迭代过程中对�
     \item FIT(\textbf{F}airness-aware \textbf{I}ntelligent \textbf{T}raffic Light Control)：我们的方法。
 \end{itemize}
 \subsection{性能评估}
+
+\textbf{（1）通行效率评估}
+
 首先，我们通过实验评估了不同方法的通行效率的表现，为了得到一个综合的结果，我们在不同的$\rho$值下进行了实验，实验结果如\autoref{fig:efficiency}所示。
 可以观察到，我们的方法（FIT）的车辆通过路口的平均行驶时间远低于传统方法（行驶时间越短意味着效率越高），并且仅略低于只注重效率的LIT方法。
 \begin{figure}[htb]
@@ -207,9 +217,11 @@ Policy-based的方法直接对控制策略进行建模并在迭代过程中对�
     \label{fig:efficiency}
 \end{figure}
 
+\textbf{（2）公平性评估}
+
 其次，由于我们的主要研究目标是公平性，我们首先分析了在使用不同方法下每条车道的延误情况。这里我们用JFI（Jain Fairness Index）来量化公平性指标，JFI的计算方式如下：
 \begin{align}
-    \mathcal{J}=\frac{\left(\sum_{i=1}^{M} \bar{D}_{i}\right)^{2}}{M \sum_{i=1}^{M} \bar{D}_{i}^{2}},
+    \mathcal{J}=\frac{\left(\sum_{i=1}^{M} \bar{D}_{i}\right)^{2}}{M \sum_{i=1}^{M} \bar{D}_{i}^{2}}
 \end{align}
 其中$\bar{D}_{i}$是车道$i$的平均延误时间。当每个车道具有相同的平均延误时间时，JFI的值达到最大值，即1。\autoref{fig:fairness}展示了四种方法在不同$\rho$值下的平均延迟的JFI表现。从中我们可以看出FT和LIT的JFI值随着交通不平衡情况的加剧（即$\rho$值越大）而减小，而FIT任然能偶保持较高的值，并且高于同样能够保持稳定JFI值的SOTL方法。
 \begin{figure}[htb]
@@ -234,6 +246,8 @@ Policy-based的方法直接对控制策略进行建模并在迭代过程中对�
     \label{fig:minor_delay}
 \end{figure}
 
+\textbf{（3）驾驶体验评估}
+
 我们研究了不同方法的驾驶体验得分情况，\autoref{fig:des}展示了在$\rho=0.75$的情况下不同方法的驾驶体验得分分布情况。从中我们可以看出，FT方法超过半数的驾驶体验的分都是1分，由此可以看出该方法的不灵活。对于SOTL方法而言，虽然他的5分的比例最高，但是其得分分布的方差也是最高的。FIT的得分分布与LIT相似，但FIT的方差低于LIT，在以牺牲少量效率为代价的前提下。
 \begin{figure}[t]
     \centering
@@ -241,6 +255,8 @@ Policy-based的方法直接对控制策略进行建模并在迭代过程中对�
     \caption{在$\rho=0.75$的交通负载情况下四种方法的驾驶体验得分分布}
     \label{fig:des}
 \end{figure}
+
+\textbf{（4）W参数影响分析}
 
 最后，我们研究了\autoref{eq:li-update}中$W$参数的取值对模型性能的影响，因为$W$是用来平衡效率和公平性的，不同的值会导致学习到不同的策略，从\autoref{fig:window-size}中我们可以看出$W$值越高，越有利于调度的公平性。相反，$W$值越小，路口的通行效率就越高。具体来说，当$W=1$时，我们方法FIT的整体性能（包括通行效率和公平性）接近于LIT。
 \begin{figure}[htb]

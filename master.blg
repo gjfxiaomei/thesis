@@ -14,54 +14,57 @@ Database file #1: bib/ref.bib
 Warning--I didn't find a database entry for ""
 Warning--there's a publisher but no address in bakker2010traffic
 Warning--can't use both volume and number fields in chen2020toward
+Warning--there's a publisher but no address in roess2004traffic
+Warning--empty journal in little1981maxband
+Warning--there's a publisher but no address in cools2013self
 Warning--there's a publisher but no address in varaiya2013max
+Warning--empty journal in lowrie1990scats
 Warning--can't use both volume and number fields in guo2019attention
 Warning--can't use both volume and number fields in cao2016deep
 Warning--empty journal in 2018GraphRNN
 Warning--empty journal in 2018NetGAN
 Warning--can't use both volume and number fields in zang2020metalight
 Warning--can't use both volume and number fields in aslani2019developing
-Warning--there's a publisher but no address in cools2013self
-Warning--there's a publisher but no address in roess2004traffic
-You've used 77 entries,
+Warning--empty institution in hunt1981scoot
+You've used 85 entries,
             2306 wiz_defined-function locations,
-            970 strings with 20206 characters,
-and the built_in function-call counts, 41808 in all, are:
-= -- 4300
-> -- 1078
+            1008 strings with 21784 characters,
+and the built_in function-call counts, 45742 in all, are:
+= -- 4678
+> -- 1198
 < -- 39
-+ -- 504
-- -- 252
-* -- 3263
-:= -- 5467
-add.period$ -- 189
-call.type$ -- 77
-change.case$ -- 1
++ -- 560
+- -- 280
+* -- 3600
+:= -- 6006
+add.period$ -- 207
+call.type$ -- 85
+change.case$ -- 2
 chr.to.int$ -- 0
-cite$ -- 88
-duplicate$ -- 2960
-empty$ -- 4218
-format.name$ -- 322
-if$ -- 9659
+cite$ -- 99
+duplicate$ -- 3265
+empty$ -- 4627
+format.name$ -- 358
+if$ -- 10533
 int.to.chr$ -- 0
-int.to.str$ -- 77
-missing$ -- 77
-newline$ -- 416
-num.names$ -- 77
-pop$ -- 351
+int.to.str$ -- 85
+missing$ -- 84
+newline$ -- 456
+num.names$ -- 85
+pop$ -- 390
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 948
+skip$ -- 1005
 stack$ -- 0
-substring$ -- 5534
-swap$ -- 359
+substring$ -- 6048
+swap$ -- 360
 text.length$ -- 39
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 11
-while$ -- 469
-width$ -- 79
-write$ -- 953
-(There were 12 warnings)
+warning$ -- 14
+while$ -- 509
+width$ -- 87
+write$ -- 1042
+(There were 15 warnings)

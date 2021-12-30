@@ -22,10 +22,10 @@
 }
 % 设置基本文档信息，\linebreak 前面不要有空格，否则在无需换行的场合，中文之间的空格无法消除
 \nuaaset{
-  title = {基于深度强化学习智能交通信号调度},
+  title = {基于深度强化学习的智能交通信号调度研究},
   author = {陈建},
   college = {计算机科学与技术学院},
-  advisers = {朱琨 教授},
+  advisers = {** 教授},
   % applydate = {二〇一八年六月}  % 默认当前日期
   %
   % 本科
@@ -37,43 +37,44 @@
   researchfield = {网络与分布计算},
   libraryclassid = {TP371},       % 中图分类号
   subjectclassid = {080605},      % 学科分类号
-  thesisid = {1028716 22-S038},   % 论文编号
+  thesisid = {*****16 22-S038},   % 论文编号
 }
 \nuaasetEn{
   title = {Traffic Signal Control Based on Deep Reinforcement Learning},
   author = {Jian Chen},
   college = {College of Compute Science and Technology},
   majorsubject = {Compute Science and Technology},
-  advisers = {Prof.Kun Zhu},
+  advisers = {Prof.* *},
   degreefull = {Master of Engineering},
   % applydate = {June, 8012}
 }
 
 % 摘要
 \begin{abstract}
-  随着近些年来车辆数量的不断增加，交通拥塞情况已经变得越来越严重，并且极大地影响了人们的日常生活和城市的运作。传统的交通信号控制方法由于受限于严苛的假设条件以及没有考虑实时的交通状况，已经难以在现在更为负责的交通模式下起到很好的作用，如何设计出能够进一步提高通行效率的智能交通信号调度方法是一个亟需解决的问题。
+  随着近些年来车辆数量的不断增加，交通拥塞情况已经变得越来越严重，并且极大地影响了人们的日常生活和城市的运作。传统的交通信号控制方法由于受限于严苛的假设条件以及没有考虑实时的交通状况，难以在现在更为复杂的交通模式下起到很好的作用，如何设计出能够进一步提高通行效率的智能交通信号调度方法是一个亟需解决的问题。
   
-  随着人工智能技术的不断发展以及对实时交通数据的获取变得更加容易，使得根据实时交通状况动态调整信号这一想法成为可能。一些研究工作提出使用强化学习进行交通信号控制，与传统的方法相比，取得了卓越的性能。然而，现有的方法仍然有一些需要改进的地方。例如，单路口场景下，大多数基于深度强化学习的交通控制方法只关注于提高路口的通行效率，而忽略了对公平性的考虑，这会导致学习到一个有偏见的策略，即优先服务交通流量大的车道，而忽略交通流量较小的车道上的车辆；在多路口场景下，现有的方法在通过信息交互实现协调控制的过程中，笼统地将自己路口的所有信息传递给目标路口，这使得目标路口难以挖掘出对自身有用的信息，增加了学习的难度。在本文中，我们对已有工作在这两种场景下的缺点进行了改进。
+  随着人工智能技术的不断发展以及对实时交通数据的获取变得更加容易，使得根据实时交通状况动态调整信号这一想法成为可能。一些研究工作提出使用强化学习实现交通信号控制，与传统的方法相比，这类方法的性能更加出色。然而，现有的方法仍然有一些需要改进的地方。例如，在单路口场景下，大多数基于深度强化学习的交通控制方法只注重于提高路口的通行效率，而忽略了对公平性的考虑，这会导致学习到一个有偏见的策略，即优先服务交通流量大的车道，而忽略交通流量较小的车道上的车辆；
+  在多路口场景下，现有的方法在通过信息交互实现协调控制的过程中，笼统地将自己路口的所有信息传递给目标路口，这使得目标路口难以挖掘出对自身有用的信息，增加了学习的难度。在本文中，我们对已有工作在这两种场景下的不足进行了改进。
   
-  对于单路口场景下的智能交通信号调度，通过引用无线网络中的Proportional Fair调度方法，我们提出了一个具有公平感知能力的基于深度强化学习的智能交通信号调度模型，可以在效率和公平之间提供一个良好的权衡。通过在仿真环境中进行的大量实验验证了我们模型的效果，并与已有方法进行对比，进一步阐述了我们模型在公平性方面的性能提升。
+  首先，对于单路口场景下的智能交通信号调度，通过引用无线网络中的比例公平调度方法（Proportional Fair Scheduling，PFS），我们提出了一个具有公平感知能力的基于深度强化学习的智能交通信号调度模型，这个调度模型可以在效率和公平性之间提供一个良好的权衡，并且可以有效地解决小交通流量的“饥饿等待”问题。为了验证了模型的效果，我们进行了大量的实验，并与已有方法进行对比，进一步阐述了我们模型在公平性方面的性能提升。
   
-  在多路口场景下，为了减少信息交互过程中的信息冗余，我们提出了一种新的路网建图方式并在此基础上设计了一种新的信息交互模块，可以有效地剔除数据交互过程中邻居节点的无效信息。为了展示我们的模型与已有方法相比在通行效率和学习速度上的提升，我们在仿真环境中分别就合成交通数据和真实交通数据进行了实验。
+  其次，在多路口场景下，路口之间进行信息交互可以有效地实现协调控制。为了解决已有工作在信息交互过程中出现的信息冗余情况，我们提出了一种新的路网建图方式并在此基础上设计了一种新的基于图神经网络的信息交互模块，可以有效地剔除数据交互过程中邻居节点的无效信息。为了展示我们的模型与已有方法相比在通行效率和学习速度上的提升，我们在仿真环境中分别就合成交通数据和真实交通数据进行了实验。
 \end{abstract}
-\keywords{交通信号控制, 强化学习, 公平性, 协调, 图神经网络}
+\keywords{交通信号控制, 强化学习, 公平性, 协调控制, 图神经网络}
 
 \begin{abstractEn}
-With the increasing number of vehicles in recent years, traffic congestion has become more and more serious, and has greatly affected people's daily life and urban operation. The traditional traffic signal control methods have been difficult to play a good role in the more responsible traffic mode because they are limited by strict assumptions and do not consider the real-time traffic conditions. How to design an intelligent traffic signal scheduling method that can further improve the traffic efficiency is an urgent problem to be solved.
+With the increasing number of vehicles in recent years, traffic congestion has become more and more serious, and has greatly affected people's daily life and urban operation. The traditional traffic signal control methods have been difficult to play a good role in the more complex traffic mode because they are limited by strict assumptions and do not consider the real-time traffic conditions. How to design an intelligent traffic signal scheduling method that can further improve the traffic efficiency is an urgent problem to be solved.
 
 With the continuous development of artificial intelligence technology and the easier acquisition of real-time traffic data, it is possible to dynamically adjust the signal according to the real-time traffic conditions. Several studies have proposed to use reinforcement learning (RL) for traffic signal
 control and achieved superior performance compared with the traditional methods. However, existing methods still have something to be improved. For example, in the single intersection scenario, most traffic control methods based on deep reinforcement learning only focus on improving the traffic efficiency of the intersection and ignore the consideration of fairness, which will lead to learning a biased strategy, that is, giving higher priority to serving the lanes with large traffic flow and ignoring the vehicles in the lanes with small traffic flow. 
-In the multi intersection scenario, in the process of realizing coordinated control through information interaction, the existing methods generally transfer all the information of their own intersection to the target intersection, which makes it difficult for the target intersection to mine useful information for themselves and increases the difficulty of learning. In this paper, we improve the shortcomings of existing work in these two scenarios.
+In the multi intersection scenario, in the process of realizing coordinated control through information interaction, the existing methods generally transfer all the information of their own intersection to the target intersection, which makes it difficult for the target intersection to mine useful information for themselves and increases the difficulty of learning. In this thesis, we improve the existing work in these two scenarios.
 
-For intelligent traffic signal scheduling in single intersection scenario, by referring to the proportional fair scheduling method in wireless network, we propose an intelligent traffic signal scheduling model based on deep reinforcement learning with fairness perception, which can provide a good trade-off between efficiency and fairness. By conducting comprehensive experiments in the simulation environment, the effect of our model is verified, and compared with the existing methods, the performance improvement of our model in fairness is further described.
+For intelligent traffic signal scheduling in single intersection scenario, by referring to the Proportional Fair Scheduling (PFS) method in wireless network, we propose an intelligent traffic signal scheduling model based on deep reinforcement learning with fairness perception, which can provide a good trade-off between efficiency and fairness, also, this model can effectively solve the "hungry waiting" problem of small traffic flow. To verify the effect of our model, we conduct comprehensive experiments, and compare with the existing methods to further illustrate the performance improvement of our model in terms of fairness.
 
-In the multi intersection scenario, in order to reduce the information redundancy in the process of information interaction, we propose a new method of transforming road structure into graph, and design a new information interaction module, which can effectively eliminate the invalid information of neighbor nodes in the process of information interaction. In order to show the improvement of traffic efficiency and learning speed of our model compared with existing methods, we conduct comprehensive experiments on synthetic traffic data and real traffic data in the simulation environment.
+In the multi intersection scenario, information interaction between intersections can be effective for coordinated control. In order to solve the information redundancy in the information interaction process of existing work, we propose a new method of transforming road structure into graph, and design a new information interaction module based on graph neural network, which can effectively eliminate the invalid information of neighbor nodes in the process of information interaction. In order to show the improvement of traffic efficiency and learning speed of our model compared with existing methods, we conduct comprehensive experiments on synthetic traffic data and real traffic data in the simulation environment.
 
 \end{abstractEn}
-\keywordsEn{Traffic Signal Control, Reinforcement Learning, Fairness-Aware, Coordination, Graph Neural Network}
+\keywordsEn{Traffic Signal Control, Reinforcement Learning, Fairness-Aware, Coordination Control, Graph Neural Network}
 
 
 % 请按自己的论文排版需求，随意修改以下全局设置
@@ -92,7 +93,7 @@ In the multi intersection scenario, in order to reduce the information redundanc
 \usepackage{siunitx}
 \usepackage{listings}
 \usepackage{multirow}
-\usepackage[bottom]{footmisc}
+% \usepackage[bottom]{footmisc}
 \usepackage{pifont}
 
 \usepackage{algorithm}  

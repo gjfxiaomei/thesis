@@ -1,5 +1,5 @@
 
-\chapter{概述}
+\chapter{相关概念和技术}
 \section{交通信号控制概述}
 交通信号控制是一个重要而具有挑战性的现实问题，其目的是通过协调车辆在道路交叉口的运动来最小化所有车辆的通行时间。目前广泛使用的交通信号控制系统仍然严重依赖过于简化的信息和基于规则的方法。车联网技术的发展、硬件性能的提升以及人工智能技术的进步使得我们现在有更丰富的数据、更多的计算能力和先进的方法来驱动智能交通的发展。 
 交通信号控制的目的为了方便车辆在交叉路口的安全和高效移动。安全是通过信号灯指定不同车道的车通行来分离相互冲突的运动实现的。为了能够有效地优化通行效率，已有的工作提出了不同的指标来量化通行效率，主要有以下三个：
@@ -22,18 +22,18 @@
     \item Movement signal:根据traffic movement定义的运动信号，绿色代表可以通行，红色代表禁止通行。根据大多数国家的交通规则，右转的traffic movement是可以不受信号约束的。
     \item Phase: 信号灯的一个phase(相位)是指非冲突运动信号的组合，这意味着这些信号可以同时设置为绿色，而不会引起安全冲突。 \autoref{fig:tsc}(c)展示了最常用的四相位信号模式。
     \item Phase sequence: 相序，即一组信号相位的序列，它定义了一组信号相位及其变化顺序。
-    \item Signal plan：信号计划，由一组相位序列及其相应的起始时间组成。通常表示为$\left(p_{1}, t_{1}\right)\left(p_{2}, t_{2}\right) \ldots\left(p_{i}, t_{i}\right) \ldots$其中$p_{i}$ 和 $t_{i}$分别代表相位及其开始时间。
+    \item Signal plan：信号计划，由一组相位序列及其相应的起始时间组成。通常表示为$\left(p_{1}, t_{1}\right) \ldots \\ \left(p_{i}, t_{i}\right) \ldots$，其中$p_{i}$ 和 $t_{i}$分别代表相位及其开始时间。
     \item Cycle-based signal plan：周期性信号计划，与普通的信号计划不同的是其中的相位序列是按循环顺序工作的，可以表示为
-    $\left(p_{1}, t_{1}^{1}\right)\left(p_{2}, t_{2}^{1}\right) \ldots \\ \left(p_{N}, t_{N}^{1}\right)\left(p_{1}, t_{1}^{2}\right)\left(p_{2}, t_{2}^{2}\right) \ldots\left(p_{N}, t_{N}^{2}\right) \ldots$，其中$p_{1}, p_{2}, \ldots, p_{N}$是重复出现的相位序列，$t_i^j$是$j$周期中相位$p_i$的起始时间。具体地，$C^{j}=t_{1}^{j+1}-t_{1}^{j}$是第j周期的周期长度， $\left\{\frac{t_{2}^j-t_{1}^j}{C^j}, \ldots, \frac{t_{N}^j-t_{N-1}^j}{C^j}\right\}$是第$j$周期中的相位分裂比（phase split ratio），表示每个相位持续时间占总周期长度的比重。现有的交通信号控制方法通常在一天中重复类似的相位序列。
+    $\left(p_{1}, t_{1}^{1}\right)\left(p_{2}, t_{2}^{1}\right) \ldots  \left(p_{N}, t_{N}^{1}\right)\left(p_{1}, t_{1}^{2}\right)\left(p_{2}, t_{2}^{2}\right) \ldots \left(p_{N}, t_{N}^{2}\right) \ldots$，其中$p_{1}, p_{2}, \ldots, p_{N}$是重复出现的相位序列，$t_i^j$是$j$周期中相位$p_i$的起始时间。具体地，$C^{j}=t_{1}^{j+1}-t_{1}^{j}$是第j周期的周期长度， $\left\{\frac{t_{2}^j-t_{1}^j}{C^j}, \ldots, \frac{t_{N}^j-t_{N-1}^j}{C^j}\right\}$是第$j$周期中的相位分裂比（phase split ratio），表示每个相位持续时间占总周期长度的比重。现有的交通信号控制方法通常在一天中重复类似的相位序列。
 \end{itemize}
 
 
 \section{传统交通信号控制方法}
 \subsection{Fixed-Time}
-使用最为广泛的一种交通信号控制方法，按照事先固定的信号序列不断的循环，不依赖于任何类型的检测，例如行人按钮或车辆检测装置。所有道路和运动都以恒定的特定顺序提供服务。即使没有汽车或行人，信号也会改变，在交通较为稳定的情况下能够起到不错的效果，但是当交通变化很大时效率会很低。由于不需要安装任何检测器，所以这种方法的成本效益高。
+Fixed-Time\cite{miller1963settings}是使用最为广泛的一种交通信号控制方法，它按照事先定义的信号序列不断的循环，不依赖于任何类型的检测器，例如行人按钮或车辆检测装置，按照特定的顺位为所有道路和运动提供服务。即使没有车辆或行人，信号也会改变，这种方法在交通较为稳定的情况下能够起到不错的效果，但是当交通变化很大时效率会变低。由于不需要安装任何检测器，所以这种方法的成本效益高。
 
 \subsection{Webster}
-Webster方法是一种广泛使用的针对单路口场景的交通信号控制方法。对于单路口场景，传统交通信号控制方法通常由三个部分组成：确定信号周期长度，确定信号相位序列以及相位分裂。Webster的做法就是根据交通流量计算信号周期长度和相位分裂时间。通过假设车流在一段时间内（例如，过去的五分钟或10分钟）是均匀到达的，可以计算出确切的最优周期长度和最佳相位分裂时间，从而最小化车辆通行时间。周期长度计算依赖于以下方程：
+Webster\cite{koonce2008traffic}方法是一种广泛使用的针对单路口场景的交通信号控制方法。对于单路口场景，传统交通信号控制方法通常由三个部分组成：确定信号周期长度，确定信号相位序列以及相位分裂。Webster的做法就是根据交通流量计算信号周期长度和相位分裂时间。通过假设车流在一段时间内（例如，过去的五分钟或10分钟）是均匀到达的，可以计算出确切的最优周期长度和最佳相位分裂时间，从而最小化车辆通行时间。周期长度计算依赖于以下方程：
 \begin{align}
     C_{d e s}\left(V_{c}\right)=\frac{N \times t_{L}}{1-\frac{V_{c}}{\frac{3600}{h} \times P H F \times(v / c)}}
 \end{align}
@@ -44,56 +44,9 @@ Webster方法是一种广泛使用的针对单路口场景的交通信号控制�
 \end{align}
 $t_i \text{和} t_j$分别表示相位$i$和相位$j$的时长。$V_c^i$表示相位$i$的临界车道流量，其中临界车道是指在一个相位中交通流量与饱和流量之比最高的车道，通常与队列长度有关。
 
-\subsubsection{MaxBand}
-MaxBand是一种以优化邻居路口的通行效率为目标的传统交通信号调度算法，与GreenWave不同的是，它旨在根据整个路网系统内各个路口的信号计划找到一个最大的带宽（maximal bandwidth ）来减少沿两个相反方向行驶的车辆的停靠次数。
-其中带宽是指同步绿波在一个周期长度内所持续的部分时间，通常较大的带宽意味着沿一个方向的更多交通可以不间断地通过。与GreenWave相同的是，MaxBand同样要求所有路口具有相同的信号周期长度（通常设置为所有信号周期长度最大值）。在遵循以下约束条件的情况下，MaxBand会通过使用一个混合整数线性规模模型来计算出一个对称且宽度统一的带宽。
-\begin{itemize}
-    \item 单个路口的带宽限制：首先对于每个方向（包括入站方向和出站方向，入站方向指的是进入交叉路口的方向，出战方向则是离开交叉路口的方向）来说，绿色信号的时间应该大于带宽的长度：
-    \begin{align}
-        \label{eq:band-cons-1}
-        w_i + b \leq 1- r_i, w_i > 0,
-    \end{align}
-    \begin{align}
-        \label{eq:band-cons-2}
-        \hat{w_i} + \hat{b} \leq 1- \hat{r_i}, w_i > 0,
-    \end{align}
-    这里$w_i \text{和} \hat{w-i}$分别表示入站和出站方向上红色信号结束可带宽开始之间的时间间隔，$b$值得是带宽，$r_i \text{和} \hat{r_i}$分别表示入站和出站方向的红色信号时间。
-    其次对于两个不同的方向，入站和出战的带宽要相同：
-    \begin{align}
-        \label{eq:band-cons-3}
-        b = \hat{b}
-    \end{align}
-    \item 路口$i$和路口$j$之间时间和空间的偏移量约束：首先时间上要满足下列约束条件:
-    \begin{align}
-        \label{eq:temporal-cons}
-        \theta(i,j) + \hat{\theta}(i,j) + \delta_i - \delta_j = m(i,j),
-    \end{align}
-    这里$\theta(i,j)￥\textbf{和}\hat{\theta}(i,j)$分别表示路口入站和出站的偏移量，$\delta$ 为入站和出站的红色信号时间偏移量，$m(i,j)$是一个整数变量，表示路口$i$和路口$j$的信号周期长度的一个倍数。
-    其次空间上，车辆从一个路口出发到另一个路口的行驶时间要满足以下约束条件：
-    \begin{align}
-        \label{eq:spataril-cons-1}
-        \phi(i, j)+0.5 * r_{j}+w_{j}+\tau_{j}=0.5 * r_{i}+w_{i}+t(i, j),
-    \end{align}
-
-    \begin{align}
-        \label{eq:spataril-cons-2}
-        \hat{\phi}(i, j)+0.5 * \hat{r}_{j}+\hat{w}_{j}=0.5 * \hat{r}_{i}+\hat{w}_{i}-\hat{\tau}_{i}+\hat{t}(i, j)
-    \end{align}
-    其中$t$和$\hat{t}$分别表示交叉路口之间的进站和出战的通行时间，与道路的长度和车辆行驶速度有关；$\tau \text{和} \hat{\tau}$表示交叉路口的队列清理时间，与从其他路口转入以及自身的交通流量有关。
-\end{itemize}
-最后MaxBnad的优化目标定义如下所示：
-\begin{equation}
-    \begin{split}
-        \textbf { maximize } b \\
-        \textbf { subject to } \text { \ref{eq:band-cons-1}, \ref{eq:band-cons-2}, \ref{eq:band-cons-3}, \ref{eq:temporal-cons}, \ref{eq:spataril-cons-1}, \ref{eq:spataril-cons-2}} \\
-        {m_{i} \in \mathbb{N}} \\
-        {b, \bar{b}, w_{i}, \bar{w}_{i} \geq 0, i=1, \ldots, n}.
-    \end{split}
-\end{equation}
-
 \subsection{GreenWave}
 虽然使用Webster可以简单的控制单个交叉路口的交通信号，但是对于相邻的多个交叉路口，不能够简单地直接使用Webster来分别优化每一个路口，相邻路口信号灯的信号时间之间的偏移（即相邻路口信号周期起始时间的差值）也需要进行优化，因为对于相距较近的路口来说，一个路口的控制策略可能会影响到其他路口。
-GreenWave就是交通运输领域中最经典的协调相邻路口的信号控制方法，它通过优化相邻路口信号时间的偏移来减少车辆在某一方向行驶时的停留次数。其中路口之间的偏移量通过以下公式计算：
+GreenWave\cite{roess2004traffic}就是交通运输领域中最经典的协调相邻路口的信号控制方法，它通过优化相邻路口信号时间的偏移来减少车辆在某一方向行驶时的停留次数。其中路口之间的偏移量通过以下公式计算：
 \begin{align}
     \label{eq:green-wave}
     \Delta t_{i, j}=\frac{L_{i, j}}{v}
@@ -105,6 +58,51 @@ GreenWave就是交通运输领域中最经典的协调相邻路口的信号控�
     \label{fig:green-wave}
 \end{figure}
 
+\subsection{MaxBand}
+MaxBand\cite{little1981maxband}是一种以优化邻居路口的通行效率为目标的传统交通信号调度算法，与GreenWave不同的是，它旨在根据整个路网系统内各个路口的信号计划找到一个最大的带宽（maximal bandwidth ）来减少沿两个相反方向行驶的车辆的停靠次数。
+其中带宽是指同步绿波在一个周期长度内所持续的部分时间，通常较大的带宽意味着沿一个方向的更多交通可以不间断地通过。与GreenWave相同的是，MaxBand同样要求所有路口具有相同的信号周期长度（通常设置为所有信号周期长度最大值）。在遵循以下约束条件的情况下，MaxBand会通过使用一个混合整数线性规模模型来计算出一个对称且宽度统一的带宽。
+\begin{itemize}
+    \item 单个路口的带宽限制：首先对于每个方向（包括入站方向和出站方向，入站方向指的是进入交叉路口的方向，出战方向则是离开交叉路口的方向）来说，绿色信号的时间应该大于带宽的长度：
+    \begin{align}
+        \label{eq:band-cons-1}
+        w_i + b \leq 1- r_i, w_i > 0
+    \end{align}
+    \begin{align}
+        \label{eq:band-cons-2}
+        \hat{w_i} + \hat{b} \leq 1- \hat{r_i}, w_i > 0
+    \end{align}
+    这里$w_i \text{和} \hat{w-i}$分别表示入站和出站方向上红色信号结束可带宽开始之间的时间间隔，$b$值得是带宽，$r_i \text{和} \hat{r_i}$分别表示入站和出站方向的红色信号时间。
+    其次对于两个不同的方向，入站和出战的带宽要相同：
+    \begin{align}
+        \label{eq:band-cons-3}
+        b = \hat{b}
+    \end{align}
+    \item 路口$i$和路口$j$之间时间和空间的偏移量约束：首先时间上要满足下列约束条件:
+    \begin{align}
+        \label{eq:temporal-cons}
+        \theta(i,j) + \hat{\theta}(i,j) + \delta_i - \delta_j = m(i,j)
+    \end{align}
+    这里$\theta(i,j)￥\textbf{和}\hat{\theta}(i,j)$分别表示路口入站和出站的偏移量，$\delta$ 为入站和出站的红色信号时间偏移量，$m(i,j)$是一个整数变量，表示路口$i$和路口$j$的信号周期长度的一个倍数。
+    其次空间上，车辆从一个路口出发到另一个路口的行驶时间要满足以下约束条件：
+    \begin{align}
+        \label{eq:spataril-cons-1}
+        \phi(i, j)+0.5 * r_{j}+w_{j}+\tau_{j}=0.5 * r_{i}+w_{i}+t(i, j)
+    \end{align}
+
+    \begin{align}
+        \label{eq:spataril-cons-2}
+        \hat{\phi}(i, j)+0.5 * \hat{r}_{j}+\hat{w}_{j}=0.5 * \hat{r}_{i}+\hat{w}_{i}-\hat{\tau}_{i}+\hat{t}(i, j)
+    \end{align}
+    其中$t$和$\hat{t}$分别表示交叉路口之间的进站和出战的通行时间，与道路的长度和车辆行驶速度有关；$\tau \text{和} \hat{\tau}$表示交叉路口的队列清理时间，与从其他路口转入以及自身的交通流量有关。
+\end{itemize}
+最后MaxBnad的优化目标定义如下所示：
+\begin{equation}
+    \begin{split}
+        & \textbf { maximize } b \\
+        & \textbf { subject to } \text { (2.4-2.9) }
+    \end{split}
+\end{equation}
+
 \subsection{Actuated Control}
 Actuated Control根据当前信号相位和其他的竞争信号相位对绿色信号的请求来决定是否保持或者变化当前的相位，根据规则的差异，Actuated Control主要可以分为Fully-Actuated Control和Semi-Actuated Control两种。具体的请求触发规则定义如\autoref{tab:actuated-control}所示：
 \begin{table}[htb]
@@ -113,7 +111,7 @@ Actuated Control根据当前信号相位和其他的竞争信号相位对绿色�
       \toprule
       \tabincell{l}{来自当前信号\\相位的请求} & \tabincell{l}{来自其他信号\\相位的请求} & \tabincell{c}{动作} \\
       \midrule
-      \multirow{2}{*}{是} & 是 & \tabincell{l}{\textbf{Fully-actuated control}：如果当前信号相位的持续时间大于阈值，\\则切换到下一信号相位；否则，保持当前信号相位。\\\textbf{Semi-actuated control}：保持当前信号相位。 } \\
+      \multirow{2}{*}{是} & 是 & \tabincell{l}{\textbf{Fully-actuated control}：如果当前信号相位的持续时间大于\\阈值，则切换到下一信号相位；否则，保持当前信号相位。\\\textbf{Semi-actuated control}：保持当前信号相位。 } \\
       \cline{2-3}                    
       & 否 & 保持当前信号相位。\\
       \hline
@@ -127,10 +125,10 @@ Actuated Control根据当前信号相位和其他的竞争信号相位对绿色�
 
 
 \subsection{SOTL}
-SOTL（Self-Organizing Traffic Light Control）是一种具有附加需求响应规则的Fully-Actuated Control方法。它与Fully-Actuated Control的主要区别在于当前信号相位的绿色信号请求定义（虽然它们都需要最小的绿色相位持续时间），在Fully-Actuated Control中，当车辆接近信号灯时，就会产生延长绿色信号的请求，而在SOTL中，除非接近信号灯的车辆数量大于预先定义的一个阈值，否则就不会产生绿色信号请求。
+SOTL\cite{cools2013self}（Self-Organizing Traffic Light Control）是一种具有附加需求响应规则的Fully-Actuated Control方法。它与Fully-Actuated Control的主要区别在于当前信号相位的绿色信号请求定义（虽然它们都需要最小的绿色相位持续时间），在Fully-Actuated Control中，当车辆接近信号灯时，就会产生延长绿色信号的请求，而在SOTL中，除非接近信号灯的车辆数量大于预先定义的一个阈值，否则就不会产生绿色信号请求。
 
 \subsection{Max-Pressure Control}
-Max-Pressure Control的目的是通过最小化对应信号相位的压力（pressure）来平衡相邻路口之间的队列长度，从而降低过饱和的风险，其中压力的概念如图\autoref{fig:max-pressure}所示：
+Max-Pressure Control\cite{varaiya2013max}的目的是通过最小化对应信号相位的压力（pressure）来平衡相邻路口之间的队列长度，从而降低过饱和的风险，其中压力的概念如图\autoref{fig:max-pressure}所示：
 \begin{figure}[htb]
     \includegraphics[width=0.9\textwidth]{fig/max-pressure.pdf}
     \caption{Max-Pressure的压力图示}
@@ -157,7 +155,7 @@ Max-Pressure Control的目的是通过最小化对应信号相位的压力（pre
 \end{breakablealgorithm}  
 
 \subsection{SCATS}
-SCATS通过将预先定义的信号计划（包括信号周期长度、信号相位分裂比以及偏移量）作为输入，并根据事先定义的性能指标来从这些反复选择，其性能指标饱和度的定义如下：
+SCATS\cite{lowrie1990scats}通过将预先定义的信号计划（包括信号周期长度、信号相位分裂比以及偏移量）作为输入，并根据事先定义的性能指标来从这些反复选择，其性能指标饱和度的定义如下：
 \begin{align}
     D S=\frac{g_E}{g}=\frac{g-\left(h^{\prime}-h \times n\right)}{g}
 \end{align}
@@ -183,7 +181,7 @@ SCATS通过将预先定义的信号计划（包括信号周期长度、信号相
     \end{algorithmic}  
 \end{breakablealgorithm}  
 
-\autoref{tab:traditional-methods}列出了每种方法的要求和输出结果：
+\autoref{tab:traditional-methods}列出了上述几种传统交通信号控制方法的要求和输出结果：
 \begin{table}[htb]
     \caption{传统交通信号控制方法总结\label{tab:traditional-methods}}
     \begin{tabular}{llll}
@@ -249,7 +247,7 @@ SCATS通过将预先定义的信号计划（包括信号周期长度、信号相
 
 \subsubsection{分类}
 \begin{figure}[htb]
-    \includegraphics[width=0.9\textwidth]{fig/rl-classfication.pdf}
+    \includegraphics[width=1.0\textwidth]{fig/rl-classfication.pdf}
     \caption{强化学习分类及常见算法}
     \label{fig:rl-classficatoin}
 \end{figure}
@@ -273,22 +271,22 @@ Model-based方法是指在已知状态转移函数的情况下，学习用一个
 % \end{itemize}
 
 
-\subsection{基于强化学习的交通信号控制框架}
-\begin{figure}[t]
-    \subfloat[单路口场景\label{fig:single-tsc-rl}]{\includegraphics[width=0.45\textwidth]{./fig/single-intersection-RL.pdf}}\quad
-    \subfloat[多路口场景\label{fig:multi-tsc-rl}]{\includegraphics[width=0.45\textwidth]{./fig/multi-intersection-RL.pdf}}
-    \caption{基于强化学习的交通信号控制框架}
-    \label{fig:TSC-RL}
-  \end{figure}
-根据路网规模的不同，基于强化学习的交通信号控制框架可以分为以下两类：
+% \subsection{基于强化学习的交通信号控制框架}
+% \begin{figure}[t]
+%     \subfloat[单路口场景\label{fig:single-tsc-rl}]{\includegraphics[width=0.9\textwidth]{./fig/single-intersection-RL.pdf}}\\
+%     \subfloat[多路口场景\label{fig:multi-tsc-rl}]{\includegraphics[width=0.9\textwidth]{./fig/multi-intersection-RL.pdf}}
+%     \caption{基于强化学习的交通信号控制框架}
+%     \label{fig:TSC-RL}
+%   \end{figure}
+% 根据路网规模的不同，基于强化学习的交通信号控制框架可以分为以下两类：
 
-\textbf{（1）基于深度强化学习的单路口交通信号控制框架}
+% \textbf{（1）基于深度强化学习的单路口交通信号控制框架}
 
-\autoref{fig:TSC-RL}(a)描述了应用强化学习框架到单路口交通信号控制问题上的基本思路。环境是道路上的交通状况，智能体要做的是控制交通信号。在每个调度时刻$t$，获取环境的状态描述$s^t$（例如，当前的信号相位，车辆的等待时间，排队长度，车辆的位置），智能体将根据这个状态描述对下一步采取的行动作出预测，以使预期收益最大化，然后该动作将在环境中执行，并且产生一个奖励$r^t$。通常，在决策过程中，智能体采取的策略结合了对所学策略的利用和对新策略的探索。
+% \autoref{fig:TSC-RL}(a)描述了应用强化学习框架到单路口交通信号控制问题上的基本思路。环境是道路上的交通状况，智能体要做的是控制交通信号。在每个调度时刻$t$，获取环境的状态描述$s^t$（例如，当前的信号相位，车辆的等待时间，排队长度，车辆的位置），智能体将根据这个状态描述对下一步采取的行动作出预测，以使预期收益最大化，然后该动作将在环境中执行，并且产生一个奖励$r^t$。通常，在决策过程中，智能体采取的策略结合了对所学策略的利用和对新策略的探索。
 
-\textbf{（2）基于深度强化学习的多路口交通信号控制框架}
+% \textbf{（2）基于深度强化学习的多路口交通信号控制框架}
 
-\autoref{fig:TSC-RL}(b)描述了应用强化学习框架到多路口交通信号控制问题上的基本思路。智能体被定义为环境中N个路口的信号控制者。目标是学习每个智能体的最优策略，以优化整个环境中所有路口的通行效率。在每个调度时刻$t$，每个智能体$i$观察环境的一部分作为观察点$o_i^t$。智能体将对接下来要采取的行动$\mathbf{\alpha}^t$做出预测。这些动作将在环境中执行，并产生奖励$r_i^t$，其中奖励可以在环境中的单个路口或一组路口的层面上定义。
+% \autoref{fig:TSC-RL}(b)描述了应用强化学习框架到多路口交通信号控制问题上的基本思路。智能体被定义为环境中N个路口的信号控制者。目标是学习每个智能体的最优策略，以优化整个环境中所有路口的通行效率。在每个调度时刻$t$，每个智能体$i$观察环境的一部分作为观察点$o_i^t$。智能体将对接下来要采取的行动$\mathbf{\alpha}^t$做出预测。这些动作将在环境中执行，并产生奖励$r_i^t$，其中奖励可以在环境中的单个路口或一组路口的层面上定义。
 
 \subsection{基本要素}
 使用强化学习来解决交通信号控制问题要先确定以下几个基本要素:
@@ -368,21 +366,21 @@ Sperduti\cite{sperduti1997supervised}等人在1997年首次将神经网络应用
     \item Graph Attention Network(GAT)\cite{velivckovic2017graph}：本质上GAT是一种基于空间的图卷积网络，它与GCN的主要区别在于对邻居节点信息的聚合方式不同（\autoref{fig:GCN-GAT}）。GCN在在聚合过程中显式地为节点$v_i$的邻居$v_j$赋予一个非参数静态权重$a_{ij}=\frac{1}{\sqrt{\operatorname{deg}\left(v_{i}\right) \operatorname{deg}\left(v_{j}\right)}}$。
     而GAT则是通过使用一个端到端的神经网络架构隐式地捕捉权重$a_{ij}$，以便更重要的节点获得更大的权重，具体操作如下：
     \begin{align}
-        \mathbf{h}_{i}^{t}=\sigma\left(\sum_{j \in \mathcal{N}_{i}} \alpha\left(\mathbf{h}_{i}^{t-1}, \mathbf{h}_{j}^{t-1}\right) \mathbf{W}^{t-1} \mathbf{h}_{j}^{t-1}\right),
+        \mathbf{h}_{i}^{t}=\sigma\left(\sum_{j \in \mathcal{N}_{i}} \alpha\left(\mathbf{h}_{i}^{t-1}, \mathbf{h}_{j}^{t-1}\right) \mathbf{W}^{t-1} \mathbf{h}_{j}^{t-1}\right)
     \end{align}
     其中$\alpha(\cdot)$是一个注意力函数，它可以动态地调整邻居节点$j$对目标节点$i$的贡献。通常为了学习不同子空间中的注意力权重，GAT会使用多个注意力函数（即多头注意立机制，Multi-head Attention）:
     \begin{align}
-        \mathbf{h}_{i}^{t}=\|_{k=1}^{K} \sigma\left(\sum_{j \in \mathcal{N}_{t}} \alpha_{k}\left(\mathbf{h}_{i}^{t-1}, \mathbf{h}_{j}^{t-1}\right) W_{k}^{t-1} \mathbf{h}_{j}^{t-1}\right),
+        \mathbf{h}_{i}^{t}=\|_{k=1}^{K} \sigma\left(\sum_{j \in \mathcal{N}_{t}} \alpha_{k}\left(\mathbf{h}_{i}^{t-1}, \mathbf{h}_{j}^{t-1}\right) W_{k}^{t-1} \mathbf{h}_{j}^{t-1}\right)
     \end{align}
 
     \item Gated Attention Network(GAAN)\cite{lee2017deep}\cite{zhang2018gaan}：GAAN除了采用多头注意力机制（self-attention mechanism）外，还引入了自注意机制来更新节点的隐藏状态。自注意机制可以为每个注意力头计算出一个额外的注意分数：
     \begin{align}
-        \mathbf{h}_{i}^{t}=\phi_{o}\left(\mathbf{x}_{i} \oplus \|_{k=1}^{K} g_{i}^{k} \sum_{j \in \mathcal{N}_{\mathbf{t}}} \alpha_{k}\left(\mathbf{h}_{i}^{t-1}, \mathbf{h}_{j}^{t-1}\right) \phi_{v}\left(\mathbf{h}_{j}^{t-1}\right)\right),
+        \mathbf{h}_{i}^{t}=\phi_{o}\left(\mathbf{x}_{i} \oplus \|_{k=1}^{K} g_{i}^{k} \sum_{j \in \mathcal{N}_{\mathbf{t}}} \alpha_{k}\left(\mathbf{h}_{i}^{t-1}, \mathbf{h}_{j}^{t-1}\right) \phi_{v}\left(\mathbf{h}_{j}^{t-1}\right)\right)
     \end{align}
     其中$\phi_{o}\text{和}\phi_{v}$是反馈神经网络，而$g_{i}^{k}$是第$k$个注意力头的权重。
     GAM是一种基于循环神经网络模型的图神经网络，它主要应用于图数据的分类任务，即输入一个图结构数据，输出这个图所属的类别。这种方法会以自适应的方式逐个处理图中重要节点，并根据以下方式计算这些节点潜在特征：
     \begin{align}
-        \mathbf{h}_{t}=\mathbf{f}_{h}\left(\mathbf{f}_{s}\left(\mathbf{r}_{t-1}, \mathbf{v}_{t-1}, g ; \theta_{s}\right), \mathbf{h}_{t-1} ; \theta_{h}\right),
+        \mathbf{h}_{t}=\mathbf{f}_{h}\left(\mathbf{f}_{s}\left(\mathbf{r}_{t-1}, \mathbf{v}_{t-1}, g ; \theta_{s}\right), \mathbf{h}_{t-1} ; \theta_{h}\right)
     \end{align}
     其中$\mathbf{f}_{h}(\cdot)$是循环神经网络模型，通常使用LSTM，$f_s$是一个步进网络（Step Network），他会优先聚合当前节点$v_{t-1}$的邻居节点中优先级高的节点信息。
 \end{itemize}

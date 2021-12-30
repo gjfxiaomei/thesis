@@ -4,10 +4,18 @@
 相较于单路口的交通信号调度，多路口场景下的交通信号调度更注重对信号协调的研究。信号协调是指交通流量能够不间断地通过连续的交叉路口，即在行驶过程中没有因为遇到红色信号而停靠，那么这些路口的交通信号就是实现了协调。
 在现在交通协调系统中，这种信号协调只有在交通流量相对稳定的单行道上才能够实现，但为了缓解高峰时刻的交通压力，更多的是使用双向道。此外，交叉路口之间的相互干扰造成的交通拥堵也会致使信号协调失败，因此实现交叉路口之间的协调控制显得格外重要，因为信号灯的行动可能会相互影响，特别是当交叉路口紧密相连时，交通信号灯之间的良好合作能够使车辆更快地通过。
 
-在传统交通信号控制领域，解决交叉路口之间协调合作问题的典型方法就是将其转化成一个优化问题，并在某些假设条（例如，均匀的车辆到达率\cite{roess2004traffic,webster1958traffic}以及无限的车道容量\cite{}）件下求解。但是由于假设条件在现实场景下很难实现，这类方法并没有很好的表现。
+传统的交通协调方法\cite{koonce2008traffic}和系统\cite{hunt1981scoot,hunt1982scoot,lowrie1990scats}通常通过修改连续交叉路口之间的偏移量（即绿灯开始的时间间隔）来协调交通信号，并要求各交叉路口具有相同的信号周期长度，但这种方法只能优化某些预先定义方向的交通流\cite{gartner1991multi}，而实际上，协调道路网络中交通信号的偏移量并不是一件容易的事。
+对于网络级的协调控制，Max-pressure\cite{varaiya2013max}方法是一种最先进的信号控制方法，它在假设下游车道具有无限容量的情况下，贪婪地采取使网络吞吐量最大化的动作。其他交通控制方法如TUC\cite{diakaki2002multivariable} 也使用优化技术在某些假设下（例如，在特定时间内的交通流量是均匀的）最小化车辆行驶时间或在多个交叉路口的停车次数。然而，这些假设在网络级的道路环境中往往不成立，因此阻碍了这些方法的广泛应用。
+
+\begin{figure}[htb]
+  \includegraphics[width=0.9\textwidth]{fig/multi-intersection-RL.pdf}
+  \caption{基于深度强化学习的多路口交通信号控制框架}
+  \label{fig:multi-tsc-rl}
+\end{figure}
 
 \section{相关工作}
-由于强化学习在单路口交通信号控制上取得了优异的成绩，人们开始致力于使用多智能体强化学习（Multi-Agent Reinforcement Learning, MARL）来解决多路口场景下的交通信号调度。Claus在\inlinecite{claus1998dynamics}中将MARL分为了两类：联合动作学习（Joint Action Learning）和独立学习（Independent Learning）。
+由于强化学习在单路口交通信号控制上取得了优异的成绩，人们开始致力于使用多智能体强化学习（Multi-Agent Reinforcement Learning, MARL）来解决多路口场景下的交通信号调度。\autoref{fig:multi-tsc-rl}描述了使用多智能体强化学习解决多路口交通信号调度问题上的基本思路。智能体被定义为环境中N个路口的信号控制者，目标是学习每个智能体的最优策略，以优化整个环境中所有路口的通行效率。在每个调度时刻$t$，每个智能体$i$观察环境的一部分作为观察点$o_i^t$，智能体将对接下来要采取的行动$\mathbf{\alpha}^t$做出预测，这些动作将在环境中执行，并产生奖励$r_i^t$，其中奖励可以在环境中的单个路口或一组路口的层面上定义。
+Claus在\inlinecite{claus1998dynamics}中将MARL分为了两类：联合动作学习（Joint Action Learning）和独立学习（Independent Learning）。
 
 对于多路口信号控制，联合动作学习的思想就是使用一个全局智能体（single global agent）来控制所有的交叉路口，其动作是所有路口动作组合在一起的联合动作，然后通过迭代学习建模多个智能体的联合动作价值函数（Joint Action Value Function）：
 \begin{align}
@@ -37,14 +45,14 @@
 \section{研究目标}
 目前大多数工作在使用图神经网络进行信息交互的过程中，都是以交叉路口为节点来进行图建模，将每一个路口视作图中的一个节点，每条道路作为连接两个节点的边，很自然地可以将一张交通道路网建模成一个图， 如\autoref{fig:network-graph-old}所示：
 \begin{figure}[htb]
-  \includegraphics[width=1.2\textwidth]{ppt/network-graph.pdf}
+  \includegraphics[width=0.9\textwidth]{fig/network-graph.pdf}
   \caption{以路口为节点的建图方式示意图}
   \label{fig:network-graph-old}
 \end{figure}
 在这种建模方式下，每条车道的车辆以及当前的相位将作为该节点的特征。这种建模方式虽然可以很清晰的将多路口场景变成一张图。但是，因为是以一个路口为一个节点，所有车道的状态信息都整合到了一起，在进行信息交互的时候会出现信息冗余的情况，即当前路口下有些车道的的信息对目标路口是没有价值的，
 如\autoref{fig:information-redundancy}所示：
 \begin{figure}[htb]
-  \includegraphics[width=1.2\textwidth]{ppt/information-redundancy.pdf}
+  \includegraphics[width=0.9\textwidth]{fig/information-redundancy.pdf}
   \caption{在以路口为节点的建图方式下的信息传递示意图}
   \label{fig:information-redundancy}
 \end{figure}
@@ -84,13 +92,13 @@
   \item 特征筛选：由于当前交通信号的影响，道路$j$的车辆不会进入到道路$i$，即节点$j$的信息在确定节点$i$的下一时刻的特征时是无用的，因此我们要筛选掉对目标节点无用的信息。这里我们通过之前介绍的边的权重来实现：
   \begin{align}
     \label{eq:mul_phase}
-    e_{i j} = e_{i j} * w_{i,j},
+    e_{i j} = e_{i j} * w_{i,j}
   \end{align}
   如果$WE_{i j} = 1$（即道路$j$到道路$i$的交通在当前相位下是可以通行的），$e_{ij}$将维持之前的计算结果。反之，如果$w_{i,j}=0$，将清除节点$j$对节点$i$的影响。
   
   \item 注意力分布计算：为了重新确定源节点和目标节点之间的注意力值，我们进一步将目标节点$i$和其邻近节点之间的交互等分进行归一化：
   \begin{align}
-    \alpha_{i j}=\operatorname{softmax}\left(e_{i j}\right)=\frac{\exp \left(e_{i j} / \tau\right)}{\sum_{j \in \mathcal{N}_{i}} \exp \left(e_{i j} / \tau\right)},
+    \alpha_{i j}=\operatorname{softmax}\left(e_{i j}\right)=\frac{\exp \left(e_{i j} / \tau\right)}{\sum_{j \in \mathcal{N}_{i}} \exp \left(e_{i j} / \tau\right)}
   \end{align}
   其中$\tau$是一个温度系数，$\mathcal{N}_{i}$是目标节点$i$邻近范围的节点集合。
   \item 特征回归：为了确定目标节点在下一个时刻的特征，这里我们将其所有邻近节点的信息按照各自的重要性进行组合：
@@ -131,7 +139,7 @@
 其损失函数如\autoref{eq:loss-dqn}所示：
 \begin{align}
   \label{eq:loss-dqn}
-  \mathcal{L}_t=[ r_{t+1}+\gamma \mathop{\arg\max}_{a^{\prime}} \mathcal{Q}(s_{t+1},a^{'};\theta)-\mathcal{Q}(s_t,a_j;\theta)]^2，
+  \mathcal{L}_t=[ r_{t+1}+\gamma \mathop{\arg\max}_{a^{\prime}} \mathcal{Q}(s_{t+1},a^{'};\theta)-\mathcal{Q}(s_t,a_j;\theta)]^2
 \end{align}
 
 对于GAT模型来说，首先我们规定节点的特征$f_t=\{q_t, v_t\}$，其中$q_t$和$v_t$分别时队列长度（Queue length）和交通流量（Traffic volume）。当环境转移到新的状态$s_{t+1}$时，更新节点特征（$f_{t+1}=\{q_{t+1},v_{t+1}\}$）以及边的权重，其损失函数如下所示：
@@ -174,7 +182,7 @@
               \If{$|M|>b$}{
                   \State 从经验回放池M中随机采样b条经验数据。
                   \State 计算DQN损失函数 $\mathcal{L}_Q$:
-                  $\mathcal{L}_Q=[ r_{t+1}+\gamma \mathop{\arg\max}_{a^{\prime}} \mathcal{Q}(s_{t+1},a^{\prime};\theta)-\mathcal{Q}(s_t,a_t;\theta)]^2$;
+                  $\mathcal{L}_Q=[ r_{t+1}+\gamma \mathop{\arg\max}_{a^{\prime}} \mathcal{Q}(s_{t+1},a^{\prime};\theta)-\mathcal{Q}(s_t,a_t;\theta)]^2$
                   \State 更新DQN模型参数。
               }
               \EndIf
@@ -203,7 +211,7 @@
 
 \textbf{真实数据：}我们还使用了杭州和济南两个城市某个路段下采集到的真实数据\footnote{https://traffic-signal-control.github.io/\#open-datasets}进行了实验，\autoref{tab:real-world-datasets}统计了这两个数据集的关键信息。
 \begin{table}[htb]
-  \caption{数据统计}
+  \caption{真实数据集（杭州和济南）的相关信息}
   \label{tab:real-world-datasets}
   \begin{tabular}{lccccc}
   \toprule
@@ -281,6 +289,18 @@ GCN在真实数据上的表现并不出色是因为其在聚合邻居节点的�
 GCN方法在合成数据上收敛效果较好，但是在真实数据上收敛效果差的原因和上一节效率结果分析中的一样，静态的处理邻居路口的交通导致其难以聚合准确的信息。
 
 虽然Individual最终也能收敛到最佳性能，但是由于其是独立优化单个路口的策略，没有考虑到周围路口环境的交通信息，因此其刚开始时的性能表现相较于其他三种方法更差，并且收敛速度更慢。
+
+\textbf{（3）信息交互模块边权重研究}
+
+在本工作中，我们提出了一种新的路网建图方式，并且我们根据当前的信号相位对图中的边赋予了一个权重，用来剔除在当前相位下对目标节点无效的交通流量。这里，我们研究了这个权重对信息交互模块的影响。
+\begin{figure}[htb]
+  \includegraphics[width=0.8\textwidth]{fig/diff.pdf}
+  \caption{信息交互模块在边有权重和无权重情况下的收敛结果}
+  \label{fig:diff}
+\end{figure}
+
+\autoref{fig:diff}展示了我们的信息交互模块在边有权重和权重情况下的收敛结果，其中红色曲线代表边有权重情，绿色曲线代表边无权重，横坐标代表训练集数，纵坐标代表模型的损失，这里我们使用信息交互模块来对图的节点做节点回归，即估计目标道路在下一调度时刻的交通状况。
+从图中我们可以看出，在为边加了权重之后，信息交互模块的收敛速度明显提高，这是因为我们的权重是根据相位信息确定的，在加了权重后，可以过滤掉在当前信号相位下对目标节点（道路）无效的交通流量。
 
 \section{本章小结}
 本章首先给出了多路口场景下交通信号调度的主要研究目标，然后总结了近些年来基于深度强化学习的多路口交通信号调度的研究工作，通过分析这些工作的不足，我们给出了本章工作的研究目标。
