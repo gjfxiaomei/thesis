@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.12.9)  30 DEC 2021 10:48
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.12.9)  30 DEC 2021 15:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2142,14 +2142,7 @@ File: fig/trend.png Graphic file (type bmp)
 <fig/trend.png>
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 7.0pt on input line 62.
- [3]
-LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 7.0pt on input line 67.
-
-
-Package natbib Warning: Citation `' on page 4 undefined on input line 67.
-
-[4]
+ [3] [4]
 File: fig/paper-struct.pdf Graphic file (type pdf)
 <use fig/paper-struct.pdf>
  [5]) [6]
@@ -2173,18 +2166,12 @@ File: fig/tsc.pdf Graphic file (type pdf)
 
 ] [8]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 5.0pt on input line 45.
-File: fig/green-ware.pdf Graphic file (type pdf)
-<use fig/green-ware.pdf>
-
-Overfull \hbox (86.49504pt too wide) in paragraph at lines 56--57
- [][] 
- []
-
-[9] [10]
-Missing character: There is no ￥ ("FFE5) in font ntx-Regular-tlf-ot1!
-
-Overfull \hbox (5.20398pt too wide) in paragraph at lines 128--129
+(Font)              scaled to size 5.0pt on input line 46.
+File: fig/green-wave.pdf Graphic file (type pdf)
+<use fig/green-wave.pdf>
+ [9]
+[10]
+Overfull \hbox (5.20398pt too wide) in paragraph at lines 131--132
 []\T1/ntxtlf/m/n/10.53937 SOTL$[]$ |\TU/FandolSong-Regular(0)/m/n/10.53937 （\T1
 /ntxtlf/m/n/10.53937 Self-Organizing Traf-fic Light Con-trol\TU/FandolSong-Regu
 lar(0)/m/n/10.53937 ）|  是 一 种 具 有 附 加 需 求 响 应 规 则 的 \T1/ntxtlf/m/n/10.53937 Ful
@@ -2195,7 +2182,7 @@ File: fig/max-pressure.pdf Graphic file (type pdf)
 <use fig/max-pressure.pdf>
 [11]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 139.
+put line 142.
  [12] [13]
 File: fig/rl.pdf Graphic file (type pdf)
 <use fig/rl.pdf>
@@ -2204,11 +2191,11 @@ File: fig/rl-classfication.pdf Graphic file (type pdf)
 <use fig/rl-classfication.pdf>
  [16] [17]
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.53937pt on input line 323.
+(Font)              scaled to size 10.53937pt on input line 326.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 7.0pt on input line 323.
+(Font)              scaled to size 7.0pt on input line 326.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 5.0pt on input line 323.
+(Font)              scaled to size 5.0pt on input line 326.
  [18]
 File: fig/GCN.pdf Graphic file (type pdf)
 <use fig/GCN.pdf>
@@ -2339,9 +2326,6 @@ File: fig/diff.pdf Graphic file (type pdf)
 
 ]
 
-Package natbib Warning: There were undefined citations.
-
-
 Package caption Warning: Unused \captionsetup[subalgorithm] on input line 15.
 See the caption package documentation for explanation.
 
@@ -2353,12 +2337,12 @@ Package rerunfilecheck Info: File `master.out' has not changed.
 (rerunfilecheck)             Checksum: 31B44118992398BFA6245900788EAD29;8355.
  ) 
 Here is how much of TeX's memory you used:
- 48976 strings out of 476919
- 1138565 string characters out of 5823632
+ 48971 strings out of 476919
+ 1138367 string characters out of 5823632
  1554634 words of memory out of 5000000
- 68001 multiletter control sequences out of 15000+600000
- 542561 words of font info for 227 fonts, out of 8000000 for 9000
+ 67998 multiletter control sequences out of 15000+600000
+ 542545 words of font info for 225 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  115i,17n,118p,1228b,1277s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on master.xdv (71 pages, 1130644 bytes).
+Output written on master.xdv (71 pages, 1132212 bytes).

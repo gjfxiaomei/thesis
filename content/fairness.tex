@@ -223,7 +223,7 @@ Policy-based的方法直接对控制策略进行建模并在迭代过程中对�
 \begin{align}
     \mathcal{J}=\frac{\left(\sum_{i=1}^{M} \bar{D}_{i}\right)^{2}}{M \sum_{i=1}^{M} \bar{D}_{i}^{2}}
 \end{align}
-其中$\bar{D}_{i}$是车道$i$的平均延误时间。当每个车道具有相同的平均延误时间时，JFI的值达到最大值，即1。\autoref{fig:fairness}展示了四种方法在不同$\rho$值下的平均延迟的JFI表现。从中我们可以看出FT和LIT的JFI值随着交通不平衡情况的加剧（即$\rho$值越大）而减小，而FIT任然能偶保持较高的值，并且高于同样能够保持稳定JFI值的SOTL方法。
+其中$\bar{D}_{i}$是车道$i$的平均延误时间。当每个车道具有相同的平均延误时间时，JFI的值达到最大值，即1。\autoref{fig:fairness}展示了四种方法在不同$\rho$值下的平均延迟的JFI表现。从中我们可以看出FT和LIT的JFI值随着交通不平衡情况的加剧（即$\rho$值越大）而减小，而FIT仍然能够保持较高的JFI值，并且高于同样能够保持稳定JFI值的SOTL方法。
 \begin{figure}[htb]
     \includegraphics[width=0.9\textwidth]{fig/fairness.pdf}
     \caption{不同交通负载情况下四种方法的调度公平性表现}

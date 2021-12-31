@@ -1952,7 +1952,6 @@ INPUT ./fig/trend.png
 INPUT ./fig/trend.png
 INPUT fig/trend.png
 INPUT d:/Software/texlive/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-t1.tfm
-INPUT d:/Software/texlive/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-t1.tfm
 INPUT ./fig/paper-struct.pdf
 INPUT ./fig/paper-struct.pdf
 INPUT fig/paper-struct.pdf
@@ -1979,9 +1978,10 @@ INPUT ./fig/tsc.pdf
 INPUT ./fig/tsc.pdf
 INPUT fig/tsc.pdf
 INPUT d:/Software/texlive/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-t1.tfm
-INPUT ./fig/green-ware.pdf
-INPUT ./fig/green-ware.pdf
-INPUT fig/green-ware.pdf
+INPUT ./fig/green-wave.pdf
+INPUT ./fig/green-wave.pdf
+INPUT fig/green-wave.pdf
+INPUT d:/Software/texlive/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-t1.tfm
 INPUT d:/Software/texlive/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-t1.tfm
 INPUT ./fig/max-pressure.pdf
 INPUT ./fig/max-pressure.pdf
